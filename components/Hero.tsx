@@ -47,7 +47,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-28">
         <FadeUp delay={DELAY} className="inline-flex items-center gap-2 mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm text-sm font-medium text-[#8B9AB8]">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#00B4FF" }} />
@@ -73,8 +73,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: DELAY + STAGGER * 2, ease: "easeOut" }}
           className="max-w-2xl mx-auto text-lg sm:text-xl text-[#8B9AB8] leading-relaxed mb-10"
         >
-          Desenvolvemos soluções digitais sob medida — do site ao CRM com IA,
-          automações inteligentes e integrações WhatsApp — para que sua empresa
+          Desenvolvemos soluções digitais sob medida: sites, CRM com IA,
+          automações inteligentes e integrações WhatsApp para que sua empresa
           cresça sem barreiras.
         </motion.p>
 
