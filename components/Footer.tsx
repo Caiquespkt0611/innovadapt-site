@@ -68,7 +68,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="mb-4">
               <Image
-                src="/logo-dark.png"
+                src="/logo-transparent.png"
                 alt="InnovAdapt"
                 width={160}
                 height={60}

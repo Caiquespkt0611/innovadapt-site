@@ -48,11 +48,11 @@ export default function Header() {
             className="flex items-center group"
           >
             <Image
-              src="/logo-dark.png"
+              src="/logo-transparent.png"
               alt="InnovAdapt"
-              width={160}
-              height={60}
-              className="h-10 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity"
+              width={180}
+              height={111}
+              className="h-12 w-auto object-contain opacity-95 group-hover:opacity-100 transition-opacity"
               priority
             />
           </a>
