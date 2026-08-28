@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
  *
  * A visibilidade do conteúdo não pode depender de um único mecanismo: um
  * IntersectionObserver que não dispara deixaria a seção em opacity:0 para
- * sempre. Por isso são três camadas — o observer, uma conferência de geometria
+ * sempre. Por isso são três camadas: o observer, uma conferência de geometria
  * no scroll, e o CSS, que só esconde quando existe JS para revelar de volta.
  */
 export default function Revelar({

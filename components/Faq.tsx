@@ -7,12 +7,15 @@ export default function Faq() {
   const [aberto, setAberto] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="secao border-t border-white/[0.06] bg-[#080b13]">
+    <section id="faq" className="secao fio-topo bg-[#0a0c15]">
       <div className="wrap">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
-            <p className="sobrancelha">Perguntas</p>
-            <h2 className="titulo-secao mt-6">As objeções, respondidas antes da reunião</h2>
+            <p className="sobrancelha"><b>07</b>Perguntas</p>
+            <h2 className="titulo-secao mt-6">
+              As objeções, respondidas antes da{" "}
+              <span className="enfase-clara">reunião</span>
+            </h2>
           </div>
 
           <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
@@ -29,7 +32,7 @@ export default function Faq() {
                     >
                       <span
                         className={`text-base font-semibold transition-colors ${
-                          ativo ? "text-[#00b4ff]" : "text-white"
+                          ativo ? "text-[#22b8f0]" : "text-white"
                         }`}
                       >
                         {item.p}
@@ -46,7 +49,7 @@ export default function Faq() {
                             stroke="currentColor"
                             strokeWidth="1.5"
                             strokeLinecap="round"
-                            className={ativo ? "text-[#00b4ff]" : "text-[#5f6c85]"}
+                            className={ativo ? "text-[#22b8f0]" : "text-[#656c7d]"}
                           />
                         </svg>
                       </span>
@@ -57,7 +60,7 @@ export default function Faq() {
                     style={{ gridTemplateRows: ativo ? "1fr" : "0fr" }}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-6 pr-10 text-sm leading-relaxed text-[#98a4bb]">
+                      <p className="pb-6 pr-10 text-sm leading-relaxed text-[#9aa1b2]">
                         {item.r}
                       </p>
                     </div>

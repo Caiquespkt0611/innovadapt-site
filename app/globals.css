@@ -1,29 +1,32 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ink: #05070d;
-  --color-ink-2: #080b13;
-  --color-surface: #0e131f;
-  --color-surface-2: #141b2b;
-  --color-line: rgba(255, 255, 255, 0.08);
-  --color-txt: #f2f6ff;
-  --color-txt-2: #98a4bb;
-  --color-txt-3: #5f6c85;
-  --color-accent: #00b4ff;
-  --color-accent-2: #3a6ff8;
+  --color-ink: #070810;
+  --color-ink-2: #0a0c15;
+  --color-surface: #10131e;
+  --color-line: rgba(255, 255, 255, 0.07);
+  --color-txt: #f4f5f8;
+  --color-txt-2: #9aa1b2;
+  --color-txt-3: #656c7d;
+  --color-accent: #3b6df6;
+  --color-accent-2: #22b8f0;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 }
 
 :root {
-  --ink: #05070d;
-  --surface: #0e131f;
-  --line: rgba(255, 255, 255, 0.08);
-  --txt: #f2f6ff;
-  --txt-2: #98a4bb;
-  --txt-3: #5f6c85;
-  --accent: #00b4ff;
-  --accent-2: #3a6ff8;
+  --ink: #070810;
+  --ink-2: #0a0c15;
+  --surface: #10131e;
+  --linha: rgba(255, 255, 255, 0.07);
+  --linha-forte: rgba(255, 255, 255, 0.13);
+  --txt: #f4f5f8;
+  --txt-2: #9aa1b2;
+  --txt-3: #656c7d;
+  --azul: #3b6df6;
+  --ciano: #22b8f0;
+  --roxo: #8b3fd9;
 }
 
 * {
@@ -32,36 +35,56 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
   background: var(--ink);
-  overflow-wrap: break-word;
   color: var(--txt);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv05" 1, "cv11" 1, "ss01" 1;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+}
+
+/* Grão fino sobre a página inteira. É o que tira o plano de fundo da cara de
+   "preto chapado de template" e dá textura sem pesar um único request. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23r)'/%3E%3C/svg%3E");
 }
 
 ::selection {
-  background: rgba(0, 180, 255, 0.28);
+  background: rgba(59, 109, 246, 0.32);
   color: #fff;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 9px;
 }
 ::-webkit-scrollbar-track {
   background: var(--ink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e2740;
-  border-radius: 4px;
+  background: #22283a;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2c3550;
+  background: #2f3750;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ciano);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -77,37 +100,43 @@ body {
   }
 }
 
-/* ---------- primitivas de layout ---------- */
+/* ---------- layout ---------- */
 
 .wrap {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1180px;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1.375rem;
 }
 @media (min-width: 768px) {
   .wrap {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
   }
 }
 
 .secao {
-  padding-block: 5.5rem;
+  padding-block: 6rem;
   position: relative;
 }
 @media (min-width: 768px) {
   .secao {
-    padding-block: 7.5rem;
+    padding-block: 8.5rem;
   }
 }
 
-.regra {
+/* Fio de topo que some nas pontas. Separa as seções sem a dureza de uma
+   border-top de ponta a ponta. */
+.fio-topo::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
   height: 1px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.1) 20%,
-    rgba(255, 255, 255, 0.1) 80%,
+    rgba(255, 255, 255, 0.11) 22%,
+    rgba(255, 255, 255, 0.11) 78%,
     transparent
   );
 }
@@ -117,35 +146,65 @@ body {
 .sobrancelha {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.6875rem;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent);
-  display: inline-flex;
+  color: var(--txt-3);
+  display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.875rem;
 }
-.sobrancelha::before {
+.sobrancelha b {
+  font-weight: 500;
+  color: var(--ciano);
+}
+.sobrancelha::after {
   content: "";
-  width: 1.75rem;
+  flex: 1;
   height: 1px;
-  background: var(--accent);
-  opacity: 0.6;
+  max-width: 5rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent);
 }
 
 .titulo-secao {
-  font-size: clamp(1.875rem, 4vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  font-size: clamp(2rem, 4.4vw, 3.375rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
   color: #fff;
   text-wrap: balance;
+}
+
+/* A palavra em serifa itálica é o único ornamento tipográfico do site. Usada
+   uma vez por título, ela dá o tom editorial que separa premium de template. */
+.enfase {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ciano);
+}
+/* Nos títulos de seção a mesma serifa aparece sem cor, só como troca de
+   textura. O ciano fica reservado para o hero, para haver um único momento
+   de cor na página inteira. */
+.enfase-clara {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #c6ccd9;
 }
 
 .lead {
   color: var(--txt-2);
   font-size: 1.0625rem;
-  line-height: 1.7;
-  max-width: 46rem;
+  line-height: 1.75;
+  max-width: 44rem;
+}
+@media (min-width: 768px) {
+  .lead {
+    font-size: 1.125rem;
+  }
 }
 
 .mono {
@@ -155,32 +214,71 @@ body {
 
 .destaque {
   color: #fff;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* ---------- superfícies ---------- */
 
 .cartao {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.012) 40%,
+    rgba(255, 255, 255, 0.008)
+  );
+  border: 1px solid var(--linha);
+  border-radius: 1.125rem;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+/* Reflexo fino na aresta de cima, como em vidro. Substitui o brilho colorido
+   que dava cara de dashboard de demonstração. */
+.cartao::before {
+  content: "";
+  position: absolute;
+  inset-inline: 1.25rem;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  opacity: 0.7;
 }
 .cartao:hover {
-  border-color: rgba(0, 180, 255, 0.28);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+  border-color: var(--linha-forte);
+  transform: translateY(-2px);
 }
 
 .malha {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
-  background-size: 72px 72px;
-  opacity: 0.022;
-  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 30%, transparent 75%);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
+  background-size: 86px 86px;
+  opacity: 0.02;
+  mask-image: radial-gradient(ellipse 85% 55% at 50% 0%, #000 25%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 55% at 50% 0%, #000 25%, transparent 72%);
+}
+
+.aurora {
+  position: absolute;
+  left: 50%;
+  top: -20rem;
+  width: 66rem;
+  height: 36rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(59, 109, 246, 0.2),
+    rgba(139, 63, 217, 0.08) 40%,
+    transparent 68%
+  );
+  filter: blur(30px);
 }
 
 /* ---------- botões ---------- */
@@ -191,67 +289,47 @@ body {
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.9375rem;
-  font-weight: 600;
-  padding: 0.875rem 1.5rem;
-  border-radius: 0.625rem;
-  transition: all 0.2s ease;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  padding: 0.9375rem 1.625rem;
+  border-radius: 0.75rem;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
   white-space: nowrap;
   cursor: pointer;
 }
 
 .btn-primario {
   background: #fff;
-  color: #05070d;
+  color: #070810;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 .btn-primario:hover {
-  background: var(--accent);
-  color: #041019;
+  background: #e8ecf5;
+  transform: translateY(-1px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
 .btn-secundario {
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--linha-forte);
   color: var(--txt);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.025);
 }
 .btn-secundario:hover {
-  border-color: rgba(255, 255, 255, 0.34);
+  border-color: rgba(255, 255, 255, 0.26);
   background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
 }
 
-/* ---------- efeitos ---------- */
-
-.brilho-topo {
-  position: absolute;
-  left: 50%;
-  top: -18rem;
-  width: 62rem;
-  height: 34rem;
-  transform: translateX(-50%);
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 180, 255, 0.16),
-    rgba(58, 111, 248, 0.07) 42%,
-    transparent 70%
-  );
-  filter: blur(24px);
-}
-
-.texto-gradiente {
-  background: linear-gradient(100deg, #00b4ff 0%, #6aa6ff 45%, #ffffff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* ---------- revelação ---------- */
 
 /* O estado escondido só existe quando há JS para revelar de volta. Sem o
-   marcador `.js` no <html> — script bloqueado, leitor sem JS, crawler antigo —
+   marcador `.js` no <html> (script bloqueado, leitor sem JS, crawler antigo),
    a seção aparece normalmente em vez de ficar num opacity:0 permanente. */
 .js .revelar {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .js .revelar[data-visivel="true"] {
   opacity: 1;

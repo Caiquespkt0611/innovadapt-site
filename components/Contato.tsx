@@ -9,7 +9,7 @@ const ASSUNTOS = [
   "Rentabilidade e DRE gerencial",
   "Consolidação e BI de rede",
   "Software sob medida",
-  "Ainda não sei — quero um diagnóstico",
+  "Ainda não sei, quero um diagnóstico",
 ];
 
 export default function Contato() {
@@ -37,31 +37,31 @@ export default function Contato() {
       return;
     }
     window.location.href = `mailto:${contato.email}?subject=${encodeURIComponent(
-      `Diagnóstico — ${form.empresa || form.nome || "novo contato"}`,
+      `Diagnóstico InnovAdapt: ${form.empresa || form.nome || "novo contato"}`,
     )}&body=${encodeURIComponent(corpo)}`;
   };
 
   const campo =
-    "w-full rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-[#5f6c85] outline-none transition-colors focus:border-[#00b4ff]/60 focus:bg-white/[0.05]";
+    "w-full rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-[#656c7d] outline-none transition-colors focus:border-[#22b8f0]/60 focus:bg-white/[0.05]";
 
   return (
-    <section id="contato" className="secao border-t border-white/[0.06]">
+    <section id="contato" className="secao fio-topo">
       <div className="wrap">
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.09] bg-[#0b0f1a]">
-          <div className="brilho-topo !top-[-22rem] opacity-70" aria-hidden />
+        <div className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-[#0d1019]">
+          <div className="aurora !top-[-24rem] opacity-80" aria-hidden />
 
           <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:p-16">
             <div>
-              <p className="sobrancelha">Contato</p>
+              <p className="sobrancelha"><b>08</b>Contato</p>
               <h2 className="titulo-secao mt-6">
                 Comece pelo diagnóstico,
                 <br />
-                não pela proposta
+                não pela <span className="enfase-clara">proposta</span>
               </h2>
               <p className="lead mt-6">
                 A primeira conversa é sobre a sua operação: onde o lead se perde,
                 qual planilha decide o mês e o que hoje só uma pessoa sabe fazer.
-                A proposta vem depois — e vem com a conta aberta.
+                A proposta vem depois, e vem com a conta aberta.
               </p>
 
               <ul className="mt-9 space-y-4">
@@ -70,13 +70,13 @@ export default function Contato() {
                   "Escopo e preço com origem, a partir do custo base",
                   "Você fala com sócio, não com vendedor",
                 ].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-sm text-[#e6edfa]">
+                  <li key={t} className="flex items-start gap-3 text-sm text-[#e9ecf3]">
                     <svg
                       width="18"
                       height="18"
                       viewBox="0 0 18 18"
                       fill="none"
-                      className="mt-px flex-none text-[#00b4ff]"
+                      className="mt-px flex-none text-[#22b8f0]"
                       aria-hidden
                     >
                       <path
@@ -93,12 +93,12 @@ export default function Contato() {
               </ul>
 
               <div className="mt-10 border-t border-white/[0.08] pt-6">
-                <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5f6c85]">
+                <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
                   Ou direto
                 </p>
                 <a
                   href={`mailto:${contato.email}`}
-                  className="mt-2 inline-block text-base font-semibold text-white transition-colors hover:text-[#00b4ff]"
+                  className="mt-2 inline-block text-base font-semibold text-white transition-colors hover:text-[#22b8f0]"
                 >
                   {contato.email}
                 </a>
@@ -159,7 +159,7 @@ export default function Contato() {
                   onChange={(e) => setForm({ ...form, assunto: e.target.value })}
                 >
                   {ASSUNTOS.map((a) => (
-                    <option key={a} value={a} className="bg-[#0b0f1a]">
+                    <option key={a} value={a} className="bg-[#10131e]">
                       {a}
                     </option>
                   ))}
@@ -193,7 +193,7 @@ export default function Contato() {
                 </svg>
               </button>
 
-              <p className="text-center text-xs leading-relaxed text-[#5f6c85]">
+              <p className="text-center text-xs leading-relaxed text-[#656c7d]">
                 Abre o seu app de e-mail com a mensagem pronta. Nenhum dado é
                 armazenado neste site.
               </p>

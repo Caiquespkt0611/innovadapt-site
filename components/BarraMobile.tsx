@@ -5,7 +5,7 @@ import { contato } from "@/lib/site";
 
 /**
  * Barra de ação fixa no rodapé, só no celular. Aparece depois do hero e some
- * quando o formulário entra na tela — para não cobrir o campo que a pessoa
+ * quando o formulário entra na tela, para não cobrir o campo que a pessoa
  * está preenchendo.
  */
 export default function BarraMobile() {
@@ -44,7 +44,7 @@ export default function BarraMobile() {
   return (
     <div
       aria-hidden={!mostra}
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.08] bg-[#05070d]/92 backdrop-blur-xl transition-transform duration-300 lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.08] bg-[#070810]/94 backdrop-blur-2xl transition-transform duration-300 lg:hidden ${
         mostra ? "translate-y-0" : "translate-y-full"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
@@ -54,7 +54,7 @@ export default function BarraMobile() {
           <p className="truncate text-[0.8125rem] font-semibold text-white">
             Diagnóstico sem custo
           </p>
-          <p className="truncate text-[0.6875rem] text-[#5f6c85]">
+          <p className="truncate text-[0.6875rem] text-[#656c7d]">
             Fale com quem escreve o código
           </p>
         </div>

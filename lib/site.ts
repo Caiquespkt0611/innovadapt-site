@@ -1,5 +1,5 @@
 // Fonte única de verdade do conteúdo do site.
-// Todo número aqui sai do CEREBRO da empresa — se mudar lá, muda aqui.
+// Todo número aqui sai do CEREBRO da empresa. Se mudar lá, muda aqui.
 
 export const contato = {
   email: "contato@innovadapt.com.br",
@@ -14,7 +14,7 @@ export const linkWhatsapp = (mensagem: string) =>
   contato.whatsapp
     ? `https://wa.me/${contato.whatsapp}?text=${encodeURIComponent(mensagem)}`
     : `mailto:${contato.email}?subject=${encodeURIComponent(
-        "Diagnóstico — InnovAdapt",
+        "Diagnóstico InnovAdapt",
       )}&body=${encodeURIComponent(mensagem)}`;
 
 export const MSG_PADRAO =
@@ -43,12 +43,12 @@ export const capacidades = [
     resumo:
       "Não é chatbot de menu. É um agente que conversa, entende o contexto, lembra do lead e passa o bastão para o vendedor certo.",
     itens: [
-      "Inbox unificado — WebMotors, iCarros, redes e agência num lugar só",
+      "Inbox unificado: WebMotors, iCarros, redes e agência num lugar só",
       "Funil kanban com distribuição automática por vendedor",
       "Copiloto do vendedor e gerente de vendas por IA",
       "Catálogo e preço de loja carregados do PDF da montadora",
       "Relatório do dia e cobrança automática de follow-up",
-      "Triagem em modelo barato, conversa em modelo bom — custo de IA sob controle",
+      "Triagem em modelo barato, conversa em modelo bom, custo de IA sob controle",
     ],
   },
   {
@@ -56,7 +56,7 @@ export const capacidades = [
     numero: "02",
     titulo: "Portal de operações e fiscal",
     resumo:
-      "Pedido, compra, estoque e imposto no mesmo lugar, com a regra tributária como cadastro — não como código.",
+      "Pedido, compra, estoque e imposto no mesmo lugar. A regra tributária vira cadastro, não código.",
     itens: [
       "Pedidos e compras com status, histórico e permissão por papel",
       "Regra tributária por fornecedor, com exceção por NCM",
@@ -71,7 +71,7 @@ export const capacidades = [
     numero: "03",
     titulo: "Rentabilidade e DRE gerencial",
     resumo:
-      "A planilha que hoje decide o mês da concessionária vira sistema — com a matemática conferida contra a origem, linha a linha.",
+      "A planilha que hoje decide o mês da concessionária vira sistema, com a matemática conferida contra a origem, linha a linha.",
     itens: [
       "DRE próprio por departamento: VN, VU, Peças, Acessórios, F&I, SG, SC, AT",
       "De-para configurável entre o plano de contas do cliente e o padrão",
@@ -134,7 +134,7 @@ export const comparativo = {
     {
       criterio: "O que chega na sua mão",
       deles: "Painel, benchmark e relatório",
-      nosso: "Sistema que executa a operação — e o painel junto",
+      nosso: "Sistema que executa a operação, e o painel junto",
     },
     {
       criterio: "Papel da IA",
@@ -176,9 +176,9 @@ export const cases = [
     setor: "Motos 0 km e seminovos · 2 unidades",
     titulo: "CRM e agente de IA atendendo no WhatsApp",
     problema:
-      "Lead chegando por WebMotors, iCarros, redes sociais e agência — cada um num lugar. Cada vendedor no celular próprio: vendedor saía, histórico ia junto. E ninguém sabia qual canal convertia.",
+      "Lead chegando por WebMotors, iCarros, redes sociais e agência, cada um num lugar. Cada vendedor no celular próprio: vendedor saía, histórico ia junto. E ninguém sabia qual canal convertia.",
     entrega:
-      "Plataforma única de atendimento, funil e agendamento para duas operações com funis, personas e fichas diferentes — moto 0 km não é carro usado.",
+      "Plataforma única de atendimento, funil e agendamento para duas operações com funis, personas e fichas diferentes. Moto 0 km não é carro usado.",
     marcos: [
       { data: "14/08", texto: "Repositório e monorepo de pé, builds verdes" },
       { data: "15/08", texto: "Produção no ar e primeira conversa real, número pareado" },
@@ -199,7 +199,7 @@ export const cases = [
     problema:
       "Operação de rede rodando em planilha e e-mail: pedido sem status, imposto recalculado na mão a cada mudança de regra e rentabilidade por dealer que ninguém conseguia fechar.",
     entrega:
-      "Sistema de gestão em monorepo, entregue por fases. A regra tributária virou cadastro: alíquota nova entra pelo painel, sem deploy — e a exceção por NCM convive com a regra geral do fornecedor.",
+      "Sistema de gestão em monorepo, entregue por fases. A regra tributária virou cadastro: alíquota nova entra pelo painel, sem deploy, e a exceção por NCM convive com a regra geral do fornecedor.",
     marcos: [
       { data: "F1", texto: "Infraestrutura, autenticação, papéis e design system" },
       { data: "F2", texto: "Portal de pedidos, compras, estoque e fiscal" },
@@ -218,13 +218,13 @@ export const cases = [
     setor: "Rede de dealers · via Sector One Brand",
     titulo: "Agregador de pedidos e rentabilidade da rede",
     problema:
-      "Cada dealer mandava a própria planilha, em formato próprio. Consolidar a rede era um dia de trabalho manual — e o número mudava dependendo de quem consolidava.",
+      "Cada dealer mandava a própria planilha, em formato próprio. Consolidar a rede era um dia de trabalho manual, e o número mudava dependendo de quem consolidava.",
     entrega:
       "Motor de consolidação em funções puras sobre uma lista achatada de itens. Isso permitiu duas fontes e uma matemática só: banco de dados ou upload de planilha entram pelo mesmo cálculo.",
     marcos: [
       { data: "Mai", texto: "Dashboard de dealers, receita, peças e ticket médio" },
       { data: "Jul", texto: "Motor absorvido pelo sistema maior, rodando sobre pedido real" },
-      { data: "28/07", texto: "Split de Fornecedor — pedido separado por fábrica" },
+      { data: "28/07", texto: "Split de Fornecedor: pedido separado por fábrica" },
       { data: "04/08", texto: "Relatório de importação por arquivo, com alerta no topo" },
     ],
     numeros: [
@@ -240,14 +240,14 @@ export const metodo = [
     numero: "01",
     titulo: "Engenharia reversa do que já existe",
     texto:
-      "Antes de qualquer preço, abrimos o que sustenta a decisão hoje. Numa proposta de plataforma de rentabilidade, isso significou dimensionar 38 abas, 12 DREs departamentais, cerca de 1.837 linhas de plano de contas e ~350 indicadores — antes de o primeiro número sair.",
+      "Antes de qualquer preço, abrimos o que sustenta a decisão hoje. Numa proposta de plataforma de rentabilidade, isso significou dimensionar 38 abas, 12 DREs departamentais, cerca de 1.837 linhas de plano de contas e uns 350 indicadores. Tudo isso antes de o primeiro número sair.",
     marcador: "Ninguém orça o que não abriu.",
   },
   {
     numero: "02",
     titulo: "Escopo e preço a partir do custo base",
     texto:
-      "Nenhum projeto é orçado do zero. Começa no custo base de sistema — infraestrutura, banco, IA, manutenção — e só depois soma o driver de consumo do seu caso. É por isso que a conta fecha no mês 12, e não só na assinatura.",
+      "Nenhum projeto é orçado do zero. Começa no custo base de sistema (infraestrutura, banco, IA, manutenção) e só depois soma o driver de consumo do seu caso. É por isso que a conta fecha no mês 12, e não só na assinatura.",
     marcador: "Preço com origem, não com chute.",
   },
   {
@@ -261,7 +261,7 @@ export const metodo = [
     numero: "04",
     titulo: "Revisão de segurança antes de todo go-live",
     texto:
-      "Cinco frentes conferidas antes de publicar: isolamento entre clientes, papel validado no servidor e não no front, acesso indevido por identificador, segredo exposto e entrada sem tratamento. E conferidas no ar — um controle que parece ligado no código e não conta nada atrás do proxy é um controle que não existe.",
+      "Cinco frentes conferidas antes de publicar: isolamento entre clientes, papel validado no servidor e não no front, acesso indevido por identificador, segredo exposto e entrada sem tratamento. E conferidas no ar. Um controle que parece ligado no código e não conta nada atrás do proxy é um controle que não existe.",
     marcador: "Controle se testa em produção.",
   },
 ];
@@ -271,7 +271,7 @@ export const engenharia = {
     { camada: "Frontend", valor: "Next.js (App Router) · TypeScript · Tailwind" },
     { camada: "Backend", valor: "NestJS · Prisma ORM" },
     { camada: "Banco", valor: "PostgreSQL · Redis" },
-    { camada: "IA", valor: "Claude API — modelo escolhido por tarefa" },
+    { camada: "IA", valor: "Claude API, com o modelo escolhido por tarefa" },
     { camada: "Mensageria", valor: "WhatsApp · e-mail · disparos de rotina" },
     { camada: "Infra", valor: "Deploy que confirma a publicação, não que torce" },
   ],
@@ -279,7 +279,7 @@ export const engenharia = {
     {
       titulo: "Multi-tenant desde o primeiro cliente",
       texto:
-        "O núcleo serve concessionária, clínica e distribuidora. Se um vertical não usaria, não entra no núcleo — vira módulo. É o que faz o segundo cliente custar uma fração do primeiro.",
+        "O núcleo serve concessionária, clínica e distribuidora. Se um vertical não usaria, não entra no núcleo: vira módulo. É o que faz o segundo cliente custar uma fração do primeiro.",
     },
     {
       titulo: "Custo de IA é decisão de arquitetura",
@@ -289,7 +289,7 @@ export const engenharia = {
     {
       titulo: "O dado sujo é o padrão, não a exceção",
       texto:
-        "Identificador que perde zero à esquerda, planilha que muda de formato, nome de perfil que não é o nome de quem escreve. Cada um desses já quebrou algo aqui — e virou regra escrita para não quebrar de novo.",
+        "Identificador que perde zero à esquerda, planilha que muda de formato, nome de perfil que não é o nome de quem escreve. Cada um desses já quebrou algo aqui, e virou regra escrita para não quebrar de novo.",
     },
     {
       titulo: "Publicar é um comando só",
@@ -319,7 +319,7 @@ export const socios = [
 export const faq = [
   {
     p: "Vocês integram com o meu DMS?",
-    r: "Quando o DMS expõe API, sim. Quando não expõe — e boa parte não expõe — trabalhamos com o que existe: exportação, XML de nota e importação resiliente de planilha. Antes de prometer integração, perguntamos ao fornecedor se a API existe. Prometer integração que não existe é o jeito mais rápido de estourar prazo.",
+    r: "Quando o DMS expõe API, sim. Quando não expõe, e boa parte não expõe, trabalhamos com o que existe: exportação, XML de nota e importação resiliente de planilha. Antes de prometer integração, perguntamos ao fornecedor se a API existe. Prometer integração que não existe é o jeito mais rápido de estourar prazo.",
   },
   {
     p: "Quanto tempo até eu ver algo funcionando?",
@@ -327,15 +327,15 @@ export const faq = [
   },
   {
     p: "Como vocês cobram?",
-    r: "Projeto em fases mais mensalidade de operação. O preço parte de um custo base de sistema e soma o driver de consumo do seu caso — volume de usuários, de conversas, de unidades. Você recebe a conta aberta, não um valor redondo sem origem.",
+    r: "Projeto em fases mais mensalidade de operação. O preço parte de um custo base de sistema e soma o driver de consumo do seu caso: volume de usuários, de conversas, de unidades. Você recebe a conta aberta, não um valor redondo sem origem.",
   },
   {
     p: "O código é meu?",
-    r: "A plataforma é da InnovAdapt e é isso que permite evoluir o produto para todos os clientes. O que é seu é seu: sua regra de negócio, seu dado, sua base — com cláusula de propriedade intelectual escrita no contrato, incluindo o que acontece se a gente sair de campo.",
+    r: "A plataforma é da InnovAdapt, e é isso que permite evoluir o produto para todos os clientes. O que é seu continua seu: sua regra de negócio, seu dado, sua base, com cláusula de propriedade intelectual escrita no contrato, incluindo o que acontece se a gente sair de campo.",
   },
   {
     p: "E se eu já tiver um BI?",
-    r: "Ótimo — continue com ele. BI responde o que aconteceu. O que construímos é o sistema que faz acontecer: o atendimento, o pedido, o cálculo e a cobrança. Os dois convivem, e o nosso costuma virar a fonte do seu BI.",
+    r: "Ótimo, continue com ele. BI responde o que aconteceu. O que construímos é o sistema que faz acontecer: o atendimento, o pedido, o cálculo e a cobrança. Os dois convivem, e o nosso costuma virar a fonte do seu BI.",
   },
   {
     p: "Vocês só atendem o setor automotivo?",
