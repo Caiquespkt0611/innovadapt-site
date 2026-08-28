@@ -195,43 +195,23 @@ export const cases = [
     codigo: "CASE 02",
     cliente: "Sector One Brand",
     setor: "Distribuição e licenciamento de marcas",
-    titulo: "Portal de operações, fiscal e CRM",
+    titulo: "Portal de operações, fiscal e consolidação de rede",
     problema:
-      "Operação de rede rodando em planilha e e-mail: pedido sem status, imposto recalculado na mão a cada mudança de regra e rentabilidade por dealer que ninguém conseguia fechar.",
+      "Operação de rede rodando em planilha e e-mail: pedido sem status, imposto recalculado na mão a cada mudança de regra, e rentabilidade por dealer que ninguém conseguia fechar. Cada casa mandava a própria planilha, em formato próprio, e o número mudava dependendo de quem consolidava.",
     entrega:
-      "Sistema de gestão em monorepo, entregue por fases. A regra tributária virou cadastro: alíquota nova entra pelo painel, sem deploy, e a exceção por NCM convive com a regra geral do fornecedor.",
+      "Sistema de gestão em monorepo, entregue por fases, mais o motor de consolidação da rede. A regra tributária virou cadastro: alíquota nova entra pelo painel, sem deploy, e a exceção por NCM convive com a regra geral do fornecedor. O motor roda em funções puras sobre uma lista achatada de itens, o que permite duas fontes e uma matemática só: banco de dados ou planilha entram pelo mesmo cálculo.",
     marcos: [
-      { data: "F1", texto: "Infraestrutura, autenticação, papéis e design system" },
-      { data: "F2", texto: "Portal de pedidos, compras, estoque e fiscal" },
-      { data: "F3", texto: "CRM com IA, WhatsApp, cobranças e pesquisas" },
-      { data: "F4", texto: "Relatórios, QA, treinamento e documentação" },
+      { data: "Mai", texto: "Consolidação da rede no ar: receita, peças e ticket médio por dealer" },
+      { data: "Jun", texto: "F1 concluída: infraestrutura, autenticação, papéis e design system" },
+      { data: "Jul", texto: "Motor de consolidação absorvido pelo sistema, rodando sobre pedido real" },
+      { data: "28/07", texto: "Split de Fornecedor: pedido separado por fábrica" },
+      { data: "18/08", texto: "Regra tributária vira cadastro: CBS e IBS entram sem deploy" },
     ],
     numeros: [
       { valor: "41", label: "models no schema" },
       { valor: "28", label: "módulos de backend" },
     ],
     stack: ["Next.js", "NestJS", "Prisma", "PostgreSQL", "shadcn/ui", "Recharts"],
-  },
-  {
-    codigo: "CASE 03",
-    cliente: "Rede Volvo e Polaris",
-    setor: "Rede de dealers · via Sector One Brand",
-    titulo: "Agregador de pedidos e rentabilidade da rede",
-    problema:
-      "Cada dealer mandava a própria planilha, em formato próprio. Consolidar a rede era um dia de trabalho manual, e o número mudava dependendo de quem consolidava.",
-    entrega:
-      "Motor de consolidação em funções puras sobre uma lista achatada de itens. Isso permitiu duas fontes e uma matemática só: banco de dados ou upload de planilha entram pelo mesmo cálculo.",
-    marcos: [
-      { data: "Mai", texto: "Dashboard de dealers, receita, peças e ticket médio" },
-      { data: "Jul", texto: "Motor absorvido pelo sistema maior, rodando sobre pedido real" },
-      { data: "28/07", texto: "Split de Fornecedor: pedido separado por fábrica" },
-      { data: "04/08", texto: "Relatório de importação por arquivo, com alerta no topo" },
-    ],
-    numeros: [
-      { valor: "2", label: "fontes, um cálculo só" },
-      { valor: "1 clique", label: "para fechar a rede" },
-    ],
-    stack: ["Next.js", "TypeScript", "Parser de planilha", "Vercel"],
   },
 ];
 
