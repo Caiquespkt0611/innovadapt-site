@@ -1,11 +1,15 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Process from "@/components/Process";
+import Diferenca from "@/components/Diferenca";
+import Plataforma from "@/components/Plataforma";
 import Cases from "@/components/Cases";
-import About from "@/components/About";
-import CTAFinal from "@/components/CTAFinal";
+import Metodo from "@/components/Metodo";
+import Engenharia from "@/components/Engenharia";
+import Socios from "@/components/Socios";
+import Faq from "@/components/Faq";
+import Contato from "@/components/Contato";
 import Footer from "@/components/Footer";
+import BarraMobile from "@/components/BarraMobile";
 
 export default function Home() {
   return (
@@ -13,13 +17,17 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Services />
-        <Process />
+        <Diferenca />
+        <Plataforma />
         <Cases />
-        <About />
-        <CTAFinal />
+        <Metodo />
+        <Engenharia />
+        <Socios />
+        <Faq />
+        <Contato />
       </main>
       <Footer />
+      <BarraMobile />
     </>
   );
 }

@@ -1,15 +1,29 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-brand-cyan: #00B4FF;
-  --color-brand-blue: #3A6FF8;
-  --color-brand-purple: #8B45F7;
-  --color-bg-dark: #0D1117;
-  --color-bg-card: #161B27;
-  --color-bg-card-hover: #1C2333;
-  --color-text-primary: #F0F6FF;
-  --color-text-secondary: #8B9AB8;
-  --font-sans: var(--font-plus-jakarta);
+  --color-ink: #05070d;
+  --color-ink-2: #080b13;
+  --color-surface: #0e131f;
+  --color-surface-2: #141b2b;
+  --color-line: rgba(255, 255, 255, 0.08);
+  --color-txt: #f2f6ff;
+  --color-txt-2: #98a4bb;
+  --color-txt-3: #5f6c85;
+  --color-accent: #00b4ff;
+  --color-accent-2: #3a6ff8;
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --ink: #05070d;
+  --surface: #0e131f;
+  --line: rgba(255, 255, 255, 0.08);
+  --txt: #f2f6ff;
+  --txt-2: #98a4bb;
+  --txt-3: #5f6c85;
+  --accent: #00b4ff;
+  --accent-2: #3a6ff8;
 }
 
 * {
@@ -18,55 +32,228 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background-color: #0D1117;
-  color: #F0F6FF;
-  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--ink);
+  overflow-wrap: break-word;
+  color: var(--txt);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: rgba(0, 180, 255, 0.3);
+  background: rgba(0, 180, 255, 0.28);
   color: #fff;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D1117;
+  background: var(--ink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #3A6FF8;
-  border-radius: 3px;
+  background: #1e2740;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c3550;
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #00B4FF 0%, #3A6FF8 50%, #8B45F7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.gradient-border {
+/* ---------- primitivas de layout ---------- */
+
+.wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: 2rem;
+  }
+}
+
+.secao {
+  padding-block: 5.5rem;
   position: relative;
 }
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, #00B4FF, #3A6FF8, #8B45F7);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+@media (min-width: 768px) {
+  .secao {
+    padding-block: 7.5rem;
+  }
 }
 
-.glow-blue {
-  box-shadow: 0 0 40px rgba(58, 111, 248, 0.25), 0 0 80px rgba(58, 111, 248, 0.1);
+.regra {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.1) 80%,
+    transparent
+  );
+}
+
+/* ---------- tipografia ---------- */
+
+.sobrancelha {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+.sobrancelha::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.titulo-secao {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: #fff;
+  text-wrap: balance;
+}
+
+.lead {
+  color: var(--txt-2);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  max-width: 46rem;
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.destaque {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- superfícies ---------- */
+
+.cartao {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+.cartao:hover {
+  border-color: rgba(0, 180, 255, 0.28);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+}
+
+.malha {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.6) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.022;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+/* ---------- botões ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.625rem;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-primario {
+  background: #fff;
+  color: #05070d;
+}
+.btn-primario:hover {
+  background: var(--accent);
+  color: #041019;
+}
+
+.btn-secundario {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: var(--txt);
+  background: rgba(255, 255, 255, 0.02);
+}
+.btn-secundario:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- efeitos ---------- */
+
+.brilho-topo {
+  position: absolute;
+  left: 50%;
+  top: -18rem;
+  width: 62rem;
+  height: 34rem;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 180, 255, 0.16),
+    rgba(58, 111, 248, 0.07) 42%,
+    transparent 70%
+  );
+  filter: blur(24px);
+}
+
+.texto-gradiente {
+  background: linear-gradient(100deg, #00b4ff 0%, #6aa6ff 45%, #ffffff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* O estado escondido só existe quando há JS para revelar de volta. Sem o
+   marcador `.js` no <html> — script bloqueado, leitor sem JS, crawler antigo —
+   a seção aparece normalmente em vez de ficar num opacity:0 permanente. */
+.js .revelar {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js .revelar[data-visivel="true"] {
+  opacity: 1;
+  transform: none;
 }

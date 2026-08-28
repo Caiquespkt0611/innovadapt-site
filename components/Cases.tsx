@@ -1,129 +1,113 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-
-const cases = [
-  {
-    tag: "E-commerce",
-    title: "Plataforma de Vendas B2B",
-    description:
-      "Desenvolvimento de portal de pedidos com CRM integrado, aumentando as vendas em 340% no primeiro trimestre.",
-    metrics: [
-      { label: "Aumento em vendas", value: "+340%" },
-      { label: "Tempo de pedido", value: "-70%" },
-    ],
-    tech: ["Next.js", "CRM IA", "WhatsApp API"],
-    gradient: "from-[#00B4FF] to-[#3A6FF8]",
-    bg: "from-[#00B4FF]/10 to-[#3A6FF8]/10",
-  },
-  {
-    tag: "Saúde",
-    title: "Sistema de Agendamento com IA",
-    description:
-      "Automação completa do agendamento de consultas via WhatsApp com confirmações inteligentes e redução de no-shows.",
-    metrics: [
-      { label: "Redução no-show", value: "-60%" },
-      { label: "Agendamentos/dia", value: "+5x" },
-    ],
-    tech: ["WhatsApp Bot", "IA Preditiva", "Automação"],
-    gradient: "from-[#3A6FF8] to-[#8B45F7]",
-    bg: "from-[#3A6FF8]/10 to-[#8B45F7]/10",
-  },
-  {
-    tag: "Imobiliária",
-    title: "CRM com IA para Corretor",
-    description:
-      "CRM personalizado com scoring de leads e campanhas automáticas de follow-up por WhatsApp e e-mail.",
-    metrics: [
-      { label: "Conversão de leads", value: "+180%" },
-      { label: "Tempo de resposta", value: "-85%" },
-    ],
-    tech: ["CRM IA", "Lead Scoring", "n8n"],
-    gradient: "from-[#8B45F7] to-[#00B4FF]",
-    bg: "from-[#8B45F7]/10 to-[#00B4FF]/10",
-  },
-];
-
-function CaseCard({ project, index }: { project: typeof cases[0]; index: number }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
-      className="group relative bg-[#161B27] border border-white/[0.07] rounded-2xl overflow-hidden hover:border-white/[0.15] transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
-    >
-      {/* Header gradient band */}
-      <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
-
-      <div className="p-6">
-        {/* Tag */}
-        <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 bg-gradient-to-r ${project.bg} border border-white/10 text-white/80`}>
-          {project.tag}
-        </span>
-
-        <h3 className="text-xl font-bold text-white mb-3 group-hover:gradient-text transition-all duration-300">
-          {project.title}
-        </h3>
-        <p className="text-sm text-[#8B9AB8] leading-relaxed mb-6">{project.description}</p>
-
-        {/* Metrics */}
-        <div className="grid grid-cols-2 gap-3 mb-6">
-          {project.metrics.map((m) => (
-            <div key={m.label} className={`p-3 rounded-xl bg-gradient-to-br ${project.bg} border border-white/5`}>
-              <div className={`text-xl font-extrabold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
-                {m.value}
-              </div>
-              <div className="text-xs text-[#8B9AB8] mt-0.5">{m.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-2">
-          {project.tech.map((t) => (
-            <span key={t} className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/[0.06] text-xs text-[#8B9AB8] font-medium">
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
+import Revelar from "./Revelar";
+import { cases } from "@/lib/site";
 
 export default function Cases() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section id="cases" className="py-24 sm:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-[#8B9AB8] mb-6">
-              Resultados reais
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4">
-              Cases de <span className="gradient-text">sucesso</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-lg text-[#8B9AB8]">
-              Projetos que transformaram operações e geraram crescimento mensurável para nossos clientes.
-            </p>
-          </motion.div>
-        </div>
+    <section id="cases" className="secao border-t border-white/[0.06] bg-[#080b13]">
+      <div className="wrap">
+        <Revelar>
+          <p className="sobrancelha">Cases</p>
+          <h2 className="titulo-secao mt-6 max-w-4xl">
+            Clientes reais, entregas datadas
+          </h2>
+          <p className="lead mt-6">
+            Sem porcentagem inventada de marketing. O que está abaixo é o que foi
+            construído, para quem, e em que data entrou no ar.
+          </p>
+        </Revelar>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-14 space-y-5">
           {cases.map((c, i) => (
-            <CaseCard key={c.title} project={c} index={i} />
+            <Revelar key={c.codigo} delay={i * 70}>
+              <article className="cartao overflow-hidden">
+                <div className="grid lg:grid-cols-[1.35fr_1fr]">
+                  {/* lado esquerdo — narrativa */}
+                  <div className="p-6 md:p-9">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                      <span className="mono rounded border border-[#00b4ff]/30 bg-[#00b4ff]/10 px-2 py-1 text-[0.625rem] font-bold tracking-widest text-[#00b4ff]">
+                        {c.codigo}
+                      </span>
+                      <span className="text-xs text-[#5f6c85]">{c.setor}</span>
+                    </div>
+
+                    <h3 className="mt-5 text-2xl font-bold tracking-tight text-white md:text-[1.75rem]">
+                      {c.cliente}
+                    </h3>
+                    <p className="mt-1.5 text-base font-medium text-[#00b4ff]">
+                      {c.titulo}
+                    </p>
+
+                    <div className="mt-7 space-y-5">
+                      <div>
+                        <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5f6c85]">
+                          O problema
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#98a4bb]">
+                          {c.problema}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5f6c85]">
+                          O que foi entregue
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-[#98a4bb]">
+                          {c.entrega}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ul className="mt-7 flex flex-wrap gap-2">
+                      {c.stack.map((t) => (
+                        <li
+                          key={t}
+                          className="mono rounded border border-white/[0.09] px-2.5 py-1 text-[0.6875rem] text-[#7d8ba4]"
+                        >
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* lado direito — linha do tempo e números */}
+                  <div className="border-t border-white/[0.06] bg-white/[0.02] p-6 md:p-9 lg:border-l lg:border-t-0">
+                    <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5f6c85]">
+                      Linha do tempo
+                    </p>
+                    <ol className="mt-5 space-y-0">
+                      {c.marcos.map((m, idx) => (
+                        <li key={m.data} className="relative flex gap-4 pb-5 last:pb-0">
+                          <div className="flex flex-col items-center">
+                            <span className="mt-1.5 h-2 w-2 flex-none rounded-full bg-[#00b4ff]" />
+                            {idx < c.marcos.length - 1 && (
+                              <span className="mt-1 w-px flex-1 bg-white/[0.1]" />
+                            )}
+                          </div>
+                          <div className="-mt-0.5 pb-1">
+                            <span className="mono text-xs font-bold text-white">
+                              {m.data}
+                            </span>
+                            <p className="mt-1 text-[0.8125rem] leading-snug text-[#7d8ba4]">
+                              {m.texto}
+                            </p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+
+                    <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.07]">
+                      {c.numeros.map((n) => (
+                        <div key={n.label} className="bg-[#0b0f1a] px-4 py-4">
+                          <p className="mono text-xl font-bold text-white">{n.valor}</p>
+                          <p className="mt-1 text-[0.6875rem] leading-tight text-[#5f6c85]">
+                            {n.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </Revelar>
           ))}
         </div>
       </div>
