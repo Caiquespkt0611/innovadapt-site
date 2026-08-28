@@ -3,7 +3,7 @@ import { contato, navegacao } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="fio-topo relative bg-[#0a0c15]">
+    <footer className="fio-topo relative bg-[#071022]">
       <div className="wrap py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
@@ -14,7 +14,7 @@ export default function Footer() {
               height={111}
               className="h-10 w-auto object-contain"
             />
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#7c8394]">
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#7f90ad]">
               Software sob medida para o varejo automotivo. CRM com agente de IA,
               portal de operações, rentabilidade e consolidação de rede, feitos
               por quem escreve o código.
@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
 
           <nav aria-label="Navegação do rodapé">
-            <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
+            <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
               Navegar
             </p>
             <ul className="mt-4 space-y-2.5">
@@ -30,7 +30,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-sm text-[#9aa1b2] transition-colors hover:text-white"
+                    className="text-sm text-[#93a6c4] transition-colors hover:text-white"
                   >
                     {item.label}
                   </a>
@@ -40,14 +40,14 @@ export default function Footer() {
           </nav>
 
           <div>
-            <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
+            <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
               Contato
             </p>
             <ul className="mt-4 space-y-2.5">
               <li>
                 <a
                   href={`mailto:${contato.email}`}
-                  className="text-sm text-[#9aa1b2] transition-colors hover:text-white"
+                  className="text-sm text-[#93a6c4] transition-colors hover:text-white"
                 >
                   {contato.email}
                 </a>
@@ -55,7 +55,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#contato"
-                  className="text-sm text-[#9aa1b2] transition-colors hover:text-white"
+                  className="text-sm text-[#93a6c4] transition-colors hover:text-white"
                 >
                   Agendar diagnóstico
                 </a>
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/[0.06] pt-7 text-xs text-[#656c7d] sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 border-t border-[rgba(120,170,255,0.13)] pt-7 text-xs text-[#5d708f] sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} InnovAdapt · {contato.razaoSocial} · CNPJ{" "}
             <span className="mono">{contato.cnpj}</span>

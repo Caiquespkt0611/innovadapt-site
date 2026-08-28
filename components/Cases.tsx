@@ -3,12 +3,12 @@ import { cases } from "@/lib/site";
 
 export default function Cases() {
   return (
-    <section id="cases" className="secao fio-topo bg-[#0a0c15]">
+    <section id="cases" className="secao fio-topo bg-[#071022]">
       <div className="wrap">
         <Revelar>
-          <p className="sobrancelha"><b>03</b>Cases</p>
+          <p className="sobrancelha">Cases <i>· 03</i></p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
-            Clientes reais, entregas <span className="enfase-clara">datadas</span>
+            Clientes reais, entregas datadas
           </h2>
           <p className="lead mt-6">
             Sem porcentagem inventada de marketing. O que está abaixo é o que foi
@@ -27,7 +27,7 @@ export default function Cases() {
                       <span className="mono rounded border border-[#22b8f0]/30 bg-[#22b8f0]/10 px-2 py-1 text-[0.625rem] font-bold tracking-widest text-[#22b8f0]">
                         {c.codigo}
                       </span>
-                      <span className="text-xs text-[#656c7d]">{c.setor}</span>
+                      <span className="text-xs text-[#5d708f]">{c.setor}</span>
                     </div>
 
                     <h3 className="mt-5 text-2xl font-bold tracking-tight text-white md:text-[1.75rem]">
@@ -39,18 +39,18 @@ export default function Cases() {
 
                     <div className="mt-7 space-y-5">
                       <div>
-                        <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
+                        <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
                           O problema
                         </p>
-                        <p className="mt-2 text-sm leading-relaxed text-[#9aa1b2]">
+                        <p className="mt-2 text-sm leading-relaxed text-[#93a6c4]">
                           {c.problema}
                         </p>
                       </div>
                       <div>
-                        <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
+                        <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
                           O que foi entregue
                         </p>
-                        <p className="mt-2 text-sm leading-relaxed text-[#9aa1b2]">
+                        <p className="mt-2 text-sm leading-relaxed text-[#93a6c4]">
                           {c.entrega}
                         </p>
                       </div>
@@ -60,7 +60,7 @@ export default function Cases() {
                       {c.stack.map((t) => (
                         <li
                           key={t}
-                          className="mono rounded border border-white/[0.09] px-2.5 py-1 text-[0.6875rem] text-[#7c8394]"
+                          className="mono rounded border border-white/[0.09] px-2.5 py-1 text-[0.6875rem] text-[#7f90ad]"
                         >
                           {t}
                         </li>
@@ -69,8 +69,8 @@ export default function Cases() {
                   </div>
 
                   {/* lado direito: linha do tempo e números */}
-                  <div className="border-t border-white/[0.06] bg-white/[0.02] p-6 md:p-9 lg:border-l lg:border-t-0">
-                    <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
+                  <div className="border-t border-[rgba(120,170,255,0.13)] bg-white/[0.02] p-6 md:p-9 lg:border-l lg:border-t-0">
+                    <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
                       Linha do tempo
                     </p>
                     <ol className="mt-5 space-y-0">
@@ -86,7 +86,7 @@ export default function Cases() {
                             <span className="mono text-xs font-bold text-white">
                               {m.data}
                             </span>
-                            <p className="mt-1 text-[0.8125rem] leading-snug text-[#7c8394]">
+                            <p className="mt-1 text-[0.8125rem] leading-snug text-[#7f90ad]">
                               {m.texto}
                             </p>
                           </div>
@@ -94,11 +94,11 @@ export default function Cases() {
                       ))}
                     </ol>
 
-                    <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/[0.08] bg-white/[0.07]">
+                    <div className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[rgba(120,170,255,0.15)] bg-white/[0.07]">
                       {c.numeros.map((n) => (
-                        <div key={n.label} className="bg-[#10131e] px-4 py-4">
+                        <div key={n.label} className="bg-[#0b1424] px-4 py-4">
                           <p className="mono text-xl font-bold text-white">{n.valor}</p>
-                          <p className="mt-1 text-[0.6875rem] leading-tight text-[#656c7d]">
+                          <p className="mt-1 text-[0.6875rem] leading-tight text-[#5d708f]">
                             {n.label}
                           </p>
                         </div>

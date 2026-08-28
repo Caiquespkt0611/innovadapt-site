@@ -1,32 +1,36 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ink: #070810;
-  --color-ink-2: #0a0c15;
-  --color-surface: #10131e;
-  --color-line: rgba(255, 255, 255, 0.07);
-  --color-txt: #f4f5f8;
-  --color-txt-2: #9aa1b2;
-  --color-txt-3: #656c7d;
-  --color-accent: #3b6df6;
-  --color-accent-2: #22b8f0;
+  --color-ink: #050a18;
+  --color-ink-2: #071022;
+  --color-painel: #0b1424;
+  --color-painel-2: #101c30;
+  --color-linha: rgba(120, 170, 255, 0.13);
+  --color-txt: #eef4ff;
+  --color-txt-2: #93a6c4;
+  --color-txt-3: #5d708f;
+  --color-azul: #2f6bff;
+  --color-ciano: #22b8f0;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-mono);
-  --font-serif: var(--font-serif);
 }
 
 :root {
-  --ink: #070810;
-  --ink-2: #0a0c15;
-  --surface: #10131e;
-  --linha: rgba(255, 255, 255, 0.07);
-  --linha-forte: rgba(255, 255, 255, 0.13);
-  --txt: #f4f5f8;
-  --txt-2: #9aa1b2;
-  --txt-3: #656c7d;
-  --azul: #3b6df6;
+  --ink: #050a18;
+  --ink-2: #071022;
+  --painel: #0b1424;
+  --painel-2: #101c30;
+  --linha: rgba(120, 170, 255, 0.13);
+  --linha-forte: rgba(120, 170, 255, 0.26);
+  --txt: #eef4ff;
+  --txt-2: #93a6c4;
+  --txt-3: #5d708f;
+  --azul: #2f6bff;
   --ciano: #22b8f0;
   --roxo: #8b3fd9;
+  --verde: #2ee6a8;
+  --vermelho: #ff5f6d;
+  --ambar: #ffc247;
 }
 
 * {
@@ -42,27 +46,14 @@ body {
   background: var(--ink);
   color: var(--txt);
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
-  font-feature-settings: "cv05" 1, "cv11" 1, "ss01" 1;
   overflow-wrap: break-word;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Grão fino sobre a página inteira. É o que tira o plano de fundo da cara de
-   "preto chapado de template" e dá textura sem pesar um único request. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='r'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23r)'/%3E%3C/svg%3E");
-}
-
 ::selection {
-  background: rgba(59, 109, 246, 0.32);
+  background: rgba(47, 107, 255, 0.4);
   color: #fff;
 }
 
@@ -73,12 +64,9 @@ body::after {
   background: var(--ink);
 }
 ::-webkit-scrollbar-thumb {
-  background: #22283a;
+  background: #1c2c4a;
   border-radius: 999px;
   border: 2px solid var(--ink);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #2f3750;
 }
 
 :focus-visible {
@@ -104,9 +92,9 @@ body::after {
 
 .wrap {
   width: 100%;
-  max-width: 1180px;
+  max-width: 1240px;
   margin-inline: auto;
-  padding-inline: 1.375rem;
+  padding-inline: 1.25rem;
 }
 @media (min-width: 768px) {
   .wrap {
@@ -115,17 +103,15 @@ body::after {
 }
 
 .secao {
-  padding-block: 6rem;
+  padding-block: 5rem;
   position: relative;
 }
 @media (min-width: 768px) {
   .secao {
-    padding-block: 8.5rem;
+    padding-block: 7rem;
   }
 }
 
-/* Fio de topo que some nas pontas. Separa as seções sem a dureza de uma
-   border-top de ponta a ponta. */
 .fio-topo::before {
   content: "";
   position: absolute;
@@ -135,10 +121,51 @@ body::after {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.11) 22%,
-    rgba(255, 255, 255, 0.11) 78%,
+    rgba(120, 170, 255, 0.22) 25%,
+    rgba(120, 170, 255, 0.22) 75%,
     transparent
   );
+}
+
+/* ---------- fundo de tecnologia ---------- */
+
+/* Trilhas de circuito. É o que dá leitura de "plataforma de dados" antes de
+   qualquer palavra ser lida, e sai em SVG inline: zero request, zero imagem. */
+.circuito {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.brilho {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+.pontos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(120, 170, 255, 0.55) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.13;
+  mask-image: radial-gradient(ellipse 60% 60% at 20% 30%, #000, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 20% 30%, #000, transparent 70%);
+}
+
+.grade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(120, 170, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 255, 0.5) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.05;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 75%);
 }
 
 /* ---------- tipografia ---------- */
@@ -149,62 +176,36 @@ body::after {
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--txt-3);
+  color: var(--ciano);
   display: flex;
   align-items: center;
-  gap: 0.875rem;
+  gap: 0.75rem;
 }
-.sobrancelha b {
-  font-weight: 500;
-  color: var(--ciano);
+.sobrancelha i {
+  font-style: normal;
+  color: var(--txt-3);
 }
-.sobrancelha::after {
+.sobrancelha::before {
   content: "";
-  flex: 1;
+  width: 1.5rem;
   height: 1px;
-  max-width: 5rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent);
+  background: var(--ciano);
 }
 
 .titulo-secao {
-  font-size: clamp(2rem, 4.4vw, 3.375rem);
-  font-weight: 600;
+  font-size: clamp(1.875rem, 4.2vw, 3.125rem);
+  font-weight: 700;
   letter-spacing: -0.035em;
-  line-height: 1.06;
+  line-height: 1.08;
   color: #fff;
   text-wrap: balance;
-}
-
-/* A palavra em serifa itálica é o único ornamento tipográfico do site. Usada
-   uma vez por título, ela dá o tom editorial que separa premium de template. */
-.enfase {
-  font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--ciano);
-}
-/* Nos títulos de seção a mesma serifa aparece sem cor, só como troca de
-   textura. O ciano fica reservado para o hero, para haver um único momento
-   de cor na página inteira. */
-.enfase-clara {
-  font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: #c6ccd9;
 }
 
 .lead {
   color: var(--txt-2);
   font-size: 1.0625rem;
-  line-height: 1.75;
+  line-height: 1.7;
   max-width: 44rem;
-}
-@media (min-width: 768px) {
-  .lead {
-    font-size: 1.125rem;
-  }
 }
 
 .mono {
@@ -214,71 +215,82 @@ body::after {
 
 .destaque {
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.texto-gradiente {
+  background: linear-gradient(96deg, #ffffff 10%, #7fd4ff 55%, #4d8bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* ---------- superfícies ---------- */
 
 .cartao {
   position: relative;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.045),
-    rgba(255, 255, 255, 0.012) 40%,
-    rgba(255, 255, 255, 0.008)
-  );
+  background: linear-gradient(180deg, rgba(120, 170, 255, 0.05), rgba(120, 170, 255, 0.012));
   border: 1px solid var(--linha);
-  border-radius: 1.125rem;
+  border-radius: 1rem;
   transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
-}
-/* Reflexo fino na aresta de cima, como em vidro. Substitui o brilho colorido
-   que dava cara de dashboard de demonstração. */
-.cartao::before {
-  content: "";
-  position: absolute;
-  inset-inline: 1.25rem;
-  top: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.22),
-    transparent
-  );
-  opacity: 0.7;
 }
 .cartao:hover {
   border-color: var(--linha-forte);
   transform: translateY(-2px);
 }
 
-.malha {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px);
-  background-size: 86px 86px;
-  opacity: 0.02;
-  mask-image: radial-gradient(ellipse 85% 55% at 50% 0%, #000 25%, transparent 72%);
-  -webkit-mask-image: radial-gradient(ellipse 85% 55% at 50% 0%, #000 25%, transparent 72%);
+/* ---------- cromo de janela e telas de produto ---------- */
+
+/* O chrome de janela é o que faz o bloco ser lido como software e não como
+   ilustração. Vale mais que qualquer adjetivo na copy ao lado. */
+.janela {
+  position: relative;
+  border: 1px solid rgba(120, 170, 255, 0.18);
+  border-radius: 0.875rem;
+  background: linear-gradient(180deg, #0d182b, #0a1220);
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  overflow: hidden;
 }
 
-.aurora {
-  position: absolute;
-  left: 50%;
-  top: -20rem;
-  width: 66rem;
-  height: 36rem;
-  transform: translateX(-50%);
-  pointer-events: none;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(59, 109, 246, 0.2),
-    rgba(139, 63, 217, 0.08) 40%,
-    transparent 68%
-  );
-  filter: blur(30px);
+.janela-barra {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid rgba(120, 170, 255, 0.13);
+  background: rgba(120, 170, 255, 0.045);
+}
+
+.ponto-janela {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+}
+
+.bloco {
+  border: 1px solid rgba(120, 170, 255, 0.13);
+  border-radius: 0.5rem;
+  background: rgba(120, 170, 255, 0.04);
+}
+
+.rotulo {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+
+.pilula {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  line-height: 1.4;
 }
 
 /* ---------- botões ---------- */
@@ -289,42 +301,39 @@ body::after {
   justify-content: center;
   gap: 0.5rem;
   font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  padding: 0.9375rem 1.625rem;
-  border-radius: 0.75rem;
-  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  font-weight: 600;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.625rem;
+  transition: all 0.2s ease;
   white-space: nowrap;
   cursor: pointer;
 }
 
 .btn-primario {
-  background: #fff;
-  color: #070810;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 8px 24px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #3b7cff, #2f6bff 55%, #1d4fd8);
+  color: #fff;
+  box-shadow: 0 10px 30px -8px rgba(47, 107, 255, 0.7),
+    0 1px 0 rgba(255, 255, 255, 0.25) inset;
 }
 .btn-primario:hover {
-  background: #e8ecf5;
   transform: translateY(-1px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 12px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 14px 36px -8px rgba(47, 107, 255, 0.85),
+    0 1px 0 rgba(255, 255, 255, 0.25) inset;
 }
 
 .btn-secundario {
-  border: 1px solid var(--linha-forte);
+  border: 1px solid rgba(120, 170, 255, 0.3);
   color: var(--txt);
-  background: rgba(255, 255, 255, 0.025);
+  background: rgba(120, 170, 255, 0.06);
 }
 .btn-secundario:hover {
-  border-color: rgba(255, 255, 255, 0.26);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(120, 170, 255, 0.5);
+  background: rgba(120, 170, 255, 0.12);
   transform: translateY(-1px);
 }
 
 /* ---------- revelação ---------- */
 
-/* O estado escondido só existe quando há JS para revelar de volta. Sem o
-   marcador `.js` no <html> (script bloqueado, leitor sem JS, crawler antigo),
-   a seção aparece normalmente em vez de ficar num opacity:0 permanente. */
 .js .revelar {
   opacity: 0;
   transform: translateY(20px);
@@ -334,4 +343,13 @@ body::after {
 .js .revelar[data-visivel="true"] {
   opacity: 1;
   transform: none;
+}
+
+/* pulso do indicador "no ar" */
+@keyframes pulsar {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+.pulso {
+  animation: pulsar 2.4s ease-in-out infinite;
 }

@@ -42,21 +42,21 @@ export default function Contato() {
   };
 
   const campo =
-    "w-full rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-[#656c7d] outline-none transition-colors focus:border-[#22b8f0]/60 focus:bg-white/[0.05]";
+    "w-full rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-[#5d708f] outline-none transition-colors focus:border-[#22b8f0]/60 focus:bg-white/[0.05]";
 
   return (
     <section id="contato" className="secao fio-topo">
       <div className="wrap">
-        <div className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-[#0d1019]">
-          <div className="aurora !top-[-24rem] opacity-80" aria-hidden />
+        <div className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-[#0b1424]">
+          <div className="brilho !top-[-24rem] opacity-80" aria-hidden />
 
           <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:p-16">
             <div>
-              <p className="sobrancelha"><b>08</b>Contato</p>
+              <p className="sobrancelha">Contato <i>· 08</i></p>
               <h2 className="titulo-secao mt-6">
                 Comece pelo diagnóstico,
                 <br />
-                não pela <span className="enfase-clara">proposta</span>
+                não pela proposta
               </h2>
               <p className="lead mt-6">
                 A primeira conversa é sobre a sua operação: onde o lead se perde,
@@ -70,7 +70,7 @@ export default function Contato() {
                   "Escopo e preço com origem, a partir do custo base",
                   "Você fala com sócio, não com vendedor",
                 ].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-sm text-[#e9ecf3]">
+                  <li key={t} className="flex items-start gap-3 text-sm text-[#e9eefa]">
                     <svg
                       width="18"
                       height="18"
@@ -92,8 +92,8 @@ export default function Contato() {
                 ))}
               </ul>
 
-              <div className="mt-10 border-t border-white/[0.08] pt-6">
-                <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#656c7d]">
+              <div className="mt-10 border-t border-[rgba(120,170,255,0.15)] pt-6">
+                <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
                   Ou direto
                 </p>
                 <a
@@ -159,7 +159,7 @@ export default function Contato() {
                   onChange={(e) => setForm({ ...form, assunto: e.target.value })}
                 >
                   {ASSUNTOS.map((a) => (
-                    <option key={a} value={a} className="bg-[#10131e]">
+                    <option key={a} value={a} className="bg-[#0b1424]">
                       {a}
                     </option>
                   ))}
@@ -193,7 +193,7 @@ export default function Contato() {
                 </svg>
               </button>
 
-              <p className="text-center text-xs leading-relaxed text-[#656c7d]">
+              <p className="text-center text-xs leading-relaxed text-[#5d708f]">
                 Abre o seu app de e-mail com a mensagem pronta. Nenhum dado é
                 armazenado neste site.
               </p>

@@ -44,7 +44,7 @@ export default function BarraMobile() {
   return (
     <div
       aria-hidden={!mostra}
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-white/[0.08] bg-[#070810]/94 backdrop-blur-2xl transition-transform duration-300 lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-[rgba(120,170,255,0.15)] bg-[#050a18]/94 backdrop-blur-2xl transition-transform duration-300 lg:hidden ${
         mostra ? "translate-y-0" : "translate-y-full"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
@@ -54,7 +54,7 @@ export default function BarraMobile() {
           <p className="truncate text-[0.8125rem] font-semibold text-white">
             Diagnóstico sem custo
           </p>
-          <p className="truncate text-[0.6875rem] text-[#656c7d]">
+          <p className="truncate text-[0.6875rem] text-[#5d708f]">
             Fale com quem escreve o código
           </p>
         </div>

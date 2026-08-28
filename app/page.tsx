@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Fluxo from "@/components/Fluxo";
 import Diferenca from "@/components/Diferenca";
 import Plataforma from "@/components/Plataforma";
 import Cases from "@/components/Cases";
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Fluxo />
         <Diferenca />
         <Plataforma />
         <Cases />

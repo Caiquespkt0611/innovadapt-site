@@ -7,18 +7,18 @@ export default function Faq() {
   const [aberto, setAberto] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="secao fio-topo bg-[#0a0c15]">
+    <section id="faq" className="secao fio-topo bg-[#071022]">
       <div className="wrap">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
-            <p className="sobrancelha"><b>07</b>Perguntas</p>
+            <p className="sobrancelha">Perguntas <i>· 07</i></p>
             <h2 className="titulo-secao mt-6">
               As objeções, respondidas antes da{" "}
-              <span className="enfase-clara">reunião</span>
+              reunião
             </h2>
           </div>
 
-          <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">
+          <div className="divide-y divide-[rgba(120,170,255,0.14)] border-y border-[rgba(120,170,255,0.15)]">
             {faq.map((item, i) => {
               const ativo = aberto === i;
               return (
@@ -49,7 +49,7 @@ export default function Faq() {
                             stroke="currentColor"
                             strokeWidth="1.5"
                             strokeLinecap="round"
-                            className={ativo ? "text-[#22b8f0]" : "text-[#656c7d]"}
+                            className={ativo ? "text-[#22b8f0]" : "text-[#5d708f]"}
                           />
                         </svg>
                       </span>
@@ -60,7 +60,7 @@ export default function Faq() {
                     style={{ gridTemplateRows: ativo ? "1fr" : "0fr" }}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-6 pr-10 text-sm leading-relaxed text-[#9aa1b2]">
+                      <p className="pb-6 pr-10 text-sm leading-relaxed text-[#93a6c4]">
                         {item.r}
                       </p>
                     </div>

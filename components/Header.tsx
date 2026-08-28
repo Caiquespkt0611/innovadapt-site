@@ -26,7 +26,7 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         rolou
-          ? "border-b border-white/[0.07] bg-[#070810]/90 backdrop-blur-2xl"
+          ? "border-b border-[rgba(120,170,255,0.14)] bg-[#050a18]/90 backdrop-blur-2xl"
           : "border-b border-transparent"
       }`}
     >
@@ -47,7 +47,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3.5 py-2 text-sm font-medium text-[#9aa1b2] transition-colors hover:bg-white/5 hover:text-white"
+              className="rounded-lg px-3.5 py-2 text-sm font-medium text-[#93a6c4] transition-colors hover:bg-white/5 hover:text-white"
             >
               {item.label}
             </a>
@@ -56,7 +56,7 @@ export default function Header() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <a href="#contato" className="btn btn-primario !px-5 !py-2.5 !text-[0.8125rem]">
-            Agendar diagnóstico
+            Agendar demonstração
           </a>
         </div>
 
@@ -88,14 +88,14 @@ export default function Header() {
       </div>
 
       {aberto && (
-        <div className="border-t border-white/[0.07] bg-[#070810]/98 backdrop-blur-2xl lg:hidden">
+        <div className="border-t border-[rgba(120,170,255,0.14)] bg-[#050a18]/98 backdrop-blur-2xl lg:hidden">
           <nav className="wrap flex flex-col gap-1 py-5">
             {navegacao.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setAberto(false)}
-                className="rounded-lg px-3 py-3 text-base font-medium text-[#9aa1b2] transition-colors hover:bg-white/5 hover:text-white"
+                className="rounded-lg px-3 py-3 text-base font-medium text-[#93a6c4] transition-colors hover:bg-white/5 hover:text-white"
               >
                 {item.label}
               </a>
@@ -105,7 +105,7 @@ export default function Header() {
               onClick={() => setAberto(false)}
               className="btn btn-primario mt-3"
             >
-              Agendar diagnóstico
+              Agendar demonstração
             </a>
           </nav>
         </div>

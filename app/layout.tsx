@@ -1,19 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const serif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["italic"],
   display: "swap",
 });
 
@@ -24,9 +16,9 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const TITULO = "InnovAdapt · Software que opera a concessionária, não só o dashboard";
+const TITULO = "InnovAdapt · Plataforma de dados e IA para o varejo automotivo";
 const DESCRICAO =
-  "CRM com agente de IA no WhatsApp, portal de operações e fiscal, DRE gerencial e consolidação de rede. Sistemas sob medida para o varejo automotivo, feitos por quem escreve o código.";
+  "CRM com agente de IA atendendo no WhatsApp, portal de operações e fiscal, DRE gerencial por departamento e consolidação de rede de dealers. Plataforma sob medida, construída por quem escreve o código.";
 const URL_SITE = "https://innovadapt.com.br";
 
 export const metadata: Metadata = {
@@ -86,7 +78,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${mono.variable} ${serif.variable}`}>
+    <html lang="pt-BR" className={`${inter.variable} ${mono.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
