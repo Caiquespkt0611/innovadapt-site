@@ -23,7 +23,7 @@ export const MSG_PADRAO =
 export const navegacao = [
   { label: "Diferença", href: "#diferenca" },
   { label: "Plataforma", href: "#plataforma" },
-  { label: "Cases", href: "#cases" },
+  { label: "Projetos", href: "#projetos" },
   { label: "Método", href: "#metodo" },
   { label: "Engenharia", href: "#engenharia" },
 ];
@@ -171,10 +171,10 @@ export const comparativo = {
 
 export const cases = [
   {
-    codigo: "CASE 01",
-    cliente: "Grupo Andrecar",
-    setor: "Motos 0 km e seminovos · 2 unidades",
-    titulo: "CRM e agente de IA atendendo no WhatsApp",
+    codigo: "PROJETO 01",
+    projeto: "CRM com agente de IA no WhatsApp",
+    setor: "Concessionária de motos 0 km e seminovos · 2 unidades",
+    prazo: "Do repositório vazio à conversa real em 24 horas",
     problema:
       "Lead chegando por WebMotors, iCarros, redes sociais e agência, cada um num lugar. Cada vendedor no celular próprio: vendedor saía, histórico ia junto. E ninguém sabia qual canal convertia.",
     entrega:
@@ -192,10 +192,10 @@ export const cases = [
     stack: ["Next.js", "NestJS", "PostgreSQL", "Redis", "Claude API", "WhatsApp"],
   },
   {
-    codigo: "CASE 02",
-    cliente: "Sector One Brand",
-    setor: "Distribuição e licenciamento de marcas",
-    titulo: "Portal de operações, fiscal e consolidação de rede",
+    codigo: "PROJETO 02",
+    projeto: "Portal de operações, fiscal e consolidação de rede",
+    setor: "Distribuição e licenciamento de marcas · rede de dealers",
+    prazo: "Entregue por fases, de maio a agosto de 2026",
     problema:
       "Operação de rede rodando em planilha e e-mail: pedido sem status, imposto recalculado na mão a cada mudança de regra, e rentabilidade por dealer que ninguém conseguia fechar. Cada casa mandava a própria planilha, em formato próprio, e o número mudava dependendo de quem consolidava.",
     entrega:

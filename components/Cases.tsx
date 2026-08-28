@@ -3,16 +3,17 @@ import { cases } from "@/lib/site";
 
 export default function Cases() {
   return (
-    <section id="cases" className="secao fio-topo bg-[#071022]">
+    <section id="projetos" className="secao fio-topo bg-[#071022]">
       <div className="wrap">
         <Revelar>
-          <p className="sobrancelha">Cases <i>· 03</i></p>
+          <p className="sobrancelha">Projetos <i>· 03</i></p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
-            Clientes reais, entregas datadas
+            Projetos entregues, com data
           </h2>
           <p className="lead mt-6">
             Sem porcentagem inventada de marketing. O que está abaixo é o que foi
-            construído, para quem, e em que data entrou no ar.
+            construído, em que operação, e em que data entrou no ar. Nome de
+            cliente a gente diz na reunião, não na vitrine.
           </p>
         </Revelar>
 
@@ -31,10 +32,10 @@ export default function Cases() {
                     </div>
 
                     <h3 className="mt-5 text-2xl font-bold tracking-tight text-white md:text-[1.75rem]">
-                      {c.cliente}
+                      {c.projeto}
                     </h3>
                     <p className="mt-1.5 text-base font-medium text-[#22b8f0]">
-                      {c.titulo}
+                      {c.prazo}
                     </p>
 
                     <div className="mt-7 space-y-5">
