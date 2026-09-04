@@ -8,9 +8,9 @@ export default function Socios() {
         <Revelar>
           <p className="sobrancelha">Quem atende <i>· 06</i></p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
-            Dois sócios. Nenhuma camada
+            Um dono. Nenhuma camada
             <br />
-            entre você e o código.
+            entre você e quem decide.
           </h2>
           <p className="lead mt-6">
             Não existe nível 1, fila de chamado nem gerente de conta repassando
@@ -19,7 +19,7 @@ export default function Socios() {
           </p>
         </Revelar>
 
-        <div className="mt-14 grid gap-4 md:grid-cols-2">
+        <div className="mt-14 grid max-w-2xl gap-4">
           {socios.map((s, i) => (
             <Revelar key={s.nome} delay={i * 80} className="h-full">
               <div className="cartao h-full p-7 md:p-9">

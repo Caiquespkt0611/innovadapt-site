@@ -154,7 +154,7 @@ export const comparativo = {
     {
       criterio: "Quem atende",
       deles: "Chamado, fila e nível 1",
-      nosso: "O sócio que escreveu o código",
+      nosso: "O dono da empresa, direto",
     },
     {
       criterio: "Segurança",
@@ -281,15 +281,8 @@ export const engenharia = {
 
 export const socios = [
   {
-    nome: "Caique Oliveira",
-    papel: "Sócio · Tecnologia e Produto",
-    texto:
-      "Escreve o código e desenha o produto. Arquitetura multi-tenant, integração de dados e uso de IA com custo controlado.",
-    tags: ["Next.js", "NestJS", "PostgreSQL", "Claude API"],
-  },
-  {
     nome: "Roger Sampaio",
-    papel: "Sócio · Comercial e Clientes",
+    papel: "Dono · Comercial e Clientes",
     texto:
       "Conduz a relação com o cliente do primeiro diagnóstico à operação rodando. Testa, aponta e aprova cada entrega antes de você ver.",
     tags: ["Diagnóstico", "Escopo", "Relacionamento", "Acompanhamento"],

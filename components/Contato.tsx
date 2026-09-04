@@ -68,7 +68,7 @@ export default function Contato() {
                 {[
                   "Diagnóstico sem custo e sem compromisso",
                   "Escopo e preço com origem, a partir do custo base",
-                  "Você fala com sócio, não com vendedor",
+                  "Você fala com o dono, não com vendedor",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3 text-sm text-[#e9eefa]">
                     <svg
