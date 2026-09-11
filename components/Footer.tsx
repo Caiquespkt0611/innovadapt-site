@@ -29,7 +29,7 @@ export default function Footer() {
               {[...navegacao, { label: "Perguntas", href: "#faq" }].map((item) => (
                 <li key={item.href}>
                   <a
-                    href={item.href}
+                    href={item.href.startsWith("#") ? `/${item.href}` : item.href}
                     className="text-sm text-[#93a6c4] transition-colors hover:text-white"
                   >
                     {item.label}
@@ -69,7 +69,12 @@ export default function Footer() {
             © {new Date().getFullYear()} InnovAdapt · {contato.razaoSocial} · CNPJ{" "}
             <span className="mono">{contato.cnpj}</span>
           </p>
-          <p>Feito com Next.js, e publicado com um comando só.</p>
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <a href="/privacidade" className="transition-colors hover:text-white">
+              Política de Privacidade
+            </a>
+            <span>Feito com Next.js, e publicado com um comando só.</span>
+          </p>
         </div>
       </div>
     </footer>
