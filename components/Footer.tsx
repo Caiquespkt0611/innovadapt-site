@@ -73,6 +73,9 @@ export default function Footer() {
             <a href="/privacidade" className="transition-colors hover:text-white">
               Política de Privacidade
             </a>
+            <a href="/termos" className="transition-colors hover:text-white">
+              Termos de Serviço
+            </a>
             <span>Feito com Next.js, e publicado com um comando só.</span>
           </p>
         </div>

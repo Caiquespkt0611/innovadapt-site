@@ -7,7 +7,7 @@ export const contato = {
   // com DDI (ex: "5511999999999"). Vazio = os CTAs caem para e-mail.
   whatsapp: "",
   cnpj: "57.411.230/0001-60",
-  razaoSocial: "Sampaio Consultoria LTDA",
+  razaoSocial: "Sampaio Consultoria de Negócios LTDA",
 };
 
 export const linkWhatsapp = (mensagem: string) =>

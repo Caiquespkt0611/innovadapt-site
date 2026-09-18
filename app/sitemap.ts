@@ -9,6 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
+      url: "https://innovadapt.com.br/termos",
+      lastModified: new Date("2026-09-17"),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: "https://innovadapt.com.br/privacidade",
       lastModified: new Date("2026-09-10"),
       changeFrequency: "yearly",
