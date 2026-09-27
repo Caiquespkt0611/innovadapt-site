@@ -112,7 +112,7 @@ export default function Privacidade() {
                   telefone, e-mail, cidade;
                 </li>
                 <li>
-                  conversas mantidas pelos canais integrados ao sistema, como WhatsApp,
+                  conversas mantidas pelos canais integrados ao sistema, como WhatsApp, Instagram Direct e Messenger,
                   e o histórico de atendimento;
                 </li>
                 <li>
@@ -168,7 +168,7 @@ export default function Privacidade() {
                   artificial (Anthropic);
                 </li>
                 <li>
-                  canais de comunicação integrados, como o WhatsApp (Meta), que
+                  canais de comunicação integrados, como o WhatsApp, o Instagram e o Messenger (Meta), que
                   possuem termos próprios;
                 </li>
                 <li>serviço de e-mail transacional (Hostinger);</li>
@@ -229,6 +229,11 @@ export default function Privacidade() {
                 tratados nos sistemas de um cliente da InnovAdapt, o pedido deve ser
                 dirigido ao próprio cliente, que é o controlador; se nos chegar
                 diretamente, encaminhamos ao controlador e o apoiamos no atendimento.
+              </p>
+              <p>
+                Para pedir a exclusão de dados recebidos pelo WhatsApp, pelo Instagram
+                ou pelo Facebook, veja as{" "}
+                <Link href="/exclusao-de-dados">instruções de exclusão de dados</Link>.
               </p>
             </section>
 
