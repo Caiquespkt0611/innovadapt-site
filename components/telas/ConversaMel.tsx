@@ -1,9 +1,9 @@
 const CONVERSA = [
-  { de: "lead", texto: "oi, vi a Fazer 250 no site. ainda tem?", hora: "14:02" },
+  { de: "lead", texto: "oi, vi a 250 ABS no site. ainda tem?", hora: "14:02" },
   {
     de: "mel",
     texto:
-      "Oi! Tem sim 😊 Temos a Fazer 250 ABS 2026 em três cores. Você já anda de moto ou seria a primeira?",
+      "Oi! Tem sim 😊 A 250 ABS 2026 está em três cores. Você já anda de moto ou seria a primeira?",
     hora: "14:02",
   },
   { de: "lead", texto: "ja ando, quero trocar a minha. qto fica financiado?", hora: "14:04" },
@@ -13,7 +13,7 @@ const CONVERSA = [
       "Dá pra fazer com a sua na troca. Antes de simular, me diz seu nome e o modelo e ano da sua atual?",
     hora: "14:04",
   },
-  { de: "lead", texto: "Rodrigo, tenho uma Fazer 150 2021", hora: "14:06" },
+  { de: "lead", texto: "Rodrigo, tenho uma 150 2021", hora: "14:06" },
 ];
 
 export default function ConversaMel({ className = "" }: { className?: string }) {

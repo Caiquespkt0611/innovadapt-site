@@ -3,18 +3,18 @@ import Revelar from "./Revelar";
 const ETAPAS = [
   {
     n: "01",
-    titulo: "Conecta",
-    texto: "DMS por API quando existe, XML de nota, planilha e formulário quando não existe.",
+    titulo: "Junta",
+    texto: "DMS por API, XML de nota e planilha, com de-para do seu plano de contas.",
   },
   {
     n: "02",
-    titulo: "Estrutura",
-    texto: "De-para do seu plano de contas, upsert por identificador e diff do que mudou.",
+    titulo: "Atende",
+    texto: "O agente responde o lead no WhatsApp, qualifica e passa para o vendedor certo.",
   },
   {
     n: "03",
-    titulo: "Executa",
-    texto: "O agente atende, qualifica e distribui. O portal fecha o pedido com o imposto certo.",
+    titulo: "Fecha",
+    texto: "O portal fecha o pedido com o imposto certo e o sistema cobra o follow-up.",
   },
   {
     n: "04",

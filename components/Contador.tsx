@@ -5,8 +5,8 @@ import { useEffect, useRef } from "react";
 /**
  * Número que sobe até o valor uma única vez, quando entra na tela.
  *
- * O HTML do servidor já sai com o valor final: busca, leitor de tela e quem
- * prefere menos movimento leem o número certo sem depender do JS.
+ * O HTML do servidor já sai com o valor final, uma vez só: busca, leitor de
+ * tela e quem prefere menos movimento leem o número certo sem depender do JS.
  */
 export default function Contador({ valor, duracao = 1200 }: { valor: string; duracao?: number }) {
   const alvo = Number(valor);
@@ -18,7 +18,10 @@ export default function Contador({ valor, duracao = 1200 }: { valor: string; dur
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let quadro = 0;
+    // O zero só aparece quando a contagem começa: se o observer não disparar,
+    // fica o valor certo, nunca um 0 parado. Escreve direto no nó, sem render.
     const subir = () => {
+      el.textContent = "0";
       const inicio = performance.now();
       const passo = (agora: number) => {
         const t = Math.min(1, (agora - inicio) / duracao);
@@ -35,10 +38,8 @@ export default function Contador({ valor, duracao = 1200 }: { valor: string; dur
         obs.disconnect();
         subir();
       },
-      { threshold: 0.6 },
+      { threshold: 0.3 },
     );
-    // escreve direto no nó: são 60 quadros por segundo, não vale render do React
-    el.textContent = "0";
     obs.observe(el);
     return () => {
       obs.disconnect();
@@ -47,11 +48,6 @@ export default function Contador({ valor, duracao = 1200 }: { valor: string; dur
   }, [alvo, duracao]);
 
   return (
-    <span>
-      <span className="sr-only">{valor}</span>
-      <span ref={ref} aria-hidden>
-        {valor}
-      </span>
-    </span>
+    <span ref={ref}>{valor}</span>
   );
 }

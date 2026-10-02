@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Fluxo from "@/components/Fluxo";
 import Diferenca from "@/components/Diferenca";
+import Integracoes from "@/components/Integracoes";
 import Plataforma from "@/components/Plataforma";
 import Cases from "@/components/Cases";
 import Metodo from "@/components/Metodo";
@@ -21,6 +22,7 @@ export default function Home() {
         <Fluxo />
         <Diferenca />
         <Plataforma />
+        <Integracoes />
         <Cases />
         <Metodo />
         <Engenharia />

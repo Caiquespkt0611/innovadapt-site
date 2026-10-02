@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { contato, linkWhatsapp } from "@/lib/site";
 
+const LOJAS = ["1 loja", "2 a 5 lojas", "6 a 10 lojas", "Mais de 10 lojas"];
+
 const ASSUNTOS = [
   "CRM com agente de IA",
   "Portal de operações e fiscal",
@@ -17,6 +19,7 @@ export default function Contato() {
     nome: "",
     empresa: "",
     telefone: "",
+    lojas: "",
     assunto: ASSUNTOS[0],
     mensagem: "",
   });
@@ -25,6 +28,7 @@ export default function Contato() {
     `Nome: ${form.nome}`,
     `Empresa: ${form.empresa}`,
     `Telefone: ${form.telefone}`,
+    `Lojas: ${form.lojas || "não informado"}`,
     `Assunto: ${form.assunto}`,
     "",
     form.mensagem,
@@ -146,6 +150,27 @@ export default function Contato() {
                   value={form.telefone}
                   onChange={(e) => setForm({ ...form, telefone: e.target.value })}
                 />
+              </div>
+
+              <div>
+                <label htmlFor="lojas" className="sr-only">
+                  Quantas lojas
+                </label>
+                <select
+                  id="lojas"
+                  className={`${campo} appearance-none`}
+                  value={form.lojas}
+                  onChange={(e) => setForm({ ...form, lojas: e.target.value })}
+                >
+                  <option value="" className="bg-[#0b1424]">
+                    Quantas lojas a operação tem?
+                  </option>
+                  {LOJAS.map((l) => (
+                    <option key={l} value={l} className="bg-[#0b1424]">
+                      {l}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>

@@ -30,9 +30,22 @@ export const navegacao = [
 
 export const provas = [
   { valor: "3", unidade: "sistemas", label: "no ar em produção hoje" },
-  { valor: "41", unidade: "models", label: "no maior sistema em produção" },
-  { valor: "28", unidade: "módulos", label: "de backend no mesmo sistema" },
-  { valor: "24", unidade: "horas", label: "do repositório à 1ª conversa real" },
+  { valor: "24", unidade: "horas", label: "do repositório vazio à 1ª conversa real" },
+  { valor: "12", unidade: "recursos", label: "entregues em 5 dias no CRM" },
+  { valor: "5", unidade: "frentes", label: "de segurança conferidas antes de todo go-live" },
+];
+
+// Só o que roda hoje em produção. Mercado Livre e OLX entram quando a
+// credencial do app chegar e o primeiro lead passar.
+export const integracoes = [
+  { nome: "WhatsApp", tipo: "atendimento da IA" },
+  { nome: "Webmotors", tipo: "leads do portal" },
+  { nome: "iCarros", tipo: "leads do portal" },
+  { nome: "Microwork", tipo: "DMS" },
+  { nome: "XML de NF-e", tipo: "nota fiscal" },
+  { nome: "Excel e planilha", tipo: "importação" },
+  { nome: "PDF da montadora", tipo: "catálogo e preço" },
+  { nome: "E-mail", tipo: "relatório do dia" },
 ];
 
 export const capacidades = [

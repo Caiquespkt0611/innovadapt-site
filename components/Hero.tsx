@@ -22,23 +22,23 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10">
           {/* texto */}
           <div className="min-w-0">
-            <p className="sobrancelha entrada">Dados e IA para o varejo automotivo</p>
+            <p className="sobrancelha">Dados e IA para o varejo automotivo</p>
 
-            <h1 className="entrada mt-6 max-w-[13ch] text-[clamp(2.15rem,4.8vw,3.5rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-white">
+            <h1 className="mt-6 max-w-[13ch] text-[clamp(2.15rem,4.8vw,3.5rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-white">
               A plataforma que executa a operação
             </h1>
-            <p className="entrada mt-4 text-[1.0625rem] font-medium text-[#7fb0ff]">
+            <p className="mt-4 text-[1.0625rem] font-medium text-[#7fb0ff]">
               Dashboard mostra o que aconteceu. O nosso sistema faz acontecer.
             </p>
 
-            <p className="entrada lead mt-6">
+            <p className="lead mt-6">
               CRM com agente de IA atendendo no WhatsApp, portal de operações com
               a regra fiscal certa, DRE por departamento e consolidação de rede.
               Tudo conectado na mesma base, e{" "}
               <span className="destaque">construído sob medida para a sua operação</span>.
             </p>
 
-            <div className="entrada mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a href="#contato" className="btn btn-primario">
                 Agendar demonstração
               </a>
@@ -46,6 +46,20 @@ export default function Hero() {
                 Ver as telas
               </a>
             </div>
+
+            {/* o que tira o risco de pedir a conversa, logo abaixo do botão */}
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[0.8125rem] text-[#93a6c4]">
+              {["Diagnóstico sem custo", "Você fala com o dono", "Primeira fase no ar, não em PDF"].map(
+                (t) => (
+                  <li key={t} className="flex items-center gap-2">
+                    <svg width="14" height="14" viewBox="0 0 18 18" fill="none" className="flex-none text-[#2ee6a8]" aria-hidden>
+                      <path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {t}
+                  </li>
+                ),
+              )}
+            </ul>
           </div>
 
           {/* produto */}

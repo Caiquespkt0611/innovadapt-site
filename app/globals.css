@@ -324,25 +324,15 @@ body {
 
 /* ---------- movimento ---------- */
 
-/* Um único momento orquestrado: a entrada do hero ao abrir a página. Antes cada
-   seção subia com fade ao rolar, o que lê como template e ainda deixava blocos
-   invisíveis no print e para quem rola rápido. As seções agora já estão lá. */
+/* Um único momento orquestrado: o painel do hero entra ao abrir a página. O
+   texto e o botão não animam, aparecem no primeiro quadro: em conexão lenta o
+   hero chegou a ficar vazio esperando a animação. */
 @keyframes entrar {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }
 }
-.entrada,
 .entrada-produto {
-  animation: entrar 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.entrada:nth-child(1) { animation-delay: 0.05s; }
-.entrada:nth-child(2) { animation-delay: 0.15s; }
-.entrada:nth-child(3) { animation-delay: 0.25s; }
-.entrada:nth-child(4) { animation-delay: 0.35s; }
-.entrada:nth-child(5) { animation-delay: 0.45s; }
-.entrada-produto {
-  animation-duration: 1.2s;
-  animation-delay: 0.3s;
+  animation: entrar 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
 }
 
 /* pulso do indicador "no ar" */

@@ -9,7 +9,7 @@ const LINHAS = [
 
 export default function TelaFiscal() {
   return (
-    <Janela titulo="sector one · pedido 4127 · apuração">
+    <Janela titulo="portal · pedido 4127 · apuração">
       <div className="space-y-3 p-3 md:p-4">
         <div className="flex flex-wrap items-center gap-2">
           <span className="pilula" style={{ background: "rgba(47,107,255,.16)", color: "#7fb0ff" }}>
