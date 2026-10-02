@@ -7,9 +7,9 @@ const GARANTIAS = ["Diagnóstico sem custo", "Você fala com o dono", "No ar em 
 
 export default function Hero() {
   return (
-    <section id="topo" className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
-      <div className="wrap grid items-center gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
-        <div className="min-w-0">
+    <section id="topo" className="relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-16">
+      <div className="wrap grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-14">
+        <div className="min-w-0 lg:pt-10">
           <h1 className="text-[clamp(2.5rem,5.6vw,4.75rem)] font-bold leading-[0.98] tracking-[-0.035em] text-[#0b1630] [text-wrap:balance]">
             Tecnologia que se adapta ao seu negócio.
           </h1>

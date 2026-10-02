@@ -59,7 +59,7 @@ export default async function PaginaProduto({
       <Header />
       <main>
         {/* topo: o produto e a tela dele */}
-        <section className="pt-28 pb-16 md:pt-36 md:pb-24">
+        <section className="pt-24 pb-12 md:pt-28 md:pb-16">
           <div className="wrap">
             <nav aria-label="Você está em" className="text-[0.875rem] text-[#6b7894]">
               <Link href="/" className="hover:text-[#0b1630]">Início</Link>
@@ -67,7 +67,7 @@ export default async function PaginaProduto({
               <span className="font-medium text-[#0b1630]">{p.curto}</span>
             </nav>
 
-            <div className="mt-8 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-14">
+            <div className="mt-6 grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-14">
               <div className="min-w-0">
                 <h1 className="text-[clamp(2.25rem,4.8vw,3.75rem)] font-bold leading-[1.02] tracking-[-0.035em] text-[#0b1630] [text-wrap:balance]">
                   {p.titulo}
