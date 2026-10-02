@@ -11,7 +11,7 @@ export default function Faq() {
       <div className="wrap">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
-            <p className="sobrancelha">Perguntas <i>· 07</i></p>
+            <p className="sobrancelha">Perguntas</p>
             <h2 className="titulo-secao mt-6">
               As objeções, respondidas antes da{" "}
               reunião

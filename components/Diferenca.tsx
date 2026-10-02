@@ -6,7 +6,7 @@ export default function Diferenca() {
     <section id="diferenca" className="secao fio-topo bg-[#071022]">
       <div className="wrap">
         <Revelar>
-          <p className="sobrancelha">A diferença <i>· 01</i></p>
+          <p className="sobrancelha">A diferença</p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
             O setor está cheio de painel.
             <br />

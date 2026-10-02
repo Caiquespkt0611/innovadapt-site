@@ -6,7 +6,7 @@ export default function Socios() {
     <section id="socios" className="secao fio-topo">
       <div className="wrap">
         <Revelar>
-          <p className="sobrancelha">Quem atende <i>· 06</i></p>
+          <p className="sobrancelha">Quem atende</p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
             Um dono. Nenhuma camada
             <br />

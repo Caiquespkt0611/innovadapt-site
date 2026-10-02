@@ -170,20 +170,17 @@ body {
 
 /* ---------- tipografia ---------- */
 
+/* Sem caixa alta espaçada: rótulo gritado acima de todo título é a marca mais
+   comum de página gerada. Fica a monoespaçada e o fio, em caixa normal. */
 .sobrancelha {
   font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--ciano);
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-.sobrancelha i {
-  font-style: normal;
-  color: var(--txt-3);
 }
 .sobrancelha::before {
   content: "";
@@ -216,13 +213,6 @@ body {
 .destaque {
   color: #fff;
   font-weight: 600;
-}
-
-.texto-gradiente {
-  background: linear-gradient(96deg, #ffffff 10%, #7fd4ff 55%, #4d8bff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* ---------- superfícies ---------- */
@@ -332,17 +322,27 @@ body {
   transform: translateY(-1px);
 }
 
-/* ---------- revelação ---------- */
+/* ---------- movimento ---------- */
 
-.js .revelar {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* Um único momento orquestrado: a entrada do hero ao abrir a página. Antes cada
+   seção subia com fade ao rolar, o que lê como template e ainda deixava blocos
+   invisíveis no print e para quem rola rápido. As seções agora já estão lá. */
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
 }
-.js .revelar[data-visivel="true"] {
-  opacity: 1;
-  transform: none;
+.entrada,
+.entrada-produto {
+  animation: entrar 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.entrada:nth-child(1) { animation-delay: 0.05s; }
+.entrada:nth-child(2) { animation-delay: 0.15s; }
+.entrada:nth-child(3) { animation-delay: 0.25s; }
+.entrada:nth-child(4) { animation-delay: 0.35s; }
+.entrada:nth-child(5) { animation-delay: 0.45s; }
+.entrada-produto {
+  animation-duration: 1.2s;
+  animation-delay: 0.3s;
 }
 
 /* pulso do indicador "no ar" */

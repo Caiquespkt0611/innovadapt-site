@@ -6,7 +6,7 @@ export default function Metodo() {
     <section id="metodo" className="secao fio-topo">
       <div className="wrap">
         <Revelar>
-          <p className="sobrancelha">Método <i>· 04</i></p>
+          <p className="sobrancelha">Método</p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
             Quatro passos, e nenhum deles é &ldquo;confia&rdquo;
           </h2>

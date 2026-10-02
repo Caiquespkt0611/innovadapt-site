@@ -23,9 +23,7 @@ export default function Plataforma() {
       <div className="grade" aria-hidden />
       <div className="wrap relative">
         <Revelar>
-          <p className="sobrancelha">
-            Plataforma <i>· 02</i>
-          </p>
+          <p className="sobrancelha">Plataforma</p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
             As telas que já estão rodando em cliente
           </h2>

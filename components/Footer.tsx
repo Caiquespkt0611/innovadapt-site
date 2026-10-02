@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Marca from "./Marca";
 import { contato, navegacao } from "@/lib/site";
 
 export default function Footer() {
@@ -7,13 +7,7 @@ export default function Footer() {
       <div className="wrap py-14 md:py-16">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Image
-              src="/logo-transparent.png"
-              alt="InnovAdapt"
-              width={180}
-              height={111}
-              className="h-10 w-auto object-contain"
-            />
+            <Marca className="text-[1.125rem]" />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-[#7f90ad]">
               Software sob medida para o varejo automotivo. CRM com agente de IA,
               portal de operações, rentabilidade e consolidação de rede, feitos

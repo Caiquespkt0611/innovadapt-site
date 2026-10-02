@@ -6,7 +6,7 @@ export default function Cases() {
     <section id="projetos" className="secao fio-topo bg-[#071022]">
       <div className="wrap">
         <Revelar>
-          <p className="sobrancelha">Projetos <i>· 03</i></p>
+          <p className="sobrancelha">Projetos</p>
           <h2 className="titulo-secao mt-6 max-w-4xl">
             Projetos entregues, com data
           </h2>

@@ -52,7 +52,7 @@ export default function Contato() {
 
           <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:p-16">
             <div>
-              <p className="sobrancelha">Contato <i>· 08</i></p>
+              <p className="sobrancelha">Contato</p>
               <h2 className="titulo-secao mt-6">
                 Comece pelo diagnóstico,
                 <br />
@@ -182,15 +182,6 @@ export default function Contato() {
 
               <button type="submit" className="btn btn-primario w-full">
                 Enviar e agendar
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
               </button>
 
               <p className="text-center text-xs leading-relaxed text-[#5d708f]">

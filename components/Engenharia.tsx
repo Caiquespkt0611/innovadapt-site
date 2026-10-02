@@ -7,7 +7,7 @@ export default function Engenharia() {
       <div className="wrap">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <Revelar>
-            <p className="sobrancelha">Engenharia <i>· 05</i></p>
+            <p className="sobrancelha">Engenharia</p>
             <h2 className="titulo-secao mt-6">
               As decisões que aparecem
               <br />

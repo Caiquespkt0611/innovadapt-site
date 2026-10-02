@@ -1,6 +1,7 @@
 import PainelOperacao from "./telas/PainelOperacao";
 import ConversaMel from "./telas/ConversaMel";
 import FundoTech from "./FundoTech";
+import Contador from "./Contador";
 import { provas } from "@/lib/site";
 
 export default function Hero() {
@@ -21,37 +22,25 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10">
           {/* texto */}
           <div className="min-w-0">
-            <p className="sobrancelha">
-              Varejo automotivo <i>· dados e IA</i>
-            </p>
+            <p className="sobrancelha entrada">Dados e IA para o varejo automotivo</p>
 
-            <h1 className="mt-6 max-w-[13ch] text-[clamp(2.15rem,4.8vw,3.5rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-white">
-              A plataforma que <span className="texto-gradiente">executa</span> a
-              operação
+            <h1 className="entrada mt-6 max-w-[13ch] text-[clamp(2.15rem,4.8vw,3.5rem)] font-extrabold leading-[1.06] tracking-[-0.04em] text-white">
+              A plataforma que executa a operação
             </h1>
-            <p className="mt-4 text-[1.0625rem] font-medium text-[#7fb0ff]">
+            <p className="entrada mt-4 text-[1.0625rem] font-medium text-[#7fb0ff]">
               Dashboard mostra o que aconteceu. O nosso sistema faz acontecer.
             </p>
 
-            <p className="lead mt-6">
+            <p className="entrada lead mt-6">
               CRM com agente de IA atendendo no WhatsApp, portal de operações com
               a regra fiscal certa, DRE por departamento e consolidação de rede.
               Tudo conectado na mesma base, e{" "}
               <span className="destaque">construído sob medida para a sua operação</span>.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="entrada mt-9 flex flex-col gap-3 sm:flex-row">
               <a href="#contato" className="btn btn-primario">
                 Agendar demonstração
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden>
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.7"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
               </a>
               <a href="#plataforma" className="btn btn-secundario">
                 Ver as telas
@@ -60,7 +49,7 @@ export default function Hero() {
           </div>
 
           {/* produto */}
-          <div className="relative min-w-0">
+          <div className="entrada-produto relative min-w-0">
             <div
               className="brilho -right-10 -top-16 h-64 w-64 opacity-60"
               style={{ background: "rgba(47,107,255,0.5)" }}
@@ -83,7 +72,7 @@ export default function Hero() {
               } ${i > 0 ? "md:border-l md:border-[rgba(120,170,255,0.14)] md:pl-7" : ""}`}
             >
               <dt className="mono flex items-baseline gap-1.5 text-[1.75rem] font-bold leading-none tracking-tight text-white md:text-[2.25rem]">
-                {p.valor}
+                <Contador valor={p.valor} />
                 <span className="text-xs font-medium text-[#22b8f0] md:text-sm">
                   {p.unidade}
                 </span>

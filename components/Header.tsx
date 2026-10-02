@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Marca from "./Marca";
 import { navegacao } from "@/lib/site";
 
 export default function Header() {
@@ -32,14 +32,7 @@ export default function Header() {
     >
       <div className="wrap flex h-16 items-center justify-between md:h-20">
         <a href="#topo" className="flex items-center" aria-label="InnovAdapt, início">
-          <Image
-            src="/logo-transparent.png"
-            alt="InnovAdapt"
-            width={180}
-            height={111}
-            priority
-            className="h-9 w-auto object-contain md:h-11"
-          />
+          <Marca className="text-[1.0625rem] md:text-[1.1875rem]" />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex">

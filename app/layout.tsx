@@ -43,13 +43,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "InnovAdapt",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "InnovAdapt" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "InnovAdapt, a plataforma que executa a operação" }],
   },
   twitter: {
     card: "summary_large_image",
     title: TITULO,
     description: DESCRICAO,
-    images: ["/logo.png"],
+    images: ["/og.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -79,13 +79,6 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${mono.variable}`}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: "document.documentElement.classList.add('js')",
-          }}
-        />
-      </head>
       <body className="antialiased">
         <script
           type="application/ld+json"
