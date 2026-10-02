@@ -2,79 +2,56 @@ import { contato, linkWhatsapp, MSG_PADRAO } from "@/lib/site";
 import FormularioContato from "./FormularioContato";
 import IconeWhatsapp from "./IconeWhatsapp";
 
+const PASSOS = [
+  "Diagnóstico sem custo e sem compromisso",
+  "Escopo e preço com origem, a partir do custo base",
+  "Você fala com o dono, não com vendedor",
+];
+
 export default function Contato() {
   return (
-    <section id="contato" className="secao fio-topo">
-      <div className="wrap">
-        <div className="relative overflow-hidden rounded-[1.5rem] border border-white/[0.09] bg-[#0b1424]">
-          <div className="brilho !top-[-24rem] opacity-80" aria-hidden />
-
-          <div className="relative grid gap-10 p-7 md:p-12 lg:grid-cols-[1fr_1fr] lg:gap-16 lg:p-16">
-            <div>
-              <p className="sobrancelha">Contato</p>
-              <h2 className="titulo-secao mt-6">
-                Comece pelo diagnóstico,
-                <br />
-                não pela proposta
-              </h2>
-              <p className="lead mt-6">
-                A primeira conversa é sobre a sua operação: onde o lead se perde,
-                qual planilha decide o mês e o que hoje só uma pessoa sabe fazer.
-                A proposta vem depois, e vem com a conta aberta.
-              </p>
-
-              <ul className="mt-9 space-y-4">
-                {[
-                  "Diagnóstico sem custo e sem compromisso",
-                  "Escopo e preço com origem, a partir do custo base",
-                  "Você fala com o dono, não com vendedor",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-sm text-[#e9eefa]">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      className="mt-px flex-none text-[#22b8f0]"
-                      aria-hidden
-                    >
-                      <path
-                        d="M3.5 9.5l3.5 3.5 7.5-8"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {t}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10 flex flex-col gap-3 border-t border-[rgba(120,170,255,0.15)] pt-6 sm:flex-row sm:items-center sm:gap-5">
-                {contato.whatsapp && (
-                  <a
-                    href={linkWhatsapp(MSG_PADRAO)}
-                    target="_blank"
-                    rel="noopener"
-                    className="btn btn-secundario self-start"
-                  >
-                    <IconeWhatsapp /> Falar no WhatsApp
-                  </a>
-                )}
-                <a
-                  href={`mailto:${contato.email}`}
-                  className="text-sm font-medium text-[#93a6c4] transition-colors hover:text-white"
-                >
-                  {contato.email}
-                </a>
-              </div>
-            </div>
-
-            <div className="relative">
-              <FormularioContato />
-            </div>
+    <section id="contato" className="faixa-marca relative overflow-hidden py-20 md:py-28">
+      <div
+        className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-40 blur-3xl"
+        style={{ background: "radial-gradient(closest-side, rgba(255,255,255,0.4), transparent)" }}
+        aria-hidden
+      />
+      <div className="wrap relative grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+        <div>
+          <h2 className="text-[clamp(2rem,4.4vw,3.5rem)] font-bold leading-[1.04] tracking-[-0.032em] [text-wrap:balance]">
+            Comece pelo diagnóstico, não pela proposta
+          </h2>
+          <p className="mt-6 max-w-xl text-[1.125rem] leading-relaxed text-white/85">
+            A primeira conversa é sobre a sua operação: onde o cliente se perde,
+            qual planilha decide o mês e o que hoje só uma pessoa sabe fazer. A
+            proposta vem depois, com a conta aberta.
+          </p>
+          <ul className="mt-8 space-y-3">
+            {PASSOS.map((t) => (
+              <li key={t} className="flex items-center gap-3 text-[1rem]">
+                <span className="grid h-6 w-6 flex-none place-items-center rounded-full bg-white/20">
+                  <svg width="13" height="13" viewBox="0 0 18 18" fill="none" aria-hidden>
+                    <path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                {t}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+            {contato.whatsapp && (
+              <a href={linkWhatsapp(MSG_PADRAO)} target="_blank" rel="noopener" className="btn btn-branco self-start">
+                <IconeWhatsapp /> Falar no WhatsApp
+              </a>
+            )}
+            <a href={`mailto:${contato.email}`} className="text-[0.9375rem] font-medium text-white/85 underline-offset-4 hover:underline">
+              {contato.email}
+            </a>
           </div>
+        </div>
+
+        <div className="rounded-3xl bg-white p-6 text-[#0b1630] shadow-[0_40px_80px_-30px_rgba(10,20,90,0.6)] md:p-8">
+          <FormularioContato />
         </div>
       </div>
     </section>

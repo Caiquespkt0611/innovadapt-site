@@ -68,13 +68,13 @@ export default function FormularioContato({ assuntoInicial = ASSUNTOS[0] }: { as
   };
 
   const campo =
-    "w-full rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-[#5d708f] outline-none transition-colors focus:border-[#22b8f0]/60 focus:bg-white/[0.05]";
+    "w-full rounded-xl border border-[#d6deeb] bg-white px-4 py-3 text-[0.9375rem] text-[#0b1630] placeholder:text-[#8692aa] outline-none transition-colors focus:border-[#2647f0]";
 
   if (estado === "recebido") {
     return (
-      <div role="status" className="flex h-full flex-col justify-center rounded-xl border border-[#2ee6a8]/30 bg-[#2ee6a8]/[0.06] p-7">
-        <p className="text-lg font-semibold text-white">Recebemos, {form.nome.split(" ")[0]}.</p>
-        <p className="mt-2 text-sm leading-relaxed text-[#93a6c4]">
+      <div role="status" className="flex h-full flex-col justify-center rounded-2xl border border-[#12b886]/30 bg-[#12b886]/[0.07] p-7">
+        <p className="text-lg font-semibold text-[#0b1630]">Recebemos, {form.nome.split(" ")[0]}.</p>
+        <p className="mt-2 text-[0.9375rem] leading-relaxed text-[#3d4b66]">
           O Roger vai falar com você no telefone que você deixou. Se preferir
           adiantar a conversa, chame agora no WhatsApp.
         </p>
@@ -83,7 +83,7 @@ export default function FormularioContato({ assuntoInicial = ASSUNTOS[0] }: { as
             href={linkWhatsapp(resumo)}
             target="_blank"
             rel="noopener"
-            className="btn btn-secundario mt-6 self-start"
+            className="btn btn-borda mt-6 self-start"
           >
             <IconeWhatsapp /> Falar no WhatsApp
           </a>
@@ -155,9 +155,9 @@ export default function FormularioContato({ assuntoInicial = ASSUNTOS[0] }: { as
             value={form.lojas}
             onChange={(e) => setForm({ ...form, lojas: e.target.value })}
           >
-            <option value="" className="bg-[#0b1424]">Quantas lojas?</option>
+            <option value="" className="bg-white">Quantas lojas?</option>
             {LOJAS.map((l) => (
-              <option key={l} value={l} className="bg-[#0b1424]">{l}</option>
+              <option key={l} value={l} className="bg-white">{l}</option>
             ))}
           </select>
         </div>
@@ -172,7 +172,7 @@ export default function FormularioContato({ assuntoInicial = ASSUNTOS[0] }: { as
           onChange={(e) => setForm({ ...form, assunto: e.target.value })}
         >
           {ASSUNTOS.map((a) => (
-            <option key={a} value={a} className="bg-[#0b1424]">{a}</option>
+            <option key={a} value={a} className="bg-white">{a}</option>
           ))}
         </select>
       </div>
@@ -190,23 +190,23 @@ export default function FormularioContato({ assuntoInicial = ASSUNTOS[0] }: { as
       </div>
 
       {estado === "erro" && (
-        <div role="alert" className="rounded-lg border border-[#ff5f6d]/30 bg-[#ff5f6d]/[0.07] px-4 py-3 text-sm text-[#ffd0d4]">
+        <div role="alert" className="rounded-xl border border-[#e5484d]/30 bg-[#e5484d]/[0.06] px-4 py-3 text-sm text-[#9b1c22]">
           {erro}
           {contato.whatsapp && (
-            <a href={linkWhatsapp(resumo)} target="_blank" rel="noopener" className="ml-1 font-semibold text-white underline">
+            <a href={linkWhatsapp(resumo)} target="_blank" rel="noopener" className="ml-1 font-semibold text-[#9b1c22] underline">
               Abrir o WhatsApp com a mensagem pronta
             </a>
           )}
         </div>
       )}
 
-      <button type="submit" disabled={estado === "enviando"} className="btn btn-primario w-full disabled:opacity-60">
+      <button type="submit" disabled={estado === "enviando"} className="btn btn-azul w-full disabled:opacity-60">
         {estado === "enviando" ? "Enviando..." : "Pedir diagnóstico"}
       </button>
 
-      <p className="text-center text-xs leading-relaxed text-[#5d708f]">
+      <p className="text-center text-xs leading-relaxed text-[#6b7894]">
         Seus dados vão só para o nosso comercial, para retornar o contato. Veja a{" "}
-        <Link href="/privacidade" className="underline hover:text-[#93a6c4]">política de privacidade</Link>.
+        <Link href="/privacidade" className="underline hover:text-[#0b1630]">política de privacidade</Link>.
       </p>
     </form>
   );

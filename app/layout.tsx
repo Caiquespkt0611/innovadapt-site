@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Instrument Sans desde 02/10/2026, no redesenho em fundo branco: grotesca
+// de desenho aberto, lê bem grande no título e pequena no formulário.
+const sans = Instrument_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -16,9 +18,9 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const TITULO = "InnovAdapt · Plataforma de dados e IA para o varejo automotivo";
+const TITULO = "InnovAdapt | Tecnologia que se adapta ao seu negócio";
 const DESCRICAO =
-  "CRM com agente de IA atendendo no WhatsApp, portal de operações e fiscal, DRE gerencial por departamento e consolidação de rede de dealers. Plataforma sob medida, construída por quem escreve o código.";
+  "Sistemas sob medida com inteligência artificial: atendimento no WhatsApp, portal de operações e fiscal, DRE gerencial e consolidação de rede. Construídos por quem escreve o código, no ar em fases.";
 const URL_SITE = "https://innovadapt.com.br";
 
 export const metadata: Metadata = {
@@ -26,13 +28,14 @@ export const metadata: Metadata = {
   title: TITULO,
   description: DESCRICAO,
   keywords: [
+    "software sob medida",
+    "sistema sob medida com IA",
     "sistema para concessionária",
     "CRM concessionária",
     "agente de IA WhatsApp",
     "DRE gerencial concessionária",
     "BI automotivo",
     "gestão de rentabilidade concessionária",
-    "software sob medida",
     "InnovAdapt",
   ],
   alternates: { canonical: URL_SITE },
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "InnovAdapt",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "InnovAdapt, a plataforma que executa a operação" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "InnovAdapt, tecnologia que se adapta ao seu negócio" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -79,7 +82,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${mono.variable}`}>
+    <html lang="pt-BR" className={`${sans.variable} ${mono.variable}`}>
       <body className="antialiased">
         <script
           type="application/ld+json"

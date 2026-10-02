@@ -22,12 +22,12 @@ const ATUALIZADA_EM = "17 de setembro de 2026";
 export default function Termos() {
   return (
     <>
-      <header className="fio-topo bg-[#071022]">
+      <header className="border-b border-[#e1e7f1] bg-white">
         <div className="wrap flex items-center justify-between py-5">
           <Link href="/" className="flex items-center" aria-label="InnovAdapt, início">
             <Marca className="text-[1.0625rem]" />
           </Link>
-          <Link href="/" className="text-sm text-[#93a6c4] transition-colors hover:text-white">
+          <Link href="/" className="text-sm text-[#3d4b66] transition-colors hover:text-[#0b1630]">
             Voltar ao site
           </Link>
         </div>
@@ -35,33 +35,33 @@ export default function Termos() {
 
       <main className="secao">
         <article className="wrap max-w-3xl">
-          <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
+          <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#6b7894]">
             Atualizados em {ATUALIZADA_EM}
           </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#0b1630] md:text-4xl">
             Termos de Serviço
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-[#93a6c4]">
+          <p className="mt-5 text-base leading-relaxed text-[#3d4b66]">
             Estes termos regem o uso dos sistemas desenvolvidos e operados pela{" "}
             {contato.razaoSocial} (InnovAdapt), CNPJ{" "}
             <span className="mono">{contato.cnpj}</span>, entre eles o CRM com agente
             de inteligência artificial e o portal de operações. Como tratamos dados
             pessoais é assunto da{" "}
-            <Link href="/privacidade" className="text-[#22b8f0] underline-offset-4 hover:underline">
+            <Link href="/privacidade" className="text-[#2647f0] underline-offset-4 hover:underline">
               Política de Privacidade
             </Link>
             , que é um documento separado e complementar a este.
           </p>
 
-          <div className="mt-12 space-y-12 text-[0.9375rem] leading-relaxed text-[#93a6c4] [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-white [&_h3]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-white [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_a]:text-[#22b8f0] [&_a]:underline-offset-4 hover:[&_a]:underline">
+          <div className="mt-12 space-y-12 text-[0.9375rem] leading-relaxed text-[#3d4b66] [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-[#0b1630] [&_h3]:mt-6 [&_h3]:text-base [&_h3]:font-semibold [&_h3]:text-[#0b1630] [&_p]:mt-4 [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_a]:text-[#2647f0] [&_a]:underline-offset-4 hover:[&_a]:underline">
             <section>
               <h2>1. Quem contrata e quem usa</h2>
               <p>
                 Os sistemas da InnovAdapt são contratados por empresas, em geral
                 concessionárias e lojas, e usados pelos colaboradores que essa empresa
                 autorizar. Quem contrata é chamado aqui de{" "}
-                <strong className="text-white">cliente</strong>; quem entra com login
-                é chamado de <strong className="text-white">usuário</strong>.
+                <strong className="text-[#0b1630]">cliente</strong>; quem entra com login
+                é chamado de <strong className="text-[#0b1630]">usuário</strong>.
               </p>
               <p>
                 Não oferecemos cadastro aberto ao público: cada acesso nasce de um

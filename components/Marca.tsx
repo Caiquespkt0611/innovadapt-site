@@ -36,11 +36,21 @@ export function SeloIA({ className = "" }: { className?: string }) {
   );
 }
 
-export default function Marca({ className = "" }: { className?: string }) {
+export default function Marca({
+  className = "",
+  sobreEscuro = false,
+}: {
+  className?: string;
+  sobreEscuro?: boolean;
+}) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <SeloIA className="h-[1.85em] w-[1.85em] shrink-0" />
-      <span className="text-[1.15em] font-bold leading-none tracking-[-0.03em] text-white">
+      <span
+        className={`text-[1.15em] font-bold leading-none tracking-[-0.025em] ${
+          sobreEscuro ? "text-white" : "text-[#0b1630]"
+        }`}
+      >
         InnovAdapt
       </span>
     </span>

@@ -1,36 +1,30 @@
 @import "tailwindcss";
 
+/*
+ * Site InnovAdapt, redesenho de 02/10/2026: fundo branco, tinta azul-marinho e
+ * o azul do selo como única cor de marca. O site anterior era todo escuro e foi
+ * reprovado. As telas do produto continuam escuras, como captura de tela de
+ * software dentro de uma página clara, e é por isso que .janela, .bloco,
+ * .rotulo e .pilula seguem aqui no tema escuro.
+ */
+
 @theme inline {
-  --color-ink: #050a18;
-  --color-ink-2: #071022;
-  --color-painel: #0b1424;
-  --color-painel-2: #101c30;
-  --color-linha: rgba(120, 170, 255, 0.13);
-  --color-txt: #eef4ff;
-  --color-txt-2: #93a6c4;
-  --color-txt-3: #5d708f;
-  --color-azul: #2f6bff;
-  --color-ciano: #22b8f0;
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
 
 :root {
-  --ink: #050a18;
-  --ink-2: #071022;
-  --painel: #0b1424;
-  --painel-2: #101c30;
-  --linha: rgba(120, 170, 255, 0.13);
-  --linha-forte: rgba(120, 170, 255, 0.26);
-  --txt: #eef4ff;
-  --txt-2: #93a6c4;
-  --txt-3: #5d708f;
-  --azul: #2f6bff;
-  --ciano: #22b8f0;
-  --roxo: #8b3fd9;
-  --verde: #2ee6a8;
-  --vermelho: #ff5f6d;
-  --ambar: #ffc247;
+  --tinta: #0b1630;
+  --tinta-2: #3d4b66;
+  --tinta-3: #6b7894;
+  --fundo: #ffffff;
+  --fundo-2: #f3f6fb;
+  --palco: #eaf0ff;
+  --linha: #e1e7f1;
+  --azul: #2647f0;
+  --azul-2: #1a82fa;
+  --roxo: #8b45e6;
+  --verde: #12b886;
 }
 
 * {
@@ -43,9 +37,9 @@ html {
 }
 
 body {
-  background: var(--ink);
-  color: var(--txt);
-  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-wrap: break-word;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -53,26 +47,13 @@ body {
 }
 
 ::selection {
-  background: rgba(47, 107, 255, 0.4);
-  color: #fff;
-}
-
-::-webkit-scrollbar {
-  width: 9px;
-}
-::-webkit-scrollbar-track {
-  background: var(--ink);
-}
-::-webkit-scrollbar-thumb {
-  background: #1c2c4a;
-  border-radius: 999px;
-  border: 2px solid var(--ink);
+  background: rgba(38, 71, 240, 0.18);
 }
 
 :focus-visible {
-  outline: 2px solid var(--ciano);
+  outline: 2px solid var(--azul);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -92,7 +73,7 @@ body {
 
 .wrap {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1280px;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
@@ -101,108 +82,37 @@ body {
     padding-inline: 2.5rem;
   }
 }
-
-.secao {
-  padding-block: 5rem;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .secao {
-    padding-block: 7rem;
+@media (min-width: 1280px) {
+  .wrap {
+    padding-inline: 4rem;
   }
 }
 
-.fio-topo::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(120, 170, 255, 0.22) 25%,
-    rgba(120, 170, 255, 0.22) 75%,
-    transparent
-  );
+.secao {
+  padding-block: 5rem;
 }
-
-/* ---------- fundo de tecnologia ---------- */
-
-/* Trilhas de circuito. É o que dá leitura de "plataforma de dados" antes de
-   qualquer palavra ser lida, e sai em SVG inline: zero request, zero imagem. */
-.circuito {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.brilho {
-  position: absolute;
-  border-radius: 9999px;
-  pointer-events: none;
-  filter: blur(60px);
-}
-
-.pontos {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(120, 170, 255, 0.55) 1px, transparent 1px);
-  background-size: 26px 26px;
-  opacity: 0.13;
-  mask-image: radial-gradient(ellipse 60% 60% at 20% 30%, #000, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 20% 30%, #000, transparent 70%);
-}
-
-.grade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: linear-gradient(rgba(120, 170, 255, 0.5) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120, 170, 255, 0.5) 1px, transparent 1px);
-  background-size: 64px 64px;
-  opacity: 0.05;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 20%, transparent 75%);
+@media (min-width: 768px) {
+  .secao {
+    padding-block: 7.5rem;
+  }
 }
 
 /* ---------- tipografia ---------- */
 
-/* Sem caixa alta espaçada: rótulo gritado acima de todo título é a marca mais
-   comum de página gerada. Fica a monoespaçada e o fio, em caixa normal. */
-.sobrancelha {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  color: var(--ciano);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.sobrancelha::before {
-  content: "";
-  width: 1.5rem;
-  height: 1px;
-  background: var(--ciano);
-}
-
-.titulo-secao {
-  font-size: clamp(1.875rem, 4.2vw, 3.125rem);
+.titulo {
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
   font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 1.08;
-  color: #fff;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
+  color: var(--tinta);
   text-wrap: balance;
 }
 
-.lead {
-  color: var(--txt-2);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  max-width: 44rem;
+.apoio {
+  color: var(--tinta-2);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 40rem;
 }
 
 .mono {
@@ -210,37 +120,72 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-.destaque {
-  color: #fff;
+/* ---------- botões ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.375rem;
+  border-radius: 999px;
+  font-size: 0.9375rem;
   font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
-/* ---------- superfícies ---------- */
-
-.cartao {
-  position: relative;
-  background: linear-gradient(180deg, rgba(120, 170, 255, 0.05), rgba(120, 170, 255, 0.012));
-  border: 1px solid var(--linha);
-  border-radius: 1rem;
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+.btn-azul {
+  background: linear-gradient(110deg, var(--azul), var(--azul-2));
+  color: #fff;
+  box-shadow: 0 10px 24px -12px rgba(38, 71, 240, 0.7);
 }
-.cartao:hover {
-  border-color: var(--linha-forte);
-  transform: translateY(-2px);
+.btn-azul:hover {
+  box-shadow: 0 14px 30px -12px rgba(38, 71, 240, 0.85);
 }
 
-/* ---------- cromo de janela e telas de produto ---------- */
+.btn-borda {
+  border: 1.5px solid #cfd9ea;
+  color: var(--tinta);
+  background: #fff;
+}
+.btn-borda:hover {
+  border-color: #9fb3d6;
+}
 
-/* O chrome de janela é o que faz o bloco ser lido como software e não como
-   ilustração. Vale mais que qualquer adjetivo na copy ao lado. */
+/* sobre a faixa azul */
+.btn-branco {
+  background: #fff;
+  color: #1d3fe0;
+}
+.btn-vazado {
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+.btn-vazado:hover {
+  border-color: #fff;
+}
+
+/* ---------- faixa da marca ---------- */
+
+/* O degradê do selo, usado só onde a página pede atenção: números e contato. */
+.faixa-marca {
+  background: linear-gradient(120deg, #2647f0 0%, #1a82fa 58%, #8b45e6 120%);
+  color: #fff;
+}
+
+/* ---------- telas do produto (escuras, como captura de tela) ---------- */
+
 .janela {
   position: relative;
   border: 1px solid rgba(120, 170, 255, 0.18);
   border-radius: 0.875rem;
   background: linear-gradient(180deg, #0d182b, #0a1220);
-  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.8),
-    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  box-shadow: 0 40px 80px -30px rgba(11, 22, 48, 0.55);
   overflow: hidden;
+  color: #eef4ff;
 }
 
 .janela-barra {
@@ -269,7 +214,7 @@ body {
   font-size: 0.5625rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--txt-3);
+  color: #5d708f;
 }
 
 .pilula {
@@ -283,59 +228,6 @@ body {
   line-height: 1.4;
 }
 
-/* ---------- botões ---------- */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  padding: 0.875rem 1.5rem;
-  border-radius: 0.625rem;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.btn-primario {
-  background: linear-gradient(135deg, #3b7cff, #2f6bff 55%, #1d4fd8);
-  color: #fff;
-  box-shadow: 0 10px 30px -8px rgba(47, 107, 255, 0.7),
-    0 1px 0 rgba(255, 255, 255, 0.25) inset;
-}
-.btn-primario:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 36px -8px rgba(47, 107, 255, 0.85),
-    0 1px 0 rgba(255, 255, 255, 0.25) inset;
-}
-
-.btn-secundario {
-  border: 1px solid rgba(120, 170, 255, 0.3);
-  color: var(--txt);
-  background: rgba(120, 170, 255, 0.06);
-}
-.btn-secundario:hover {
-  border-color: rgba(120, 170, 255, 0.5);
-  background: rgba(120, 170, 255, 0.12);
-  transform: translateY(-1px);
-}
-
-/* ---------- movimento ---------- */
-
-/* Um único momento orquestrado: o painel do hero entra ao abrir a página. O
-   texto e o botão não animam, aparecem no primeiro quadro: em conexão lenta o
-   hero chegou a ficar vazio esperando a animação. */
-@keyframes entrar {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: none; }
-}
-.entrada-produto {
-  animation: entrar 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
-}
-
-/* pulso do indicador "no ar" */
 @keyframes pulsar {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.45; transform: scale(0.82); }
@@ -344,24 +236,14 @@ body {
   animation: pulsar 2.4s ease-in-out infinite;
 }
 
-/* ---------- seção clara ---------- */
+/* ---------- movimento ---------- */
 
-/* Alterna com o azul-marinho, no ritmo do Dealer Intelligence: o escuro fica
-   para produto e tela, o claro para explicar. Fundo levemente azulado, não
-   branco puro, para não estourar ao lado do marinho. */
-.claro {
-  background: #f4f7fc;
-  color: #0b1630;
+/* Um momento só: o palco do topo entra ao abrir a página. Texto e botão já
+   estão lá no primeiro quadro. */
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
 }
-.claro :focus-visible {
-  outline-color: #2f6bff;
+.entrada-produto {
+  animation: entrar 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
-.claro .sobrancelha { color: #2f6bff; }
-.claro .sobrancelha::before { background: #2f6bff; }
-.claro .titulo-secao { color: #0b1630; }
-.claro .lead { color: #4a5b78; }
-.claro .cartao {
-  background: #fff;
-  border-color: #dbe4f3;
-}
-.claro .cartao:hover { border-color: #b9c9e6; }

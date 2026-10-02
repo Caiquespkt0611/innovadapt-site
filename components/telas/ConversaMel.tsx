@@ -1,4 +1,4 @@
-const CONVERSA = [
+export const CONVERSA = [
   { de: "lead", texto: "oi, vi a 250 ABS no site. ainda tem?", hora: "14:02" },
   {
     de: "mel",

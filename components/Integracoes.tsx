@@ -1,29 +1,25 @@
 import { integracoes } from "@/lib/site";
 
 /**
- * A régua do que o sistema já conversa. A Syonet abre a prova com uma régua
- * de portais e DMS; aqui entra só o que roda hoje em produção. Mercado Livre e
- * OLX só entram depois de ligados.
+ * A régua do que o sistema já conversa, logo abaixo do topo, onde a Syonet põe
+ * a dela. Só entra o que roda hoje em produção.
  */
 export default function Integracoes() {
   return (
-    <section className="fio-topo relative py-14 md:py-16">
-      <div className="wrap grid gap-8 lg:grid-cols-[minmax(0,18rem)_minmax(0,1fr)] lg:items-center lg:gap-14">
-        <div>
-          <h2 className="text-xl font-bold tracking-[-0.02em] text-white md:text-2xl">
-            Conversa com o que a loja já usa
-          </h2>
-          <p className="mt-3 text-sm leading-relaxed text-[#93a6c4]">
-            Ninguém troca de DMS nem de portal para usar a plataforma. Ela puxa de
-            onde o dado já está.
-          </p>
-        </div>
-
-        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-[rgba(120,170,255,0.14)] bg-[rgba(120,170,255,0.14)] sm:grid-cols-4">
+    <section aria-labelledby="integra-titulo" className="border-y border-[#e1e7f1] bg-[#f3f6fb] py-10">
+      <div className="wrap flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-12">
+        <h2 id="integra-titulo" className="flex-none text-[0.9375rem] font-semibold text-[#3d4b66] lg:w-56">
+          Conversa com o que você já usa
+        </h2>
+        <ul className="flex flex-wrap gap-2.5">
           {integracoes.map((i) => (
-            <li key={i.nome} className="bg-[#071022] px-4 py-4">
-              <p className="text-[0.9375rem] font-semibold text-white">{i.nome}</p>
-              <p className="mono mt-1 text-[0.75rem] text-[#5d708f]">{i.tipo}</p>
+            <li
+              key={i.nome}
+              title={i.tipo}
+              className="rounded-full border border-[#dde4f0] bg-white px-4 py-2 text-[0.875rem] font-semibold text-[#0b1630]"
+            >
+              {i.nome}
+              <span className="ml-2 font-normal text-[#6b7894]">{i.tipo}</span>
             </li>
           ))}
         </ul>

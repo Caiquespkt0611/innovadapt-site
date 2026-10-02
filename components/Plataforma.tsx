@@ -1,144 +1,96 @@
 import Link from "next/link";
-import Revelar from "./Revelar";
 import PainelOperacao from "./telas/PainelOperacao";
 import TelaFiscal from "./telas/TelaFiscal";
 import TelaDre from "./telas/TelaDre";
 import TelaRede from "./telas/TelaRede";
-import { capacidades } from "@/lib/site";
+import { capacidades, produtos } from "@/lib/site";
 
-const TELAS: Record<string, React.ReactNode> = {
+export const TELAS: Record<string, React.ReactNode> = {
   crm: <PainelOperacao />,
   portal: <TelaFiscal />,
   rentabilidade: <TelaDre />,
   rede: <TelaRede />,
 };
 
-const COM_TELA = ["crm", "portal", "rentabilidade", "rede"];
-
+/**
+ * Um bloco por produto, alternando o lado da tela. A tela é escura, como
+ * captura de software, sobre um palco azul-claro: é o contraste que a página
+ * branca precisa para o produto saltar.
+ */
 export default function Plataforma() {
-  const comTela = capacidades.filter((c) => COM_TELA.includes(c.id));
-  const semTela = capacidades.filter((c) => !COM_TELA.includes(c.id));
+  const extras = capacidades.filter((c) => !("slug" in c));
 
   return (
-    <section id="plataforma" className="secao fio-topo overflow-hidden">
-      <div className="grade" aria-hidden />
-      <div className="wrap relative">
-        <Revelar>
-          <p className="sobrancelha">Plataforma</p>
-          <h2 className="titulo-secao mt-6 max-w-4xl">
-            As telas que já estão rodando em cliente
-          </h2>
-          <p className="lead mt-6">
-            Não é catálogo de módulo para você escolher. É o que foi construído,
-            está em produção e pode ser recombinado sobre o seu processo, porque
-            o núcleo é multi-tenant desde o primeiro cliente.
+    <section id="plataforma" className="secao">
+      <div className="wrap">
+        <div className="max-w-3xl">
+          <h2 className="titulo">O que já está rodando em produção</h2>
+          <p className="apoio mt-5">
+            Cada sistema resolve uma ponta da operação e todos conversam entre si.
+            Você começa por onde dói mais, e o que não existe ainda a gente
+            constrói sobre a mesma base.
           </p>
-        </Revelar>
-
-        <div className="mt-16 space-y-20 md:space-y-28">
-          {comTela.map((c, i) => (
-            <Revelar key={c.id}>
-              <div
-                className={`grid items-center gap-8 lg:grid-cols-2 lg:gap-14 ${
-                  i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-                }`}
-              >
-                <div className="min-w-0">
-                  <span className="mono text-[0.8125rem] font-medium text-[#22b8f0]">
-                    Produto {c.numero}
-                  </span>
-                  <h3 className="mt-4 text-2xl font-bold tracking-tight text-white md:text-[1.75rem]">
-                    {c.titulo}
-                  </h3>
-                  <p className="mt-4 text-[0.9375rem] leading-relaxed text-[#93a6c4]">
-                    {c.resumo}
-                  </p>
-
-                  <ul className="mt-7 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
-                    {c.itens.map((item) => (
-                      <li
-                        key={item}
-                        className="flex gap-2.5 text-[0.8125rem] leading-snug text-[#93a6c4]"
-                      >
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 16 16"
-                          fill="none"
-                          className="mt-[0.15rem] flex-none text-[#2f6bff]"
-                          aria-hidden
-                        >
-                          <circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.2" opacity="0.45" />
-                          <path
-                            d="M4.8 8.2l2.1 2.1 4.3-4.4"
-                            stroke="currentColor"
-                            strokeWidth="1.6"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {"slug" in c && (
-                    <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-                      <p className="text-[0.8125rem] text-[#93a6c4]">
-                        <span className="font-semibold text-white">Para quem:</span> {c.paraQuem}
-                      </p>
-                      <Link
-                        href={`/${c.slug}`}
-                        className="btn btn-secundario flex-none self-start !px-4 !py-2 !text-[0.8125rem]"
-                      >
-                        Ver o {c.curto}
-                      </Link>
-                    </div>
-                  )}
-                </div>
-
-                <div className="relative min-w-0">
-                  <div
-                    className="brilho -inset-6 opacity-40"
-                    style={{ background: "rgba(47,107,255,0.35)" }}
-                    aria-hidden
-                  />
-                  <div className="relative">{TELAS[c.id]}</div>
-                </div>
-              </div>
-            </Revelar>
-          ))}
         </div>
 
-        {/* as duas frentes que não são tela, e sim como a coisa é construída */}
-        <div className="mt-20 grid gap-4 md:mt-28 md:grid-cols-2">
-          {semTela.map((c, i) => (
-            <Revelar key={c.id} delay={i * 70} className="h-full">
-              <div className="cartao h-full p-6 md:p-8">
-                <span className="mono text-[0.8125rem] font-medium text-[#22b8f0]">
-                  Produto {c.numero}
-                </span>
-                <h3 className="mt-4 text-lg font-bold text-white">{c.titulo}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#93a6c4]">{c.resumo}</p>
-                <ul className="mt-6 space-y-2.5 border-t border-[rgba(120,170,255,0.13)] pt-5">
-                  {c.itens.map((item) => (
-                    <li
-                      key={item}
-                      className="flex gap-2.5 text-[0.8125rem] leading-snug text-[#7f90ad]"
-                    >
-                      <span className="mt-[0.6rem] h-px w-2.5 flex-none bg-[#2f6bff]" />
+        <div className="mt-16 space-y-20 md:mt-20 md:space-y-28">
+          {produtos.map((p, i) => (
+            <article
+              key={p.slug}
+              className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${
+                i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+              }`}
+            >
+              <div className="min-w-0">
+                <p className="text-[0.875rem] font-semibold text-[#2647f0]">{p.curto}</p>
+                <h3 className="mt-3 text-[clamp(1.625rem,2.8vw,2.25rem)] font-bold leading-[1.1] tracking-[-0.025em] text-[#0b1630]">
+                  {p.titulo}
+                </h3>
+                <p className="mt-4 text-[1.0625rem] leading-relaxed text-[#3d4b66]">{p.resumo}</p>
+
+                <ul className="mt-7 space-y-3">
+                  {p.itens.slice(0, 4).map((item) => (
+                    <li key={item} className="flex gap-3 text-[0.9375rem] leading-snug text-[#0b1630]">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" className="mt-px flex-none text-[#2647f0]" aria-hidden>
+                        <path d="M3.5 9.5l3.5 3.5 7.5-8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
                       {item}
                     </li>
                   ))}
                 </ul>
+
+                <div className="mt-8 flex flex-col gap-4 border-t border-[#e1e7f1] pt-6 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-[0.875rem] text-[#6b7894]">
+                    <span className="font-semibold text-[#0b1630]">Para quem:</span> {p.paraQuem}
+                  </p>
+                  <Link href={`/${p.slug}`} className="btn btn-borda flex-none self-start">
+                    Conhecer o {p.curto}
+                  </Link>
+                </div>
               </div>
-            </Revelar>
+
+              <div className="min-w-0 rounded-[2rem] bg-[#eaf0ff] p-4 sm:p-8">{TELAS[p.id]}</div>
+            </article>
           ))}
         </div>
 
-        <p className="mono mt-10 text-[0.6875rem] text-[#5d708f]">
-          Telas dos sistemas em produção, com dados ilustrativos.
-        </p>
+        <div className="mt-24 grid gap-5 md:grid-cols-2">
+          {extras.map((c) => (
+            <div key={c.id} className="rounded-3xl border border-[#e1e7f1] bg-[#f3f6fb] p-7 md:p-9">
+              <h3 className="text-xl font-bold tracking-[-0.02em] text-[#0b1630]">{c.titulo}</h3>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-[#3d4b66]">{c.resumo}</p>
+              <ul className="mt-5 space-y-2">
+                {c.itens.slice(0, 4).map((item) => (
+                  <li key={item} className="flex gap-2.5 text-[0.875rem] text-[#3d4b66]">
+                    <span className="mt-2 h-1 w-3 flex-none rounded-full bg-[#2647f0]" aria-hidden />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-8 text-[0.8125rem] text-[#6b7894]">Telas dos sistemas em produção, com dados ilustrativos.</p>
       </div>
     </section>
   );

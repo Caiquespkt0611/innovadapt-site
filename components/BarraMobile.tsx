@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { contato, linkWhatsapp, MSG_PADRAO } from "@/lib/site";
+import Link from "next/link";
 import IconeWhatsapp from "./IconeWhatsapp";
 
 /**
@@ -45,34 +46,34 @@ export default function BarraMobile() {
   return (
     <div
       aria-hidden={!mostra}
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-[rgba(120,170,255,0.15)] bg-[#050a18]/94 backdrop-blur-2xl transition-transform duration-300 lg:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-[#e1e7f1] bg-white/95 shadow-[0_-10px_30px_-20px_rgba(11,22,48,0.35)] backdrop-blur-2xl transition-transform duration-300 lg:hidden ${
         mostra ? "translate-y-0" : "translate-y-full"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <div className="flex items-center gap-3 px-4 py-3">
         <div className="min-w-0 flex-1">
-          <p className="truncate text-[0.8125rem] font-semibold text-white">
+          <p className="truncate text-[0.875rem] font-semibold text-[#0b1630]">
             Diagnóstico sem custo
           </p>
-          <p className="truncate text-[0.6875rem] text-[#5d708f]">
+          <p className="truncate text-[0.75rem] text-[#6b7894]">
             Fale com quem escreve o código
           </p>
         </div>
-        <a
-          href="#contato"
+        <Link
+          href="/#contato"
           tabIndex={mostra ? 0 : -1}
-          className="btn btn-primario flex-none !px-5 !py-2.5 !text-sm"
+          className="btn btn-azul flex-none"
         >
           Agendar
-        </a>
+        </Link>
         <a
           href={contato.whatsapp ? linkWhatsapp(MSG_PADRAO) : `mailto:${contato.email}`}
           target={contato.whatsapp ? "_blank" : undefined}
           rel="noopener"
           tabIndex={mostra ? 0 : -1}
           aria-label={contato.whatsapp ? "Falar no WhatsApp" : "Enviar e-mail"}
-          className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-white/[0.14] text-white transition-colors hover:border-white/30 hover:bg-white/5"
+          className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-[#d6deeb] text-[#12b886] transition-colors hover:border-[#9fb3d6]"
         >
           <IconeWhatsapp tamanho={20} />
         </a>
