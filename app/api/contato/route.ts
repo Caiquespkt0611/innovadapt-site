@@ -25,13 +25,23 @@ function lerConfig(): Config | null {
       token: process.env.CRM_ENTRADA_TOKEN,
     };
   }
-  try {
-    const bruto = JSON.parse(readFileSync(join(homedir(), ".site-innovadapt.json"), "utf8"));
-    if (typeof bruto.token === "string" && bruto.token) {
-      return { crmUrl: bruto.crmUrl || "https://api.crm.innovadapt.com.br", token: bruto.token };
+  // Na Hostinger o processo roda pelo Passenger e a "home" que o Node enxerga
+  // não é a do usuário. A pasta do app fica em /home/<usuário>/domains/..., então
+  // a home real sai do próprio caminho de instalação.
+  const homes = new Set<string>();
+  const doCaminho = process.cwd().split("/domains/")[0];
+  if (doCaminho && doCaminho !== process.cwd()) homes.add(doCaminho);
+  if (process.env.HOME) homes.add(process.env.HOME);
+  homes.add(homedir());
+  for (const home of homes) {
+    try {
+      const bruto = JSON.parse(readFileSync(join(home, ".site-innovadapt.json"), "utf8"));
+      if (typeof bruto.token === "string" && bruto.token) {
+        return { crmUrl: bruto.crmUrl || "https://api.crm.innovadapt.com.br", token: bruto.token };
+      }
+    } catch {
+      // sem arquivo nesta pasta: tenta a próxima
     }
-  } catch {
-    // sem arquivo: segue sem config
   }
   return null;
 }

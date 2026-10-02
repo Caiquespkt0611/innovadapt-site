@@ -42,7 +42,7 @@ NODE
 B64=$(printf '%s' "$JS" | base64 | tr -d '\n')
 
 echo "1/3  CRM: unidade Site e chave de entrada"
-SAIDA=$(fly ssh console -a "$APP_CRM" -C "sh -c 'cd /app && echo $B64 | base64 -d > /tmp/ligar-site.js && node /tmp/ligar-site.js; rm -f /tmp/ligar-site.js'")
+SAIDA=$(fly ssh console -a "$APP_CRM" -C "sh -c 'cd /app/apps/api && echo $B64 | base64 -d > scripts/ligar-site.cjs && node scripts/ligar-site.cjs; rm -f scripts/ligar-site.cjs'")
 TOKEN=$(printf '%s\n' "$SAIDA" | sed -n 's/^TOKEN=\([0-9a-f]\{32\}\).*/\1/p' | tail -1)
 [ -n "$TOKEN" ] || { echo "   não veio a chave. Saída do CRM:"; printf '%s\n' "$SAIDA"; exit 1; }
 echo "   ok, chave ${TOKEN:0:6}..."
