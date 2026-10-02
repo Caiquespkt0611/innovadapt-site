@@ -1,14 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="24 -79 710 710">
-<defs>
- <linearGradient id="gPonto" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1AA6FC"/><stop offset="1" stop-color="#0776FC"/></linearGradient>
- <linearGradient id="gHaste" gradientUnits="userSpaceOnUse" x1="0" y1="182" x2="0" y2="410"><stop offset="0" stop-color="#0A78FF"/><stop offset=".55" stop-color="#0A5DF4"/><stop offset="1" stop-color="#1A2C96"/></linearGradient>
- <linearGradient id="gFita" gradientUnits="userSpaceOnUse" x1="90" y1="520" x2="560" y2="60"><stop offset="0" stop-color="#2C5AF6"/><stop offset=".45" stop-color="#1A86FA"/><stop offset="1" stop-color="#05D8F9"/></linearGradient>
- <linearGradient id="gPerna" gradientUnits="userSpaceOnUse" x1="484" y1="87" x2="700" y2="474"><stop offset="0" stop-color="#1B279C"/><stop offset=".4" stop-color="#3A42D8"/><stop offset="1" stop-color="#9641E3"/></linearGradient>
- <clipPath id="dobra"><path d="M-100,362 L38,362 Q100,390 158,399 L158,-100 L1300,-100 L1300,1300 L-100,1300 Z"/></clipPath>
-</defs>
-<g>
- <circle cx="97" cy="87" r="60" fill="url(#gPonto)"/>
- <path d="M38,242 A60,60 0 0 1 158,242 L158,402 Q100,393 38,366 Z" fill="url(#gHaste)"/>
- <path d="M98,330 L98,400 C98,485 212.0,462.8 244.5,410.0 L418.6,127.6 A58,58 0 0 1 519.7,131.7 L523.9,146.9" fill="none" stroke="url(#gFita)" stroke-width="120" stroke-linecap="round" stroke-linejoin="round" clip-path="url(#dobra)"/>
- <line x1="523.9" y1="146.9" x2="660.1" y2="414.2" stroke="url(#gPerna)" stroke-width="120" stroke-linecap="round"/>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080"><defs><linearGradient id="bg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2647F0"/><stop offset=".5" stop-color="#1A82FA"/><stop offset="1" stop-color="#8B45E6"/></linearGradient></defs><rect width="1080" height="1080" rx="240" fill="url(#bg)"/><g transform="translate(540 540) scale(1.12) translate(-540 -540)"><g transform="translate(-49.8,83.0) scale(0.9616)"><circle cx="300" cy="291.6" r="63.4" fill="#fff"/><path d="M300,450 L300,565.4 A96,96 0 0 0 477.7,615.8 L623.3,379.6 A96,96 0 0 1 790.5,386.4 L926.7,653.7" fill="none" stroke="#fff" stroke-width="122" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg>
