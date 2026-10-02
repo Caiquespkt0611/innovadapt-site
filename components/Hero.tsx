@@ -2,7 +2,8 @@ import PainelOperacao from "./telas/PainelOperacao";
 import ConversaMel from "./telas/ConversaMel";
 import FundoTech from "./FundoTech";
 import Contador from "./Contador";
-import { provas } from "@/lib/site";
+import IconeWhatsapp from "./IconeWhatsapp";
+import { MSG_PADRAO, linkWhatsapp, provas } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -42,8 +43,8 @@ export default function Hero() {
               <a href="#contato" className="btn btn-primario">
                 Agendar demonstração
               </a>
-              <a href="#plataforma" className="btn btn-secundario">
-                Ver as telas
+              <a href={linkWhatsapp(MSG_PADRAO)} target="_blank" rel="noopener" className="btn btn-secundario">
+                <IconeWhatsapp /> Falar no WhatsApp
               </a>
             </div>
 

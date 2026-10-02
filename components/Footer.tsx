@@ -1,5 +1,5 @@
 import Marca from "./Marca";
-import { contato, navegacao } from "@/lib/site";
+import { contato, linkWhatsapp, MSG_PADRAO, navegacao } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -38,6 +38,18 @@ export default function Footer() {
               Contato
             </p>
             <ul className="mt-4 space-y-2.5">
+              {contato.whatsapp && (
+                <li>
+                  <a
+                    href={linkWhatsapp(MSG_PADRAO)}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-sm text-[#93a6c4] transition-colors hover:text-white"
+                  >
+                    WhatsApp (11) 98266-7293
+                  </a>
+                </li>
+              )}
               <li>
                 <a
                   href={`mailto:${contato.email}`}

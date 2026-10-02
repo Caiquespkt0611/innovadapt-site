@@ -2,10 +2,10 @@
 // Todo número aqui sai do CEREBRO da empresa. Se mudar lá, muda aqui.
 
 export const contato = {
-  email: "contato@innovadapt.com.br",
-  // Assim que houver um número comercial da InnovAdapt, preencha só os dígitos
-  // com DDI (ex: "5511999999999"). Vazio = os CTAs caem para e-mail.
-  whatsapp: "",
+  // Comercial é o Roger (02/10/2026): o WhatsApp e o e-mail dele em todo CTA.
+  // Só os dígitos, com DDI. Vazio = os CTAs caem para e-mail.
+  email: "roger.sampaio@innovadapt.com.br",
+  whatsapp: "5511982667293",
   cnpj: "57.411.230/0001-60",
   razaoSocial: "Sampaio Consultoria de Negócios LTDA",
 };

@@ -1,53 +1,8 @@
-"use client";
-
-import { useState } from "react";
-import { contato, linkWhatsapp } from "@/lib/site";
-
-const LOJAS = ["1 loja", "2 a 5 lojas", "6 a 10 lojas", "Mais de 10 lojas"];
-
-const ASSUNTOS = [
-  "CRM com agente de IA",
-  "Portal de operações e fiscal",
-  "Rentabilidade e DRE gerencial",
-  "Consolidação e BI de rede",
-  "Software sob medida",
-  "Ainda não sei, quero um diagnóstico",
-];
+import { contato, linkWhatsapp, MSG_PADRAO } from "@/lib/site";
+import FormularioContato from "./FormularioContato";
+import IconeWhatsapp from "./IconeWhatsapp";
 
 export default function Contato() {
-  const [form, setForm] = useState({
-    nome: "",
-    empresa: "",
-    telefone: "",
-    lojas: "",
-    assunto: ASSUNTOS[0],
-    mensagem: "",
-  });
-
-  const corpo = [
-    `Nome: ${form.nome}`,
-    `Empresa: ${form.empresa}`,
-    `Telefone: ${form.telefone}`,
-    `Lojas: ${form.lojas || "não informado"}`,
-    `Assunto: ${form.assunto}`,
-    "",
-    form.mensagem,
-  ].join("\n");
-
-  const enviar = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (contato.whatsapp) {
-      window.open(linkWhatsapp(corpo), "_blank", "noopener");
-      return;
-    }
-    window.location.href = `mailto:${contato.email}?subject=${encodeURIComponent(
-      `Diagnóstico InnovAdapt: ${form.empresa || form.nome || "novo contato"}`,
-    )}&body=${encodeURIComponent(corpo)}`;
-  };
-
-  const campo =
-    "w-full rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-[#5d708f] outline-none transition-colors focus:border-[#22b8f0]/60 focus:bg-white/[0.05]";
-
   return (
     <section id="contato" className="secao fio-topo">
       <div className="wrap">
@@ -96,124 +51,29 @@ export default function Contato() {
                 ))}
               </ul>
 
-              <div className="mt-10 border-t border-[rgba(120,170,255,0.15)] pt-6">
-                <p className="mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#5d708f]">
-                  Ou direto
-                </p>
+              <div className="mt-10 flex flex-col gap-3 border-t border-[rgba(120,170,255,0.15)] pt-6 sm:flex-row sm:items-center sm:gap-5">
+                {contato.whatsapp && (
+                  <a
+                    href={linkWhatsapp(MSG_PADRAO)}
+                    target="_blank"
+                    rel="noopener"
+                    className="btn btn-secundario self-start"
+                  >
+                    <IconeWhatsapp /> Falar no WhatsApp
+                  </a>
+                )}
                 <a
                   href={`mailto:${contato.email}`}
-                  className="mt-2 inline-block text-base font-semibold text-white transition-colors hover:text-[#22b8f0]"
+                  className="text-sm font-medium text-[#93a6c4] transition-colors hover:text-white"
                 >
                   {contato.email}
                 </a>
               </div>
             </div>
 
-            <form onSubmit={enviar} className="space-y-3.5">
-              <div className="grid gap-3.5 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="nome" className="sr-only">
-                    Nome
-                  </label>
-                  <input
-                    id="nome"
-                    required
-                    className={campo}
-                    placeholder="Seu nome"
-                    value={form.nome}
-                    onChange={(e) => setForm({ ...form, nome: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="empresa" className="sr-only">
-                    Empresa
-                  </label>
-                  <input
-                    id="empresa"
-                    required
-                    className={campo}
-                    placeholder="Empresa"
-                    value={form.empresa}
-                    onChange={(e) => setForm({ ...form, empresa: e.target.value })}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="telefone" className="sr-only">
-                  Telefone
-                </label>
-                <input
-                  id="telefone"
-                  className={campo}
-                  placeholder="Telefone ou WhatsApp"
-                  value={form.telefone}
-                  onChange={(e) => setForm({ ...form, telefone: e.target.value })}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="lojas" className="sr-only">
-                  Quantas lojas
-                </label>
-                <select
-                  id="lojas"
-                  className={`${campo} appearance-none`}
-                  value={form.lojas}
-                  onChange={(e) => setForm({ ...form, lojas: e.target.value })}
-                >
-                  <option value="" className="bg-[#0b1424]">
-                    Quantas lojas a operação tem?
-                  </option>
-                  {LOJAS.map((l) => (
-                    <option key={l} value={l} className="bg-[#0b1424]">
-                      {l}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="assunto" className="sr-only">
-                  Assunto
-                </label>
-                <select
-                  id="assunto"
-                  className={`${campo} appearance-none`}
-                  value={form.assunto}
-                  onChange={(e) => setForm({ ...form, assunto: e.target.value })}
-                >
-                  {ASSUNTOS.map((a) => (
-                    <option key={a} value={a} className="bg-[#0b1424]">
-                      {a}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="mensagem" className="sr-only">
-                  Mensagem
-                </label>
-                <textarea
-                  id="mensagem"
-                  rows={5}
-                  className={`${campo} resize-none`}
-                  placeholder="Conte em duas linhas onde dói hoje."
-                  value={form.mensagem}
-                  onChange={(e) => setForm({ ...form, mensagem: e.target.value })}
-                />
-              </div>
-
-              <button type="submit" className="btn btn-primario w-full">
-                Enviar e agendar
-              </button>
-
-              <p className="text-center text-xs leading-relaxed text-[#5d708f]">
-                Abre o seu app de e-mail com a mensagem pronta. Nenhum dado é
-                armazenado neste site.
-              </p>
-            </form>
+            <div className="relative">
+              <FormularioContato />
+            </div>
           </div>
         </div>
       </div>

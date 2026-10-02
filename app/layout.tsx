@@ -63,7 +63,8 @@ const dadosEstruturados = {
   url: URL_SITE,
   logo: `${URL_SITE}/logo.png`,
   description: DESCRICAO,
-  email: "contato@innovadapt.com.br",
+  email: "roger.sampaio@innovadapt.com.br",
+  telephone: "+55-11-98266-7293",
   areaServed: "BR",
   knowsAbout: [
     "CRM com inteligência artificial",

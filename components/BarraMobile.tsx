@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { contato } from "@/lib/site";
+import { contato, linkWhatsapp, MSG_PADRAO } from "@/lib/site";
+import IconeWhatsapp from "./IconeWhatsapp";
 
 /**
  * Barra de ação fixa no rodapé, só no celular. Aparece depois do hero e some
@@ -66,29 +67,14 @@ export default function BarraMobile() {
           Agendar
         </a>
         <a
-          href={`mailto:${contato.email}`}
+          href={contato.whatsapp ? linkWhatsapp(MSG_PADRAO) : `mailto:${contato.email}`}
+          target={contato.whatsapp ? "_blank" : undefined}
+          rel="noopener"
           tabIndex={mostra ? 0 : -1}
-          aria-label="Enviar e-mail"
+          aria-label={contato.whatsapp ? "Falar no WhatsApp" : "Enviar e-mail"}
           className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border border-white/[0.14] text-white transition-colors hover:border-white/30 hover:bg-white/5"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-            <rect
-              x="2.5"
-              y="5"
-              width="19"
-              height="14"
-              rx="2.5"
-              stroke="currentColor"
-              strokeWidth="1.6"
-            />
-            <path
-              d="M3 7l9 6 9-6"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <IconeWhatsapp tamanho={20} />
         </a>
       </div>
     </div>
