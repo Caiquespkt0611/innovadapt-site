@@ -17,10 +17,10 @@ export default function Footer() {
 
           <nav aria-label="Produtos">
             <p className="text-[0.8125rem] font-semibold text-white/50">Produtos</p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-1">
               {produtos.map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/${p.slug}`} className="text-[0.9375rem] text-white/80 transition-colors hover:text-white">
+                  <Link href={`/${p.slug}`} className="inline-block py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
                     {p.curto}
                   </Link>
                 </li>
@@ -30,10 +30,10 @@ export default function Footer() {
 
           <nav aria-label="Navegação do rodapé">
             <p className="text-[0.8125rem] font-semibold text-white/50">Empresa</p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-1">
               {[...navegacao, { label: "Perguntas", href: "/#faq" }].map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-[0.9375rem] text-white/80 transition-colors hover:text-white">
+                  <a href={item.href} className="inline-block py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
                     {item.label}
                   </a>
                 </li>
@@ -43,16 +43,16 @@ export default function Footer() {
 
           <div>
             <p className="text-[0.8125rem] font-semibold text-white/50">Contato</p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 space-y-1">
               {contato.whatsapp && (
                 <li>
-                  <a href={linkWhatsapp(MSG_PADRAO)} target="_blank" rel="noopener" className="text-[0.9375rem] text-white/80 transition-colors hover:text-white">
+                  <a href={linkWhatsapp(MSG_PADRAO)} target="_blank" rel="noopener" className="inline-block py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
                     WhatsApp (11) 98266-7293
                   </a>
                 </li>
               )}
               <li>
-                <a href={`mailto:${contato.email}`} className="break-all text-[0.9375rem] text-white/80 transition-colors hover:text-white">
+                <a href={`mailto:${contato.email}`} className="inline-block break-all py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
                   {contato.email}
                 </a>
               </li>
@@ -66,10 +66,10 @@ export default function Footer() {
             <span className="mono">{contato.cnpj}</span>
           </p>
           <p className="flex flex-wrap gap-x-5 gap-y-1">
-            <Link href="/privacidade" className="transition-colors hover:text-white">
+            <Link href="/privacidade" className="inline-block py-2 transition-colors hover:text-white">
               Política de Privacidade
             </Link>
-            <Link href="/termos" className="transition-colors hover:text-white">
+            <Link href="/termos" className="inline-block py-2 transition-colors hover:text-white">
               Termos de Serviço
             </Link>
           </p>

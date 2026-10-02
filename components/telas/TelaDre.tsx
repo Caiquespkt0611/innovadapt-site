@@ -43,7 +43,7 @@ export default function TelaDre() {
               {DEPTOS.map((d) => (
                 <tr key={d.nome} className="border-b border-white/[0.05] last:border-0">
                   <td className="px-2.5 py-2 text-[0.625rem] text-white">{d.nome}</td>
-                  <td className="mono px-2.5 py-2 text-[0.625rem] text-[#93a6c4]">{d.real}</td>
+                  <td className="mono whitespace-nowrap px-2.5 py-2 text-[0.625rem] text-[#93a6c4]">{d.real}</td>
                   <td className="mono px-2.5 py-2 text-[0.625rem] font-semibold text-white">
                     {d.mc}
                   </td>
