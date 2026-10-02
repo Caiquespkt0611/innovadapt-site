@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Revelar from "./Revelar";
 import PainelOperacao from "./telas/PainelOperacao";
 import TelaFiscal from "./telas/TelaFiscal";
@@ -43,8 +44,8 @@ export default function Plataforma() {
                 }`}
               >
                 <div className="min-w-0">
-                  <span className="mono text-[0.6875rem] font-bold tracking-[0.2em] text-[#22b8f0]">
-                    PRODUTO {c.numero}
+                  <span className="mono text-[0.8125rem] font-medium text-[#22b8f0]">
+                    Produto {c.numero}
                   </span>
                   <h3 className="mt-4 text-2xl font-bold tracking-tight text-white md:text-[1.75rem]">
                     {c.titulo}
@@ -80,6 +81,20 @@ export default function Plataforma() {
                       </li>
                     ))}
                   </ul>
+
+                  {"slug" in c && (
+                    <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+                      <p className="text-[0.8125rem] text-[#93a6c4]">
+                        <span className="font-semibold text-white">Para quem:</span> {c.paraQuem}
+                      </p>
+                      <Link
+                        href={`/${c.slug}`}
+                        className="btn btn-secundario flex-none self-start !px-4 !py-2 !text-[0.8125rem]"
+                      >
+                        Ver o {c.curto}
+                      </Link>
+                    </div>
+                  )}
                 </div>
 
                 <div className="relative min-w-0">
@@ -100,8 +115,8 @@ export default function Plataforma() {
           {semTela.map((c, i) => (
             <Revelar key={c.id} delay={i * 70} className="h-full">
               <div className="cartao h-full p-6 md:p-8">
-                <span className="mono text-[0.6875rem] font-bold tracking-[0.2em] text-[#22b8f0]">
-                  PRODUTO {c.numero}
+                <span className="mono text-[0.8125rem] font-medium text-[#22b8f0]">
+                  Produto {c.numero}
                 </span>
                 <h3 className="mt-4 text-lg font-bold text-white">{c.titulo}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[#93a6c4]">{c.resumo}</p>

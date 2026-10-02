@@ -1,5 +1,12 @@
-import Revelar from "./Revelar";
+import Contador from "./Contador";
+import { provas } from "@/lib/site";
 
+/**
+ * A primeira seção clara da página. O Dealer Intelligence alterna azul-marinho
+ * e branco, e é esse ritmo que deixa a página longa legível: o escuro fica para
+ * produto e tela, o claro para explicar. Os passos dizem o que painel nenhum
+ * faz (atender e fechar), e a faixa de números fecha a seção, como a deles.
+ */
 const ETAPAS = [
   {
     n: "01",
@@ -25,45 +32,61 @@ const ETAPAS = [
 
 export default function Fluxo() {
   return (
-    <section
-      className="relative overflow-hidden py-16 md:py-20"
-      style={{
-        background:
-          "linear-gradient(180deg, #061024, #081328 55%, #061024), radial-gradient(70% 120% at 50% 0%, rgba(47,107,255,0.14), transparent 60%)",
-      }}
-    >
-      <div className="fio-topo absolute inset-x-0 top-0 h-px" aria-hidden />
-      <div className="pontos !opacity-[0.09]" aria-hidden />
-
-      <div className="wrap relative">
-        <div className="grid gap-6 md:grid-cols-4 md:gap-4">
-          {ETAPAS.map((e, i) => (
-            <Revelar key={e.n} delay={i * 80} className="h-full">
-              <div className="relative h-full">
-                {/* fio que liga uma etapa na outra, como esteira de dado */}
-                {i < ETAPAS.length - 1 && (
-                  <span
-                    className="absolute right-[-1rem] top-5 hidden h-px w-8 md:block"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, rgba(34,184,240,0.6), rgba(34,184,240,0.05))",
-                    }}
-                    aria-hidden
-                  />
-                )}
-                <div className="flex items-center gap-3">
-                  <span className="mono flex h-10 w-10 flex-none items-center justify-center rounded-lg border border-[rgba(120,170,255,0.28)] bg-[rgba(47,107,255,0.12)] text-[0.75rem] font-bold text-[#7fb0ff]">
-                    {e.n}
-                  </span>
-                  <h3 className="text-base font-bold text-white">{e.titulo}</h3>
-                </div>
-                <p className="mt-3.5 text-[0.8125rem] leading-relaxed text-[#93a6c4]">
-                  {e.texto}
-                </p>
-              </div>
-            </Revelar>
-          ))}
+    <section className="claro relative py-20 md:py-28">
+      <div className="wrap">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end lg:gap-16">
+          <h2 className="text-[clamp(1.75rem,3.6vw,2.75rem)] font-bold leading-[1.1] tracking-[-0.03em] text-[#0b1630] [text-wrap:balance]">
+            Do dado solto ao pedido fechado, no mesmo sistema
+          </h2>
+          <p className="text-[1.0625rem] leading-relaxed text-[#4a5b78]">
+            Painel para no relatório. A plataforma segue até o fim: junta o que
+            está espalhado, atende quem chegou, fecha a venda e mostra o que
+            sobrou no mês.
+          </p>
         </div>
+
+        <ol className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {ETAPAS.map((e, i) => (
+            <li
+              key={e.n}
+              className={`rounded-2xl border p-6 ${
+                i === 1
+                  ? "border-transparent bg-[#0b1630] text-white"
+                  : "border-[#dbe4f3] bg-white"
+              }`}
+            >
+              <span
+                className={`mono text-[0.75rem] font-bold ${i === 1 ? "text-[#7fb0ff]" : "text-[#2f6bff]"}`}
+              >
+                {e.n}
+              </span>
+              <h3 className={`mt-3 text-lg font-bold ${i === 1 ? "text-white" : "text-[#0b1630]"}`}>
+                {e.titulo}
+              </h3>
+              <p className={`mt-2 text-sm leading-relaxed ${i === 1 ? "text-[#b8c6de]" : "text-[#4a5b78]"}`}>
+                {e.texto}
+              </p>
+            </li>
+          ))}
+        </ol>
+
+        {/* a faixa de números, escura dentro da seção clara */}
+        <dl className="mt-6 grid grid-cols-2 overflow-hidden rounded-2xl bg-[#0b1630] md:grid-cols-4">
+          {provas.map((p, i) => (
+            <div
+              key={p.label}
+              className={`px-6 py-6 md:py-7 ${i % 2 === 1 ? "border-l border-white/10" : ""} ${
+                i > 1 ? "border-t border-white/10 md:border-t-0" : ""
+              } ${i === 2 ? "md:border-l md:border-white/10" : ""}`}
+            >
+              <dt className="mono flex items-baseline gap-1.5 text-[1.75rem] font-bold leading-none text-white md:text-[2.25rem]">
+                <Contador valor={p.valor} />
+                <span className="text-xs font-medium text-[#22b8f0] md:text-sm">{p.unidade}</span>
+              </dt>
+              <dd className="mt-2.5 text-[0.8125rem] leading-snug text-[#93a6c4]">{p.label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

@@ -7,7 +7,7 @@ export default function Faq() {
   const [aberto, setAberto] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="secao fio-topo bg-[#071022]">
+    <section id="faq" className="secao claro">
       <div className="wrap">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
@@ -18,7 +18,7 @@ export default function Faq() {
             </h2>
           </div>
 
-          <div className="divide-y divide-[rgba(120,170,255,0.14)] border-y border-[rgba(120,170,255,0.15)]">
+          <div className="divide-y divide-[#dbe4f3] border-y border-[#dbe4f3]">
             {faq.map((item, i) => {
               const ativo = aberto === i;
               return (
@@ -32,7 +32,7 @@ export default function Faq() {
                     >
                       <span
                         className={`text-base font-semibold transition-colors ${
-                          ativo ? "text-[#22b8f0]" : "text-white"
+                          ativo ? "text-[#2f6bff]" : "text-[#0b1630]"
                         }`}
                       >
                         {item.p}
@@ -49,7 +49,7 @@ export default function Faq() {
                             stroke="currentColor"
                             strokeWidth="1.5"
                             strokeLinecap="round"
-                            className={ativo ? "text-[#22b8f0]" : "text-[#5d708f]"}
+                            className={ativo ? "text-[#2f6bff]" : "text-[#6b7a94]"}
                           />
                         </svg>
                       </span>
@@ -60,7 +60,7 @@ export default function Faq() {
                     style={{ gridTemplateRows: ativo ? "1fr" : "0fr" }}
                   >
                     <div className="overflow-hidden">
-                      <p className="pb-6 pr-10 text-sm leading-relaxed text-[#93a6c4]">
+                      <p className="pb-6 pr-10 text-sm leading-relaxed text-[#4a5b78]">
                         {item.r}
                       </p>
                     </div>

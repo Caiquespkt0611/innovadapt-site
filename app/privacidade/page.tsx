@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Marca from "@/components/Marca";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import { contato } from "@/lib/site";
@@ -29,13 +29,7 @@ export default function Privacidade() {
       <header className="fio-topo bg-[#071022]">
         <div className="wrap flex items-center justify-between py-5">
           <Link href="/" className="flex items-center" aria-label="InnovAdapt, início">
-            <Image
-              src="/logo-transparent.png"
-              alt="InnovAdapt"
-              width={180}
-              height={111}
-              className="h-9 w-auto object-contain"
-            />
+            <Marca className="text-[1.0625rem]" />
           </Link>
           <Link href="/" className="text-sm text-[#93a6c4] transition-colors hover:text-white">
             Voltar ao site

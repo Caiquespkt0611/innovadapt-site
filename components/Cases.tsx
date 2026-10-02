@@ -1,5 +1,5 @@
 import Revelar from "./Revelar";
-import { cases } from "@/lib/site";
+import { cases, depoimentos } from "@/lib/site";
 
 export default function Cases() {
   return (
@@ -111,6 +111,23 @@ export default function Cases() {
             </Revelar>
           ))}
         </div>
+
+        {/* prova de terceiro, no lugar do logo que não podemos mostrar */}
+        {depoimentos.length > 0 && (
+          <div className={`mt-10 grid gap-5 ${depoimentos.length > 1 ? "lg:grid-cols-2" : ""}`}>
+            {depoimentos.map((d) => (
+              <figure key={d.frase} className="rounded-2xl border border-[rgba(120,170,255,0.15)] bg-[#0b1424] p-7 md:p-9">
+                <blockquote className="text-lg leading-relaxed text-white md:text-xl">
+                  &ldquo;{d.frase}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6 text-sm">
+                  <span className="font-semibold text-white">{d.quem}</span>
+                  <span className="block text-[#7f90ad]">{d.operacao}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

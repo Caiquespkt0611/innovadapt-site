@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Marca from "./Marca";
 import { contato, linkWhatsapp, MSG_PADRAO, navegacao } from "@/lib/site";
 
@@ -76,12 +77,12 @@ export default function Footer() {
             <span className="mono">{contato.cnpj}</span>
           </p>
           <p className="flex flex-wrap gap-x-4 gap-y-1">
-            <a href="/privacidade" className="transition-colors hover:text-white">
+            <Link href="/privacidade" className="transition-colors hover:text-white">
               Política de Privacidade
-            </a>
-            <a href="/termos" className="transition-colors hover:text-white">
+            </Link>
+            <Link href="/termos" className="transition-colors hover:text-white">
               Termos de Serviço
-            </a>
+            </Link>
             <span>Feito com Next.js, e publicado com um comando só.</span>
           </p>
         </div>

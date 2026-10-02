@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MSG_PADRAO, contato, linkWhatsapp } from "@/lib/site";
+import Link from "next/link";
 import IconeWhatsapp from "./IconeWhatsapp";
 
 const LOJAS = ["1 loja", "2 a 5 lojas", "6 a 10 lojas", "Mais de 10 lojas"];
@@ -205,7 +206,7 @@ export default function FormularioContato({ assuntoInicial = ASSUNTOS[0] }: { as
 
       <p className="text-center text-xs leading-relaxed text-[#5d708f]">
         Seus dados vão só para o nosso comercial, para retornar o contato. Veja a{" "}
-        <a href="/privacidade" className="underline hover:text-[#93a6c4]">política de privacidade</a>.
+        <Link href="/privacidade" className="underline hover:text-[#93a6c4]">política de privacidade</Link>.
       </p>
     </form>
   );

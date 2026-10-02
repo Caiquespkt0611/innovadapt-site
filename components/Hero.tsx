@@ -1,15 +1,15 @@
 import PainelOperacao from "./telas/PainelOperacao";
 import ConversaMel from "./telas/ConversaMel";
 import FundoTech from "./FundoTech";
-import Contador from "./Contador";
+import Link from "next/link";
 import IconeWhatsapp from "./IconeWhatsapp";
-import { MSG_PADRAO, linkWhatsapp, provas } from "@/lib/site";
+import { MSG_PADRAO, linkWhatsapp, produtos } from "@/lib/site";
 
 export default function Hero() {
   return (
     <section
       id="topo"
-      className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24"
+      className="relative overflow-hidden pt-28 pb-12 md:pt-36 md:pb-16"
       style={{
         background:
           "radial-gradient(120% 90% at 78% 8%, rgba(47,107,255,0.20), transparent 58%), radial-gradient(90% 70% at 8% 4%, rgba(34,184,240,0.13), transparent 60%), linear-gradient(180deg, #061024 0%, #050a18 72%)",
@@ -77,27 +77,28 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* provas */}
-        <dl className="mt-20 grid grid-cols-2 border-t border-[rgba(120,170,255,0.14)] md:mt-24 md:grid-cols-4">
-          {provas.map((p, i) => (
-            <div
-              key={p.label}
-              className={`border-b border-[rgba(120,170,255,0.14)] py-6 pr-5 md:border-b-0 md:py-8 ${
-                i % 2 === 1 ? "border-l border-[rgba(120,170,255,0.14)] pl-5" : ""
-              } ${i > 0 ? "md:border-l md:border-[rgba(120,170,255,0.14)] md:pl-7" : ""}`}
-            >
-              <dt className="mono flex items-baseline gap-1.5 text-[1.75rem] font-bold leading-none tracking-tight text-white md:text-[2.25rem]">
-                <Contador valor={p.valor} />
-                <span className="text-xs font-medium text-[#22b8f0] md:text-sm">
-                  {p.unidade}
-                </span>
-              </dt>
-              <dd className="mt-2.5 text-[0.8125rem] leading-snug text-[#5d708f]">
-                {p.label}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        {/* trilha dos produtos: cada um leva à sua página, como a do Dealer,
+            mas com o que o produto faz em vez de só o nome */}
+        <nav aria-label="Produtos" className="mt-16 md:mt-20">
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {produtos.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/${p.slug}`}
+                  className="group flex h-full items-start justify-between gap-3 rounded-xl border border-[rgba(120,170,255,0.16)] bg-[rgba(10,19,36,0.7)] px-4 py-4 backdrop-blur transition-colors hover:border-[rgba(120,170,255,0.4)] hover:bg-[rgba(16,28,48,0.9)]"
+                >
+                  <span>
+                    <span className="block text-[0.9375rem] font-semibold text-white">{p.curto}</span>
+                    <span className="mt-1 block text-[0.8125rem] leading-snug text-[#7f90ad]">{p.paraQuem}</span>
+                  </span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="mt-1 flex-none text-[#5d708f] transition-colors group-hover:text-[#22b8f0]">
+                    <path d="M6 3.5l4.5 4.5L6 12.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
     </section>
   );

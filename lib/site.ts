@@ -21,11 +21,10 @@ export const MSG_PADRAO =
   "Olá! Vim pelo site da InnovAdapt e quero agendar um diagnóstico da minha operação.";
 
 export const navegacao = [
-  { label: "Diferença", href: "#diferenca" },
-  { label: "Plataforma", href: "#plataforma" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Método", href: "#metodo" },
-  { label: "Engenharia", href: "#engenharia" },
+  { label: "Diferença", href: "/#diferenca" },
+  { label: "Projetos", href: "/#projetos" },
+  { label: "Método", href: "/#metodo" },
+  { label: "Engenharia", href: "/#engenharia" },
 ];
 
 export const provas = [
@@ -51,6 +50,11 @@ export const integracoes = [
 export const capacidades = [
   {
     id: "crm",
+    assunto: "CRM com agente de IA",
+    projeto: 0,
+    slug: "crm-com-ia",
+    curto: "CRM com IA",
+    paraQuem: "Concessionárias e revendas, de uma loja a um grupo inteiro",
     numero: "01",
     titulo: "CRM com agente de IA no WhatsApp",
     resumo:
@@ -66,6 +70,11 @@ export const capacidades = [
   },
   {
     id: "portal",
+    assunto: "Portal de operações e fiscal",
+    projeto: 1,
+    slug: "portal-fiscal",
+    curto: "Portal e fiscal",
+    paraQuem: "Distribuidores e redes que vivem de pedido, compra e imposto",
     numero: "02",
     titulo: "Portal de operações e fiscal",
     resumo:
@@ -81,6 +90,11 @@ export const capacidades = [
   },
   {
     id: "rentabilidade",
+    assunto: "Rentabilidade e DRE gerencial",
+    projeto: null,
+    slug: "dre-gerencial",
+    curto: "DRE gerencial",
+    paraQuem: "Grupos que hoje fecham o mês em planilha",
     numero: "03",
     titulo: "Rentabilidade e DRE gerencial",
     resumo:
@@ -96,6 +110,11 @@ export const capacidades = [
   },
   {
     id: "rede",
+    assunto: "Consolidação e BI de rede",
+    projeto: 1,
+    slug: "consolidacao-de-rede",
+    curto: "Consolidação de rede",
+    paraQuem: "Redes, associações e grupos com várias casas",
     numero: "04",
     titulo: "Consolidação e BI de rede",
     resumo:
@@ -140,6 +159,17 @@ export const capacidades = [
     ],
   },
 ];
+
+type Produto = (typeof capacidades)[number] & {
+  slug: string;
+  curto: string;
+  paraQuem: string;
+  assunto: string;
+  projeto: number | null;
+};
+
+/** Os quatro produtos que têm tela e página própria (/crm-com-ia etc.). */
+export const produtos = capacidades.filter((c): c is Produto => "slug" in c);
 
 export const comparativo = {
   colunas: ["Plataforma de BI de prateleira", "InnovAdapt"],
@@ -227,6 +257,11 @@ export const cases = [
     stack: ["Next.js", "NestJS", "Prisma", "PostgreSQL", "shadcn/ui", "Recharts"],
   },
 ];
+
+// Depoimento só entra com a frase aprovada por escrito por quem falou. Sem
+// marca: cargo e tipo de operação, nunca o nome da empresa (regra do site).
+// Vazio = a seção não aparece. Pedido de aprovação mandado em 02/10/2026.
+export const depoimentos: { frase: string; quem: string; operacao: string }[] = [];
 
 export const metodo = [
   {

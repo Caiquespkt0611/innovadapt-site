@@ -343,3 +343,25 @@ body {
 .pulso {
   animation: pulsar 2.4s ease-in-out infinite;
 }
+
+/* ---------- seção clara ---------- */
+
+/* Alterna com o azul-marinho, no ritmo do Dealer Intelligence: o escuro fica
+   para produto e tela, o claro para explicar. Fundo levemente azulado, não
+   branco puro, para não estourar ao lado do marinho. */
+.claro {
+  background: #f4f7fc;
+  color: #0b1630;
+}
+.claro :focus-visible {
+  outline-color: #2f6bff;
+}
+.claro .sobrancelha { color: #2f6bff; }
+.claro .sobrancelha::before { background: #2f6bff; }
+.claro .titulo-secao { color: #0b1630; }
+.claro .lead { color: #4a5b78; }
+.claro .cartao {
+  background: #fff;
+  border-color: #dbe4f3;
+}
+.claro .cartao:hover { border-color: #b9c9e6; }

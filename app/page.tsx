@@ -20,9 +20,9 @@ export default function Home() {
       <main>
         <Hero />
         <Fluxo />
-        <Diferenca />
         <Plataforma />
         <Integracoes />
+        <Diferenca />
         <Cases />
         <Metodo />
         <Engenharia />
