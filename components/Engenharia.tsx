@@ -1,35 +1,34 @@
 import { engenharia } from "@/lib/site";
 
+/**
+ * A engenharia como ficha técnica: a pilha à esquerda, os princípios que
+ * pesam na fatura à direita.
+ */
 export default function Engenharia() {
   return (
     <section id="engenharia" className="secao">
       <div className="wrap">
-        <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
-          <h2 className="titulo">As decisões de engenharia que aparecem na sua fatura</h2>
-          <p className="apoio">
-            A base é fixa e já foi testada em produção. O que muda de projeto para
-            projeto é a modelagem do seu negócio, e é por isso que o segundo
-            sistema custa uma fração do primeiro.
-          </p>
-        </div>
+        <h2 className="titulo max-w-4xl">As decisões de engenharia que aparecem na sua fatura</h2>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2">
-          {engenharia.principios.map((p) => (
-            <div key={p.titulo} className="rounded-3xl border border-[#e1e7f1] p-7 md:p-8">
-              <h3 className="text-lg font-bold tracking-[-0.015em] text-[#0b1630]">{p.titulo}</h3>
-              <p className="mt-3 text-[0.9375rem] leading-relaxed text-[#3d4b66]">{p.texto}</p>
-            </div>
-          ))}
-        </div>
+        <div className="mt-16 grid gap-14 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-20">
+          <dl className="h-fit rounded-[1.75rem] bg-[var(--tinta)] p-7 text-white md:p-9">
+            {engenharia.stack.map((s, i) => (
+              <div key={s.camada} className={`grid gap-1 py-4 sm:grid-cols-[7rem_1fr] sm:gap-6 ${i ? "border-t border-white/10" : ""}`}>
+                <dt className="text-[0.875rem] font-semibold text-[var(--azul-claro)]">{s.camada}</dt>
+                <dd className="text-[0.9375rem] text-white/90">{s.valor}</dd>
+              </div>
+            ))}
+          </dl>
 
-        <dl className="mt-10 grid gap-x-10 gap-y-4 rounded-3xl bg-[#f3f6fb] p-7 sm:grid-cols-2 md:p-9 lg:grid-cols-3">
-          {engenharia.stack.map((s) => (
-            <div key={s.camada}>
-              <dt className="text-[0.8125rem] font-semibold text-[#6b7894]">{s.camada}</dt>
-              <dd className="mt-0.5 text-[0.9375rem] text-[#0b1630]">{s.valor}</dd>
-            </div>
-          ))}
-        </dl>
+          <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
+            {engenharia.principios.map((p) => (
+              <div key={p.titulo}>
+                <h3 className="subtitulo text-[1.375rem]">{p.titulo}</h3>
+                <p className="mt-3 text-[0.9375rem] leading-relaxed text-[var(--tinta-2)]">{p.texto}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

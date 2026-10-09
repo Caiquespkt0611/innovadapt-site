@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 /*
- * Site InnovAdapt, redesenho de 02/10/2026: fundo branco, tinta azul-marinho e
- * o azul do selo como única cor de marca. O site anterior era todo escuro e foi
- * reprovado. As telas do produto continuam escuras, como captura de tela de
- * software dentro de uma página clara, e é por isso que .janela, .bloco,
- * .rotulo e .pilula seguem aqui no tema escuro.
+ * Site InnovAdapt, redesenho de 08/10/2026: "o site se adapta". Papel branco,
+ * tinta azul-marinho e o azul da marca CHAPADO, sem degradê, usado em campo
+ * grande (o palco do topo, os números, o contato). O degradê do selo fica só
+ * no selo. As telas do produto continuam escuras, como captura de software,
+ * e é por isso que .janela, .bloco, .rotulo e .pilula seguem no tema escuro.
  */
 
 @theme inline {
+  --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 }
 
 :root {
-  --tinta: #0b1630;
-  --tinta-2: #3d4b66;
-  --tinta-3: #6b7894;
-  --fundo: #ffffff;
-  --fundo-2: #f3f6fb;
-  --palco: #eaf0ff;
-  --linha: #e1e7f1;
-  --azul: #2647f0;
-  --azul-2: #1a82fa;
-  --roxo: #8b45e6;
-  --verde: #12b886;
+  --tinta: #0a1433;
+  --tinta-2: #46516b;
+  --tinta-3: #6b7590;
+  --papel: #ffffff;
+  --nevoa: #f1f3f9;
+  --linha: #dfe3ee;
+  --azul: #2340f0;
+  --azul-fundo: #1d36d9;
+  --azul-claro: #c9d3ff;
+  --sinal: #12b886;
 }
 
 * {
@@ -37,9 +37,10 @@ html {
 }
 
 body {
-  background: var(--fundo);
+  background: var(--papel);
   color: var(--tinta);
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
   overflow-wrap: break-word;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -47,7 +48,7 @@ body {
 }
 
 ::selection {
-  background: rgba(38, 71, 240, 0.18);
+  background: rgba(35, 64, 240, 0.18);
 }
 
 :focus-visible {
@@ -73,9 +74,9 @@ body {
 
 .wrap {
   width: 100%;
-  max-width: 1280px;
+  max-width: 1360px;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1rem;
 }
 @media (min-width: 768px) {
   .wrap {
@@ -89,35 +90,59 @@ body {
 }
 
 .secao {
-  padding-block: 5rem;
+  padding-block: 5.5rem;
 }
 @media (min-width: 768px) {
   .secao {
-    padding-block: 7.5rem;
+    padding-block: 8.5rem;
   }
 }
 
 /* ---------- tipografia ---------- */
 
-.titulo {
-  font-size: clamp(2rem, 4.4vw, 3.5rem);
+/* O título é a voz da página: largura apertada, peso alto, entrelinha curta. */
+.display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 92, "opsz" 96;
   font-weight: 700;
-  letter-spacing: -0.032em;
-  line-height: 1.04;
+  letter-spacing: -0.03em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+.titulo {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 92, "opsz" 72;
+  font-size: clamp(2.25rem, 5vw, 4.25rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
   color: var(--tinta);
   text-wrap: balance;
+}
+
+.subtitulo {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-variation-settings: "wdth" 96, "opsz" 36;
+  font-weight: 640;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 .apoio {
   color: var(--tinta-2);
   font-size: 1.125rem;
   line-height: 1.6;
-  max-width: 40rem;
+  max-width: 38rem;
 }
 
 .mono {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
+}
+
+.algarismo {
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* ---------- botões ---------- */
@@ -127,52 +152,64 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.75rem 1.375rem;
-  border-radius: 999px;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
   font-size: 0.9375rem;
   font-weight: 600;
   white-space: nowrap;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms ease-out;
   cursor: pointer;
+}
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-azul {
-  background: linear-gradient(110deg, var(--azul), var(--azul-2));
+  background: var(--azul);
   color: #fff;
-  box-shadow: 0 10px 24px -12px rgba(38, 71, 240, 0.7);
 }
 .btn-azul:hover {
-  box-shadow: 0 14px 30px -12px rgba(38, 71, 240, 0.85);
+  background: #1a32cc;
 }
 
 .btn-borda {
-  border: 1.5px solid #cfd9ea;
+  border: 1.5px solid var(--linha);
   color: var(--tinta);
   background: #fff;
 }
 .btn-borda:hover {
-  border-color: #9fb3d6;
+  border-color: #aab4cc;
 }
 
-/* sobre a faixa azul */
+/* sobre o campo azul */
 .btn-branco {
   background: #fff;
-  color: #1d3fe0;
+  color: var(--azul-fundo);
+}
+.btn-branco:hover {
+  background: #e8ecff;
 }
 .btn-vazado {
-  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
   color: #fff;
 }
 .btn-vazado:hover {
   border-color: #fff;
 }
 
-/* ---------- faixa da marca ---------- */
+/* ---------- campo da marca ---------- */
 
-/* O degradê do selo, usado só onde a página pede atenção: números e contato. */
-.faixa-marca {
-  background: linear-gradient(120deg, #2647f0 0%, #1a82fa 58%, #8b45e6 120%);
+/* Azul chapado com a grade fina de papel milimetrado: é o "palco" onde o
+   software aparece. Usado no topo, nos números e no contato. */
+.faixa-marca,
+.campo-azul {
+  background-color: var(--azul-fundo);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: -1px -1px;
   color: #fff;
 }
 
@@ -238,12 +275,21 @@ body {
 
 /* ---------- movimento ---------- */
 
-/* Um momento só: o palco do topo entra ao abrir a página. Texto e botão já
-   estão lá no primeiro quadro. */
+/* Entrada do palco ao abrir a página: o único movimento que não responde a
+   uma ação da pessoa. */
 @keyframes entrar {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: none; }
 }
 .entrada-produto {
-  animation: entrar 1s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+  animation: entrar 900ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+}
+
+/* Troca de sistema no palco: responde ao clique no seletor de negócio. */
+@keyframes trocar {
+  from { opacity: 0; transform: translateY(10px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+.troca {
+  animation: trocar 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }

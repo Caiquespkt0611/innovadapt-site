@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Geist, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-// Instrument Sans desde 02/10/2026, no redesenho em fundo branco: grotesca
-// de desenho aberto, lê bem grande no título e pequena no formulário.
-const sans = Instrument_Sans({
+// Redesenho de 08/10/2026. Bricolage Grotesque nos títulos, com o eixo de
+// largura (wdth) para apertar o título grande sem perder peso: é ela que dá a
+// cara da página. Geist no texto corrido, neutra e muito legível pequena.
+// A JetBrains Mono fica só dentro das telas do produto.
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: "variable",
+  axes: ["wdth", "opsz"],
+  display: "swap",
+});
+
+const sans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -82,7 +91,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="pt-BR" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body className="antialiased">
         <script
           type="application/ld+json"

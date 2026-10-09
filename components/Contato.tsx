@@ -10,15 +10,10 @@ const PASSOS = [
 
 export default function Contato() {
   return (
-    <section id="contato" className="faixa-marca relative overflow-hidden py-20 md:py-28">
-      <div
-        className="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, rgba(255,255,255,0.4), transparent)" }}
-        aria-hidden
-      />
+    <section id="contato" className="campo-azul relative overflow-hidden py-20 md:py-32">
       <div className="wrap relative grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div>
-          <h2 className="text-[clamp(2rem,4.4vw,3.5rem)] font-bold leading-[1.04] tracking-[-0.032em] [text-wrap:balance]">
+          <h2 className="display text-[clamp(2.75rem,6vw,5.75rem)]">
             Comece pelo diagnóstico, não pela proposta
           </h2>
           <p className="mt-6 max-w-xl text-[1.125rem] leading-relaxed text-white/85">
@@ -50,7 +45,7 @@ export default function Contato() {
           </div>
         </div>
 
-        <div className="rounded-3xl bg-white p-6 text-[#0b1630] shadow-[0_40px_80px_-30px_rgba(10,20,90,0.6)] md:p-8">
+        <div className="rounded-[1.75rem] bg-white p-6 text-[var(--tinta)] md:p-9">
           <FormularioContato />
         </div>
       </div>

@@ -13,9 +13,9 @@ import Contato from "@/components/Contato";
 import Footer from "@/components/Footer";
 import BarraMobile from "@/components/BarraMobile";
 
-// Fundo de cada seção, em ordem: branco, cinza-azulado, branco, azul da
-// marca, branco, cinza, branco, cinza, branco, cinza, azul, marinho. É a
-// alternância que deixa a página longa legível sem virar um bloco só.
+// Redesenho de 08/10/2026. O topo é a peça ousada (o palco que troca de
+// sistema conforme o negócio); o resto alterna papel branco e névoa, com o
+// azul chapado só nos dois campos que pedem ação: o palco e o contato.
 export default function Home() {
   return (
     <>
@@ -28,8 +28,8 @@ export default function Home() {
         <Diferenca />
         <Cases />
         <Metodo />
-        <Socios />
         <Engenharia />
+        <Socios />
         <Faq />
         <Contato />
       </main>

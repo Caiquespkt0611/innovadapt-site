@@ -1,57 +1,52 @@
 import { comparativo } from "@/lib/site";
 
+/**
+ * A tese contra a plataforma de BI de prateleira. A coluna deles fica apagada,
+ * a nossa em tinta cheia: a diferença se lê sem precisar de selo nem cor.
+ * A última linha é o nome da empresa, e por isso fecha em azul.
+ */
 export default function Diferenca() {
+  const linhas = comparativo.linhas.slice(0, -1);
+  const fecho = comparativo.linhas[comparativo.linhas.length - 1];
+
   return (
     <section id="diferenca" className="secao">
       <div className="wrap">
-        <div className="grid gap-6 lg:grid-cols-2 lg:items-end lg:gap-16">
-          <h2 className="titulo">O mercado está cheio de painel. Falta sistema que age.</h2>
-          <p className="apoio">
-            Dashboard bonito se compra em qualquer lugar. O gargalo da
-            operação é o cliente que ninguém respondeu, o pedido que travou no
-            imposto e o fechamento que só o gerente sabe fazer.
-          </p>
-        </div>
+        <h2 className="display text-[clamp(2.75rem,7vw,6.5rem)]">
+          <span className="block text-[#b3bacb]">Painel mostra o que aconteceu.</span>
+          <span className="block text-[var(--tinta)]">Sistema faz acontecer.</span>
+        </h2>
+        <p className="apoio mt-8">
+          Plataforma de BI de prateleira entrega relatório. A gente entrega o
+          sistema que atende, calcula e cobra, e o relatório vem junto.
+        </p>
 
-        {/* tabela no computador */}
-        <div className="mt-14 hidden overflow-hidden rounded-3xl border border-[#e1e7f1] md:block">
-          <table className="w-full border-collapse text-left">
-            <thead>
-              <tr className="bg-[#f3f6fb]">
-                <th className="w-[22%] px-7 py-5 text-[0.8125rem] font-semibold text-[#6b7894]">Critério</th>
-                <th className="w-[39%] px-7 py-5 text-[0.9375rem] font-semibold text-[#3d4b66]">{comparativo.colunas[0]}</th>
-                <th className="w-[39%] bg-[#2647f0] px-7 py-5 text-[0.9375rem] font-semibold text-white">{comparativo.colunas[1]}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparativo.linhas.map((linha) => (
-                <tr key={linha.criterio} className="border-t border-[#e1e7f1]">
-                  <td className="px-7 py-5 align-top text-[0.9375rem] font-semibold text-[#0b1630]">{linha.criterio}</td>
-                  <td className="px-7 py-5 align-top text-[0.9375rem] leading-relaxed text-[#6b7894]">{linha.deles}</td>
-                  <td className="bg-[#eaf0ff] px-7 py-5 align-top text-[0.9375rem] font-medium leading-relaxed text-[#0b1630]">
-                    {linha.nosso}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* cartões no celular */}
-        <div className="mt-10 space-y-3 md:hidden">
-          {comparativo.linhas.map((linha) => (
-            <div key={linha.criterio} className="rounded-2xl border border-[#e1e7f1] p-5">
-              <p className="text-[0.9375rem] font-semibold text-[#0b1630]">{linha.criterio}</p>
-              <p className="mt-3 text-sm leading-relaxed text-[#6b7894]">
-                <span className="font-semibold">Prateleira: </span>
-                {linha.deles}
-              </p>
-              <p className="mt-2 rounded-xl bg-[#eaf0ff] px-3 py-2 text-sm leading-relaxed text-[#0b1630]">
-                <span className="font-semibold text-[#2647f0]">InnovAdapt: </span>
-                {linha.nosso}
-              </p>
-            </div>
-          ))}
+        <div className="mt-14 md:mt-20">
+          <div className="hidden grid-cols-[1fr_1.2fr_1.2fr] gap-8 pb-4 text-[0.9375rem] font-semibold md:grid">
+            <span className="text-[var(--tinta-3)]">Critério</span>
+            <span className="text-[var(--tinta-3)]">{comparativo.colunas[0]}</span>
+            <span className="text-[var(--azul)]">{comparativo.colunas[1]}</span>
+          </div>
+          <ul className="border-t border-[var(--linha)]">
+            {linhas.map((l) => (
+              <li
+                key={l.criterio}
+                className="grid gap-2 border-b border-[var(--linha)] py-6 md:grid-cols-[1fr_1.2fr_1.2fr] md:gap-8 md:py-7"
+              >
+                <span className="text-[0.9375rem] font-semibold text-[var(--tinta-2)]">{l.criterio}</span>
+                <span className="text-[1rem] text-[#8a93a8]">
+                  <span className="md:hidden">Prateleira: </span>
+                  {l.deles}
+                </span>
+                <span className="text-[1.0625rem] font-semibold text-[var(--tinta)]">{l.nosso}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="campo-azul mt-6 grid gap-3 rounded-2xl px-6 py-7 md:grid-cols-[1fr_1.2fr_1.2fr] md:items-center md:gap-8 md:px-8">
+            <span className="text-[0.9375rem] font-semibold text-white/75">{fecho.criterio}</span>
+            <span className="text-[1rem] text-white/60 line-through decoration-white/40">{fecho.deles}</span>
+            <span className="subtitulo text-[1.5rem] md:text-[1.75rem]">{fecho.nosso}</span>
+          </div>
         </div>
       </div>
     </section>
