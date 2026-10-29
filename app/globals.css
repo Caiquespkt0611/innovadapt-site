@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./luz.css";
 
 /*
  * Site InnovAdapt, redesenho de 02/10/2026: fundo branco, tinta azul-marinho e
@@ -21,9 +22,12 @@
   --fundo-2: #f3f6fb;
   --palco: #eaf0ff;
   --linha: #e1e7f1;
-  --azul: #2647f0;
-  --azul-2: #1a82fa;
-  --roxo: #8b45e6;
+  --azul: #0365fe;
+  --azul-2: #0052d6;
+  --roxo: #8b3ae2;
+  --ciano: #04cdfb;
+  --navy: #091426;
+  --ceu: #f7f9fc;
   --verde: #12b886;
 }
 
@@ -116,7 +120,6 @@ body {
 }
 
 .mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
   font-variant-numeric: tabular-nums;
 }
 
@@ -138,12 +141,16 @@ body {
 }
 
 .btn-azul {
-  background: linear-gradient(110deg, var(--azul), var(--azul-2));
+  background: var(--azul);
   color: #fff;
-  box-shadow: 0 10px 24px -12px rgba(38, 71, 240, 0.7);
+  box-shadow: 0 10px 30px -12px rgba(3, 101, 254, 0.7);
 }
 .btn-azul:hover {
-  box-shadow: 0 14px 30px -12px rgba(38, 71, 240, 0.85);
+  background: var(--azul-2);
+  box-shadow: 0 14px 34px -12px rgba(3, 101, 254, 0.85);
+}
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn-borda {
@@ -210,11 +217,9 @@ body {
 }
 
 .rotulo {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.5625rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #5d708f;
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: #8193b2;
 }
 
 .pilula {

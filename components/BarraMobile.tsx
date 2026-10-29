@@ -46,8 +46,8 @@ export default function BarraMobile() {
   return (
     <div
       aria-hidden={!mostra}
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-[#e1e7f1] bg-white/95 shadow-[0_-10px_30px_-20px_rgba(11,22,48,0.35)] backdrop-blur-2xl transition-transform duration-300 lg:hidden ${
-        mostra ? "translate-y-0" : "translate-y-full"
+      className={`fixed inset-x-3 bottom-3 z-40 rounded-full border border-[#e3e9f3] bg-white/95 shadow-[0_18px_40px_-18px_rgba(9,20,38,0.45)] backdrop-blur-xl transition-transform duration-300 lg:hidden ${
+        mostra ? "translate-y-0" : "translate-y-[calc(100%+1rem)]"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >

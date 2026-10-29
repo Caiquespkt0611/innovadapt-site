@@ -68,7 +68,7 @@ export default function ConversaMel({ className = "" }: { className?: string }) 
 
         {/* o que o sistema fez sozinho com a conversa */}
         <div className="mx-2.5 mb-2.5 rounded-lg border border-[rgba(46,230,168,0.28)] bg-[rgba(46,230,168,0.08)] px-2.5 py-2">
-          <p className="mono text-[0.5rem] uppercase tracking-[0.14em] text-[#2ee6a8]">
+          <p className="mono text-[0.5rem] text-[#2ee6a8]">
             automático
           </p>
           <p className="mt-1 text-[0.5625rem] leading-snug text-[#cfdcf2]">

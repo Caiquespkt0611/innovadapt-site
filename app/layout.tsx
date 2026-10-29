@@ -19,7 +19,7 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-const TITULO = "InnovAdapt | Tecnologia que se adapta ao seu negócio";
+const TITULO = "InnovAdapt | Tecnologia e IA que se adaptam ao seu negócio";
 const DESCRICAO =
   "Sistemas sob medida com inteligência artificial: atendimento no WhatsApp, portal de operações e fiscal, DRE gerencial e consolidação de rede. Construídos por quem escreve o código, no ar em fases.";
 const URL_SITE = "https://innovadapt.com.br";
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     siteName: "InnovAdapt",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "InnovAdapt, tecnologia que se adapta ao seu negócio" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "InnovAdapt, tecnologia e IA que se adaptam ao seu negócio" }],
   },
   twitter: {
     card: "summary_large_image",

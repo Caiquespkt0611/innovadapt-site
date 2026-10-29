@@ -1,12 +1,12 @@
 import Link from "next/link";
-import PainelOperacao from "./telas/PainelOperacao";
+import PainelAoVivo from "./telas/PainelAoVivo";
 import TelaFiscal from "./telas/TelaFiscal";
 import TelaDre from "./telas/TelaDre";
 import TelaRede from "./telas/TelaRede";
 import { capacidades, produtos } from "@/lib/site";
 
 export const TELAS: Record<string, React.ReactNode> = {
-  crm: <PainelOperacao />,
+  crm: <PainelAoVivo />,
   portal: <TelaFiscal />,
   rentabilidade: <TelaDre />,
   rede: <TelaRede />,

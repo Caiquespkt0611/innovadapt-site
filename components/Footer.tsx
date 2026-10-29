@@ -2,57 +2,56 @@ import Link from "next/link";
 import Marca from "./Marca";
 import { contato, linkWhatsapp, MSG_PADRAO, navegacao, produtos } from "@/lib/site";
 
+/** Rodapé navy com o brilho da marca, como a capa do LinkedIn. Vale para todas as páginas. */
 export default function Footer() {
+  const link = "inline-block py-1.5 text-[0.9375rem] text-[#c4d1e8] transition-colors hover:text-white";
   return (
-    <footer className="bg-[#0b1630] text-white">
-      <div className="wrap py-14 md:py-20">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="relative overflow-hidden bg-[var(--navy)] text-white">
+      <span aria-hidden className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-[#8B3AE2] opacity-30 blur-[110px]" />
+      <span aria-hidden className="absolute -bottom-48 left-1/4 h-[26rem] w-[26rem] rounded-full bg-[#0365FE] opacity-30 blur-[110px]" />
+      <div className="wrap relative py-14 md:py-20">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Marca sobreEscuro className="text-[1.125rem]" />
-            <p className="mt-5 max-w-sm text-[0.9375rem] leading-relaxed text-white/70">
-              Tecnologia que se adapta ao seu negócio. Sistemas sob medida com
-              inteligência artificial, feitos por quem escreve o código.
+            <p className="mt-5 max-w-sm text-[1.25rem] font-semibold leading-snug tracking-[-0.015em]">
+              Tecnologia e IA que se <span className="degrade">adaptam ao seu negócio.</span>
             </p>
           </div>
 
-          <nav aria-label="Produtos">
-            <p className="text-[0.8125rem] font-semibold text-white/50">Produtos</p>
-            <ul className="mt-4 space-y-1">
+          <nav aria-label="Soluções">
+            <p className="text-[0.875rem] font-semibold text-white">Soluções</p>
+            <ul className="mt-3">
               {produtos.map((p) => (
                 <li key={p.slug}>
-                  <Link href={`/${p.slug}`} className="inline-block py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
-                    {p.curto}
-                  </Link>
+                  <Link href={`/${p.slug}`} className={link}>{p.curto}</Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           <nav aria-label="Navegação do rodapé">
-            <p className="text-[0.8125rem] font-semibold text-white/50">Empresa</p>
-            <ul className="mt-4 space-y-1">
+            <p className="text-[0.875rem] font-semibold text-white">Empresa</p>
+            <ul className="mt-3">
               {[...navegacao, { label: "Perguntas", href: "/#faq" }].map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="inline-block py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
-                    {item.label}
-                  </a>
+                  <a href={item.href} className={link}>{item.label}</a>
                 </li>
               ))}
             </ul>
           </nav>
 
           <div>
-            <p className="text-[0.8125rem] font-semibold text-white/50">Contato</p>
-            <ul className="mt-4 space-y-1">
+            <p className="text-[0.875rem] font-semibold text-white">Contato</p>
+            <ul className="mt-3">
               {contato.whatsapp && (
                 <li>
-                  <a href={linkWhatsapp(MSG_PADRAO)} target="_blank" rel="noopener" className="inline-block py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
-                    WhatsApp (11) 98266-7293
+                  <a href={linkWhatsapp(MSG_PADRAO)} target="_blank" rel="noopener" className={link}>
+                    WhatsApp <span className="whitespace-nowrap">(11) 98266-7293</span>
                   </a>
                 </li>
               )}
               <li>
-                <a href={`mailto:${contato.email}`} className="inline-block break-all py-1.5 text-[0.9375rem] text-white/80 transition-colors hover:text-white">
+                <a href={`mailto:${contato.email}`} className={`${link} [overflow-wrap:anywhere]`}>
                   {contato.email}
                 </a>
               </li>
@@ -60,10 +59,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[0.8125rem] text-white/50 md:flex-row md:items-center md:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 text-[0.8125rem] text-[#8ea0bf] md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} InnovAdapt · {contato.razaoSocial} · CNPJ{" "}
-            <span className="mono">{contato.cnpj}</span>
+            © {new Date().getFullYear()} InnovAdapt · {contato.razaoSocial} · CNPJ {contato.cnpj}
           </p>
           <p className="flex flex-wrap gap-x-5 gap-y-1">
             <Link href="/privacidade" className="inline-block py-2 transition-colors hover:text-white">

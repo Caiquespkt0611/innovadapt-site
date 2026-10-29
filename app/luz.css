@@ -1,0 +1,503 @@
+/* ======================================================================
+ * Redesenho "luz" (29/10/2026): o topo escolhido pelo Caique (opção 2 com
+ * a Mel da opção 1). Fundo claro com brilhos e linhas de luz, como a capa
+ * do LinkedIn em versão clara. Sem quadriculado e sem blocos colados.
+ * ==================================================================== */
+
+/* ---------- fundo de luz ---------- */
+.luz-fundo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.luz-orbe {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  animation: luz-vagar 14s ease-in-out infinite alternate;
+}
+@keyframes luz-vagar {
+  to {
+    transform: translate(80px, 60px) scale(1.15);
+  }
+}
+.luz-linhas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.luz-linhas path {
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 6 14;
+  animation: luz-correr 18s linear infinite;
+}
+.luz-linhas path:nth-of-type(2) {
+  animation-duration: 24s;
+}
+.luz-linhas path:nth-of-type(3) {
+  animation-duration: 30s;
+}
+@keyframes luz-correr {
+  to {
+    stroke-dashoffset: -400;
+  }
+}
+.luz-ponto {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: luz-boia 7s ease-in-out infinite;
+}
+@keyframes luz-boia {
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+/* ---------- tipografia ---------- */
+.degrade {
+  background: linear-gradient(100deg, #0365fe, #8b3ae2 60%, #04cdfb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.h-secao {
+  font-size: clamp(2rem, 4.2vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  color: var(--tinta);
+}
+.p-secao {
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--tinta-2);
+  text-wrap: pretty;
+}
+.cartao-luz {
+  background: #fff;
+  border: 1px solid #e6ecf5;
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(9, 20, 38, 0.04), 0 18px 40px -28px rgba(9, 20, 38, 0.25);
+}
+
+/* ---------- a cena do topo ---------- */
+.cena-3d {
+  perspective: 2000px;
+}
+@media (min-width: 768px) {
+  .cena-giro {
+    transform: rotateX(14deg);
+    transform-origin: 50% 100%;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cena-giro {
+    animation: cena-subir 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .cena-flutua {
+    animation: cena-entra 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both,
+      luz-boia 6s ease-in-out 1.8s infinite;
+  }
+  .cena-flutua-2 {
+    animation: cena-entra 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.9s both,
+      luz-boia 6s ease-in-out -3s infinite;
+  }
+}
+@keyframes cena-subir {
+  from {
+    translate: 0 70px;
+    opacity: 0;
+  }
+}
+@keyframes cena-entra {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+  }
+}
+
+/* As partes de cada seção sobem ao entrar na tela. Sem suporte, já estão lá. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .revela {
+      animation: revelar linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+@keyframes revelar {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+}
+
+/* ---------- faixa que corre ---------- */
+@keyframes esteira-correr {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.esteira {
+  display: flex;
+  width: max-content;
+  animation: esteira-correr 40s linear infinite;
+}
+.esteira-caixa:hover .esteira {
+  animation-play-state: paused;
+}
+
+/* ---------- painel ao vivo (o CRM de verdade) ---------- */
+.pn {
+  --pn-fundo: #0a1528;
+  --pn-sup: #0e1d36;
+  --pn-sup2: #13264a;
+  --pn-t1: #f1f5fc;
+  --pn-t2: #a9b8d3;
+  --pn-t3: #7487a8;
+  --pn-bom: #2fd39a;
+  container-type: inline-size;
+  color: var(--pn-t1);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+}
+.pn-app {
+  display: grid;
+  grid-template-columns: 1fr;
+  background: var(--pn-fundo);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(148, 178, 230, 0.14);
+}
+.pn-lado {
+  display: none;
+  background: #081120;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0;
+}
+.pn-logo {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 14px;
+}
+.pn-ico {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  color: var(--pn-t3);
+}
+.pn-ico.on {
+  background: var(--pn-sup2);
+  color: var(--pn-t1);
+}
+.pn-ico svg {
+  width: 19px;
+  height: 19px;
+}
+.pn-main {
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.pn-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.pn-h2 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.pn-h3 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pn-sub {
+  font-size: 12.5px;
+  color: var(--pn-t2);
+  margin-top: 2px;
+}
+.pn-topo-dir {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.pn-vivo,
+.pn-ia {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--pn-t2);
+  white-space: nowrap;
+}
+.pn-vivo i,
+.pn-ia i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pn-bom);
+  box-shadow: 0 0 0 4px rgba(47, 211, 154, 0.16);
+}
+.pn-ia {
+  color: #a974f0;
+  font-weight: 600;
+  font-size: 12px;
+}
+.pn-ia i {
+  background: #a974f0;
+  box-shadow: none;
+  width: 7px;
+  height: 7px;
+}
+.pn-seg {
+  display: none;
+  background: var(--pn-sup);
+  border-radius: 10px;
+  padding: 3px;
+}
+.pn-seg span {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--pn-t2);
+}
+.pn-seg .on {
+  background: var(--pn-sup2);
+  color: var(--pn-t1);
+}
+.pn-kpis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.pn-kpi {
+  background: var(--pn-sup);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  gap: 4px;
+}
+.pn-kpi-r {
+  font-size: 12.5px;
+  color: var(--pn-t2);
+}
+.pn-kpi-v {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.pn-kpi-v em {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--pn-t2);
+  font-weight: 500;
+  margin-left: 2px;
+}
+.pn-kpi-d {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 6px;
+  color: var(--pn-bom);
+}
+.pn-spark {
+  display: none;
+  width: 84px;
+  height: 34px;
+}
+.pn-grade {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+.pn-card {
+  background: var(--pn-sup);
+  border-radius: 14px;
+  padding: 14px;
+  min-width: 0;
+  position: relative;
+}
+.pn-card-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+}
+.pn-leg {
+  display: flex;
+  gap: 14px;
+  font-size: 12.5px;
+  color: var(--pn-t2);
+}
+.pn-leg span::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 3px;
+  border-radius: 2px;
+  margin-right: 6px;
+  vertical-align: middle;
+  background: var(--c);
+}
+.pn-grafico {
+  position: relative;
+  height: 190px;
+  margin-top: 10px;
+  touch-action: pan-y;
+}
+.pn-grafico svg {
+  display: block;
+  overflow: visible;
+}
+.pn-dica {
+  position: absolute;
+  top: 6px;
+  pointer-events: none;
+  background: #1b3157;
+  border-radius: 10px;
+  padding: 8px 11px;
+  font-size: 12.5px;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+}
+.pn-dica b {
+  display: block;
+  font-size: 12px;
+  color: var(--pn-t2);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.pn-canais {
+  margin-top: 4px;
+}
+.pn-lin {
+  display: grid;
+  grid-template-columns: 84px 1fr 30px;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+  margin-top: 9px;
+}
+.pn-t {
+  color: var(--pn-t2);
+}
+.pn-v {
+  text-align: right;
+  font-weight: 600;
+}
+.pn-barra {
+  height: 8px;
+  background: rgba(148, 178, 230, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.pn-barra i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: #4c8dff;
+}
+.pn-feed {
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+.pn-feed li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--pn-t2);
+}
+.pn-feed time {
+  color: var(--pn-t3);
+}
+.pn-feed strong {
+  color: var(--pn-t1);
+  font-weight: 600;
+}
+
+/* Do tamanho de um notebook para cima: o painel inteiro, como no protótipo. */
+@container (min-width: 760px) {
+  .pn-app {
+    grid-template-columns: 64px 1fr;
+  }
+  .pn-lado {
+    display: flex;
+  }
+  .pn-main {
+    padding: 20px 24px;
+    gap: 14px;
+  }
+  .pn-h2 {
+    font-size: 19px;
+  }
+  .pn-seg {
+    display: flex;
+  }
+  .pn-kpis {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .pn-kpi {
+    padding: 14px 16px;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+  .pn-kpi-r {
+    grid-column: 1 / -1;
+    font-size: 13px;
+  }
+  .pn-kpi-v {
+    font-size: 30px;
+  }
+  .pn-spark {
+    display: block;
+  }
+  .pn-grade {
+    grid-template-columns: 1.55fr 1fr;
+    gap: 12px;
+  }
+  .pn-serie {
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+  }
+  .pn-serie .pn-grafico {
+    flex: 1;
+    min-height: 250px;
+  }
+  .pn-card {
+    padding: 14px 16px;
+  }
+}
+
+/* troca de tela na vitrine */
+@keyframes troca-vitrine {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+}
+.troca-vitrine {
+  animation: troca-vitrine 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
