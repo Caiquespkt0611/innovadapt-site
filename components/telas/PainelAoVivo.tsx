@@ -19,12 +19,69 @@ const KPIS = [
   { r: "Conversão em venda", v: "12,3", u: "%", d: "▲ 2,1 p.p.", s: [9.6, 10, 10.4, 10.2, 11, 11.5, 12, 12.3] },
   { r: "Vendas fechadas", v: "43", u: "", d: "▲ 9 a mais", s: [26, 30, 29, 33, 35, 38, 40, 43] },
 ];
-const FEED = [
-  ["14:06", <><strong>Rodrigo</strong> qualificado, moto na troca, passado ao <strong>Rafael</strong></>],
-  ["13:52", <><strong>Ana</strong> agendou test ride para sábado, 10h</>],
-  ["13:40", <><strong>Carlos</strong> pediu simulação em 48x, proposta enviada</>],
-  ["13:31", <>Follow-up cobrado da <strong>Júlia</strong>, 2 dias sem resposta</>],
-] as const;
+// O que a Mel faz: os quatro primeiros aparecem ao abrir; os outros vão
+// chegando um a um, como no painel de verdade.
+const ACOES: React.ReactNode[] = [
+  <><strong>Rodrigo</strong> qualificado, moto na troca, passado ao <strong>Rafael</strong></>,
+  <><strong>Ana</strong> agendou test ride para sábado, 10h</>,
+  <><strong>Carlos</strong> pediu simulação em 48x, proposta enviada</>,
+  <>Follow-up cobrado da <strong>Júlia</strong>, 2 dias sem resposta</>,
+  <><strong>Marcos</strong> respondido em 21 s, veio do iCarros</>,
+  <><strong>Patrícia</strong> quer revisão dos 10 mil, horário marcado</>,
+  <>Lead da WebMotors sem resposta há 5 min, cobrado do <strong>Diego</strong></>,
+  <><strong>Fernanda</strong> mandou foto da moto para avaliação, ficha aberta</>,
+];
+const HORA_INICIAL = 14 * 60 + 6;
+const hora = (m: number) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+
+function querMovimento() {
+  return typeof window !== "undefined" && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+/** Número que sobe contando ao abrir. Aceita vírgula (12,3). */
+function Conta({ valor }: { valor: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !querMovimento()) return;
+    const alvo = Number(valor.replace(",", "."));
+    const casas = valor.includes(",") ? valor.split(",")[1].length : 0;
+    let q = 0;
+    const ini = performance.now() + 500;
+    const passo = (t: number) => {
+      const k = Math.max(0, Math.min(1, (t - ini) / 1400));
+      const v = alvo * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toFixed(casas).replace(".", ",");
+      if (k < 1) q = requestAnimationFrame(passo);
+    };
+    q = requestAnimationFrame(passo);
+    return () => cancelAnimationFrame(q);
+  }, [valor]);
+  return <span ref={ref}>{valor}</span>;
+}
+
+function FeedMel() {
+  const [itens, setItens] = useState(() => ACOES.slice(0, 4).map((a, i) => ({ id: i, a, h: HORA_INICIAL - i * 11 })));
+  useEffect(() => {
+    if (!querMovimento()) return;
+    let n = 4;
+    const t = setInterval(() => {
+      setItens((v) => [{ id: n, a: ACOES[n % ACOES.length], h: v[0].h + 2 }, ...v.slice(0, 3)]);
+      n += 1;
+    }, 3600);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <ul className="pn-feed" aria-live="off">
+      {itens.map((x, i) => (
+        <li key={x.id} className={i === 0 && x.id >= 4 ? "pn-novo" : ""}>
+          <time>{hora(x.h)}</time>
+          <span>{x.a}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 function Sparkline({ valores }: { valores: number[] }) {
   const mn = Math.min(...valores);
@@ -83,9 +140,9 @@ function GraficoDias() {
             {k === 0 ? "1 out" : k === 4 ? "30 out" : i + 1}
           </text>
         ))}
-        <path d={`${linha(DIAS)}L${x(DIAS.length - 1)},${y(0)}L${x(0)},${y(0)}Z`} fill="url(#pn-area)" />
-        <path d={linha(DIAS)} fill="none" stroke="#0DA2B8" strokeWidth="2" strokeLinejoin="round" />
-        <path d={linha(IA)} fill="none" stroke="#A974F0" strokeWidth="2" strokeLinejoin="round" />
+        <path className="pn-area-entra" d={`${linha(DIAS)}L${x(DIAS.length - 1)},${y(0)}L${x(0)},${y(0)}Z`} fill="url(#pn-area)" />
+        <path className="pn-desenha" pathLength={1} d={linha(DIAS)} fill="none" stroke="#0DA2B8" strokeWidth="2" strokeLinejoin="round" />
+        <path className="pn-desenha pn-desenha-2" pathLength={1} d={linha(IA)} fill="none" stroke="#A974F0" strokeWidth="2" strokeLinejoin="round" />
         {foco !== null && (
           <>
             <line x1={x(foco)} x2={x(foco)} y1={T} y2={H - B} stroke="rgba(241,245,252,.35)" />
@@ -152,7 +209,7 @@ export default function PainelAoVivo({ className = "" }: { className?: string })
                 <p className="pn-kpi-r">{k.r}</p>
                 <div>
                   <p className="pn-kpi-v">
-                    {k.v}
+                    <Conta valor={k.v} />
                     {k.u && <em>{k.u}</em>}
                   </p>
                   <p className="pn-kpi-d">{k.d}</p>
@@ -180,10 +237,10 @@ export default function PainelAoVivo({ className = "" }: { className?: string })
             <div className="pn-card">
               <p className="pn-h3">Origem dos leads</p>
               <div className="pn-canais">
-                {CANAIS.map(([n, v]) => (
+                {CANAIS.map(([n, v], i) => (
                   <div key={n} className="pn-lin">
                     <span className="pn-t">{n}</span>
-                    <span className="pn-barra"><i style={{ width: `${(v / maior) * 100}%` }} /></span>
+                    <span className="pn-barra"><i style={{ width: `${(v / maior) * 100}%`, animationDelay: `${0.7 + i * 0.09}s` }} /></span>
                     <span className="pn-v">{v}</span>
                   </div>
                 ))}
@@ -195,14 +252,7 @@ export default function PainelAoVivo({ className = "" }: { className?: string })
                 <p className="pn-h3">O que a Mel fez agora</p>
                 <span className="pn-ia"><i />IA ativa</span>
               </div>
-              <ul className="pn-feed">
-                {FEED.map(([h, t]) => (
-                  <li key={h}>
-                    <time>{h}</time>
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
+              <FeedMel />
             </div>
           </div>
         </div>

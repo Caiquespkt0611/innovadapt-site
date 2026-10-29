@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const DURACAO = 6500;
 import Link from "next/link";
 
 export type Solucao = {
@@ -20,10 +22,30 @@ export type Solucao = {
  */
 export default function Vitrine({ solucoes }: { solucoes: Solucao[] }) {
   const [ativa, setAtiva] = useState(0);
+  // Troca sozinha enquanto a seção está na tela; parou de trocar quando a
+  // pessoa clica (aí quem manda é ela) ou pede menos movimento.
+  const [auto, setAuto] = useState(true);
+  const [naTela, setNaTela] = useState(false);
+  const caixa = useRef<HTMLDivElement>(null);
   const s = solucoes[ativa];
 
+  useEffect(() => {
+    const calmo = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const el = caixa.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => setNaTela(e.isIntersecting && !calmo), { threshold: 0.35 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!auto || !naTela) return;
+    const t = setTimeout(() => setAtiva((v) => (v + 1) % solucoes.length), DURACAO);
+    return () => clearTimeout(t);
+  }, [auto, naTela, ativa, solucoes.length]);
+
   return (
-    <div className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
+    <div ref={caixa} className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
       <div role="tablist" aria-label="Soluções" className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-1 [scrollbar-width:none] lg:mx-0 lg:flex-col lg:overflow-visible lg:px-0">
         {solucoes.map((x, i) => {
           const on = i === ativa;
@@ -35,8 +57,11 @@ export default function Vitrine({ solucoes }: { solucoes: Solucao[] }) {
               id={`aba-${x.id}`}
               aria-selected={on}
               aria-controls="vitrine-tela"
-              onClick={() => setAtiva(i)}
-              className={`flex-none rounded-2xl text-left transition-[background,box-shadow,border-color] duration-200 lg:w-full ${
+              onClick={() => {
+                setAtiva(i);
+                setAuto(false);
+              }}
+              className={`relative flex-none overflow-hidden rounded-2xl text-left transition-[background,box-shadow,border-color] duration-200 lg:w-full ${
                 on
                   ? "border border-[#d6e2f7] bg-white px-4 py-3 shadow-[0_18px_40px_-26px_rgba(3,101,254,0.55)] lg:p-6"
                   : "border border-transparent px-4 py-3 hover:bg-white/70 lg:px-6 lg:py-5"
@@ -47,6 +72,9 @@ export default function Vitrine({ solucoes }: { solucoes: Solucao[] }) {
                 <span className="hidden lg:inline">{x.titulo}</span>
               </span>
               <span className="mt-1 hidden text-[0.9375rem] text-[var(--tinta-2)] lg:block">{x.paraQuem}</span>
+              {on && auto && naTela && (
+                <span key={ativa} aria-hidden className="vitrine-progresso absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-[#0365FE] via-[#8B3AE2] to-[#04CDFB]" style={{ "--dur": `${DURACAO}ms` } as React.CSSProperties} />
+              )}
               {on && (
                 <span className="hidden lg:block">
                   <span className="mt-4 block text-[1rem] leading-relaxed text-[var(--tinta)]">{x.resumo}</span>

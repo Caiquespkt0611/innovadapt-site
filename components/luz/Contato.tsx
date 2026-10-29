@@ -20,7 +20,7 @@ export default function Contato() {
         <div className="relative grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="revela">
             <h2 id="titulo-contato" className="text-[clamp(2.25rem,4.6vw,4rem)] font-bold leading-[1] tracking-[-0.045em]">
-              Comece pelo diagnóstico, <span className="degrade">não pela proposta.</span>
+              Comece pelo diagnóstico, <span className="degrade degrade-vivo">não pela proposta.</span>
             </h2>
             <p className="mt-6 max-w-xl text-[1.125rem] leading-relaxed text-[#c4d1e8]">
               A primeira conversa é sobre a sua operação: onde o cliente se perde,
@@ -49,7 +49,7 @@ export default function Contato() {
             </div>
           </div>
 
-          <div className="revela rounded-[24px] bg-white p-5 text-[var(--tinta)] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] md:p-8">
+          <div style={{ "--i": 2 } as React.CSSProperties} className="revela rounded-[24px] bg-white p-5 text-[var(--tinta)] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] md:p-8">
             <h3 className="mb-5 text-[1.25rem] font-bold tracking-[-0.02em]">Pedir o diagnóstico</h3>
             <FormularioContato assuntoInicial={ASSUNTOS[ASSUNTOS.length - 1]} />
           </div>

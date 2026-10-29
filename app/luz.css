@@ -125,21 +125,18 @@
   }
 }
 
-/* As partes de cada seção sobem ao entrar na tela. Sem suporte, já estão lá. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .revela {
-      animation: revelar linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 35%;
-    }
-  }
+/* As partes de cada seção sobem ao entrar na tela, em sequência (--i).
+   Quem esconde é o Movimento.tsx, e só o que ainda está abaixo da tela:
+   sem JS, ou com menos movimento, tudo já aparece. */
+.revela {
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), translate 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--i, 0) * 90ms);
 }
-@keyframes revelar {
-  from {
-    opacity: 0;
-    translate: 0 32px;
-  }
+.revela[data-espera] {
+  opacity: 0;
+  translate: 0 40px;
+  scale: 0.98;
 }
 
 /* ---------- faixa que corre ---------- */
@@ -500,4 +497,199 @@
 }
 .troca-vitrine {
   animation: troca-vitrine 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ======================================================================
+ * Movimento (29/10/2026, pedido do Caique: "senti falta de animações")
+ * ==================================================================== */
+@media (prefers-reduced-motion: no-preference) {
+  /* título: cada palavra entra desfocada e sobe */
+  .palavra {
+    display: inline-block;
+    animation: palavra-entra 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(0.08s + var(--p) * 70ms);
+  }
+  /* o degradê passa pela frase como um brilho, devagar */
+  .degrade-vivo {
+    background-size: 220% 100%;
+    animation: degrade-anda 7s ease-in-out infinite alternate;
+  }
+  .sobe-depois {
+    animation: palavra-entra 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--d, 0.6s);
+  }
+
+  /* conversa da Mel chegando */
+  .msg-entra {
+    animation: msg-chega 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .msg-digita {
+    animation: msg-digitando 0.9s ease both;
+  }
+  .ponto-digita {
+    animation: ponto-pula 0.9s ease-in-out infinite;
+  }
+
+  /* painel: linhas se desenham, área e barras crescem, ação nova chega */
+  .pn-desenha {
+    stroke-dasharray: 1;
+    animation: pn-desenhar 1.8s cubic-bezier(0.65, 0, 0.35, 1) 0.6s both;
+  }
+  .pn-desenha-2 {
+    animation-delay: 0.85s;
+  }
+  .pn-area-entra {
+    animation: pn-aparece 1.2s ease 1.4s both;
+  }
+  .pn-barra i {
+    transform-origin: left;
+    animation: pn-cresce 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .pn-novo {
+    animation: pn-chega 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .pn-novo time {
+    color: #2fd39a;
+  }
+  .pn-vivo i {
+    animation: pn-pulsa 2s ease-out infinite;
+  }
+
+  /* cartões que levantam no mouse */
+  /* longhands: a entrada (opacity, translate, scale) mantém o atraso da .revela */
+  .cartao-luz,
+  .levanta {
+    transition-property: opacity, translate, scale, transform, box-shadow;
+    transition-duration: 0.9s, 0.9s, 0.9s, 0.35s, 0.35s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .cartao-luz:hover,
+  .levanta:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 1px 2px rgba(9, 20, 38, 0.04), 0 30px 60px -30px rgba(3, 101, 254, 0.35);
+  }
+
+  /* botão azul com um brilho que passa no mouse */
+  .btn-azul {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-azul::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+    translate: -120% 0;
+    transition: translate 0.7s ease;
+  }
+  .btn-azul:hover::after {
+    translate: 120% 0;
+  }
+
+  /* linha do método que se desenha ao aparecer */
+  .linha-metodo {
+    transform-origin: left;
+    transition: scale 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.3s;
+  }
+  .linha-metodo[data-espera] {
+    scale: 0 1;
+  }
+}
+
+/* barra de progresso da vitrine (troca sozinha) */
+.vitrine-progresso {
+  transform-origin: left;
+  animation: vitrine-enche var(--dur, 6s) linear both;
+}
+@keyframes vitrine-enche {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes palavra-entra {
+  from {
+    opacity: 0;
+    translate: 0 0.35em;
+    filter: blur(10px);
+  }
+}
+@keyframes degrade-anda {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+@keyframes msg-chega {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+    scale: 0.96;
+  }
+}
+@keyframes msg-digitando {
+  0% {
+    opacity: 0;
+  }
+  15%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes ponto-pula {
+  0%,
+  60%,
+  100% {
+    translate: 0 0;
+    opacity: 0.5;
+  }
+  30% {
+    translate: 0 -3px;
+    opacity: 1;
+  }
+}
+.ponto-digita {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+}
+@keyframes pn-desenhar {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes pn-aparece {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes pn-cresce {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes pn-chega {
+  from {
+    opacity: 0;
+    translate: 0 -10px;
+    background: rgba(47, 211, 154, 0.12);
+  }
+}
+@keyframes pn-pulsa {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 211, 154, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 9px rgba(47, 211, 154, 0);
+  }
 }

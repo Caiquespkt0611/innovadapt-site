@@ -39,8 +39,8 @@ export default function Equipe() {
             sistema custa uma fração do primeiro.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {engenharia.principios.map((p) => (
-              <div key={p.titulo} className="cartao-luz p-5 md:p-6">
+            {engenharia.principios.map((p, i) => (
+              <div key={p.titulo} className="cartao-luz revela p-5 md:p-6" style={{ "--i": i } as React.CSSProperties}>
                 <h3 className="text-[1.0625rem] font-bold leading-snug text-[var(--tinta)]">{p.titulo}</h3>
                 <p className="mt-2 text-[0.9375rem] leading-relaxed text-[var(--tinta-2)]">{p.texto}</p>
               </div>

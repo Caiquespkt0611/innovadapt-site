@@ -14,7 +14,7 @@ export default function Diferenca() {
       <div className="wrap relative z-10">
         <div className="revela mx-auto max-w-3xl text-center">
           <h2 id="titulo-diferenca" className="h-secao">
-            Painel mostra o que aconteceu. <span className="degrade">Sistema faz acontecer.</span>
+            Painel mostra o que aconteceu. <span className="degrade degrade-vivo">Sistema faz acontecer.</span>
           </h2>
           <p className="p-secao mx-auto mt-5 max-w-2xl">
             Dashboard bonito se compra em qualquer lugar. O gargalo da operação é o
@@ -36,7 +36,7 @@ export default function Diferenca() {
             </dl>
           </div>
 
-          <div className="revela rounded-[24px] bg-gradient-to-br from-[#0365FE] via-[#8B3AE2] to-[#04CDFB] p-[1.5px] shadow-[0_40px_80px_-40px_rgba(3,101,254,0.6)]">
+          <div style={{ "--i": 1 } as React.CSSProperties} className="revela rounded-[24px] bg-gradient-to-br from-[#0365FE] via-[#8B3AE2] to-[#04CDFB] p-[1.5px] shadow-[0_40px_80px_-40px_rgba(3,101,254,0.6)]">
             <div className="h-full rounded-[23px] bg-white p-6 md:p-9">
               <p className="degrade text-[1.125rem] font-bold">{comparativo.colunas[1]}</p>
               <dl className="mt-6 grid gap-5">
@@ -52,8 +52,8 @@ export default function Diferenca() {
         </div>
 
         <dl className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 md:mt-24 lg:grid-cols-4">
-          {provas.map((p) => (
-            <div key={p.label} className="revela text-center">
+          {provas.map((p, i) => (
+            <div key={p.label} className="revela text-center" style={{ "--i": i } as React.CSSProperties}>
               <dt className="sr-only">{p.label}</dt>
               <dd>
                 <span className="degrade block text-[clamp(3rem,6vw,5rem)] font-bold leading-none tracking-[-0.05em]">

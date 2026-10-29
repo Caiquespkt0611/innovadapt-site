@@ -10,6 +10,7 @@ import Perguntas from "@/components/luz/Perguntas";
 import Contato from "@/components/luz/Contato";
 import Footer from "@/components/Footer";
 import BarraMobile from "@/components/BarraMobile";
+import Movimento from "@/components/luz/Movimento";
 
 // Redesenho "luz" (29/10/2026). As seções alternam branco e o céu claro
 // (#f7f9fc); a luz de cor aparece no topo, na diferença e no contato.
@@ -30,6 +31,7 @@ export default function Home() {
       </main>
       <Footer />
       <BarraMobile />
+      <Movimento />
     </>
   );
 }

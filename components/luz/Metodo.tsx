@@ -19,10 +19,10 @@ export default function Metodo() {
         <ol className="relative mt-12 grid gap-5 md:mt-16 md:grid-cols-2 xl:grid-cols-4">
           <span
             aria-hidden
-            className="absolute left-8 right-8 top-[2.15rem] hidden h-[2px] bg-gradient-to-r from-[#0365FE] via-[#8B3AE2] to-[#04CDFB] opacity-40 xl:block"
+            className="linha-metodo absolute left-8 right-8 top-[2.15rem] hidden h-[2px] bg-gradient-to-r from-[#0365FE] via-[#8B3AE2] to-[#04CDFB] opacity-40 xl:block"
           />
           {metodo.map((m, i) => (
-            <li key={m.titulo} className="cartao-luz revela relative flex flex-col p-6 md:p-7">
+            <li key={m.titulo} className="cartao-luz revela relative flex flex-col p-6 md:p-7" style={{ "--i": i } as React.CSSProperties}>
               <span className="relative grid h-11 w-11 place-items-center rounded-full bg-[var(--azul)] text-[1rem] font-bold text-white shadow-[0_10px_24px_-10px_rgba(3,101,254,0.8)]">
                 {i + 1}
               </span>

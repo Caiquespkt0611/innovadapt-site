@@ -18,11 +18,11 @@ export default function Perguntas() {
           </p>
         </div>
 
-        <ul className="revela grid gap-3">
+        <ul className="grid gap-3">
           {faq.map((f, i) => {
             const on = aberta === i;
             return (
-              <li key={f.p} className={`overflow-hidden rounded-2xl bg-white transition-shadow ${on ? "shadow-[0_18px_40px_-26px_rgba(9,20,38,0.35)]" : ""}`}>
+              <li key={f.p} style={{ "--i": i } as React.CSSProperties} className={`revela overflow-hidden rounded-2xl bg-white transition-shadow ${on ? "shadow-[0_18px_40px_-26px_rgba(9,20,38,0.35)]" : ""}`}>
                 <button
                   type="button"
                   aria-expanded={on}

@@ -17,8 +17,8 @@ export default function Projetos() {
         </div>
 
         <div className="mt-12 grid gap-6 md:mt-16 lg:grid-cols-2">
-          {cases.map((c) => (
-            <article key={c.projeto} className="cartao-luz revela flex flex-col p-6 md:p-9">
+          {cases.map((c, i) => (
+            <article key={c.projeto} className="cartao-luz revela flex flex-col p-6 md:p-9" style={{ "--i": i } as React.CSSProperties}>
               <p className="text-[0.9375rem] font-semibold text-[var(--azul)]">{c.prazo}</p>
               <h3 className="mt-2 text-[clamp(1.5rem,2.2vw,1.875rem)] font-bold leading-[1.15] tracking-[-0.025em] text-[var(--tinta)]">
                 {c.projeto}

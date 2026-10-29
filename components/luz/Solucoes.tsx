@@ -9,7 +9,7 @@ import { capacidades, produtos } from "@/lib/site";
 const TELAS: Record<string, React.ReactNode> = {
   crm: (
     <div className="flex justify-center py-2">
-      <ConversaMel className="!w-[260px] sm:!w-[290px]" />
+      <ConversaMel animada className="!w-[260px] sm:!w-[290px]" />
     </div>
   ),
   portal: <TelaFiscal />,
@@ -62,8 +62,8 @@ export default function Solucoes() {
         <Vitrine solucoes={solucoes} />
 
         <div className="mt-6 grid gap-6 md:mt-10 md:grid-cols-2">
-          {extras.map((c) => (
-            <div key={c.id} className="cartao-luz revela p-6 md:p-8">
+          {extras.map((c, i) => (
+            <div key={c.id} className="cartao-luz revela p-6 md:p-8" style={{ "--i": i } as React.CSSProperties}>
               <h3 className="text-[1.375rem] font-bold tracking-[-0.02em] text-[var(--tinta)]">{c.titulo}</h3>
               <p className="mt-3 text-[1rem] leading-relaxed text-[var(--tinta-2)]">{c.resumo}</p>
               <Lista itens={c.itens.slice(0, 4)} />
