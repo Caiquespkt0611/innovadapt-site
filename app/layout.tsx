@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import AvisoCookies from "@/components/AvisoCookies";
 import "./globals.css";
 
 // Instrument Sans desde 02/10/2026, no redesenho em fundo branco: grotesca
@@ -89,6 +90,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(dadosEstruturados) }}
         />
         {children}
+        <AvisoCookies />
       </body>
     </html>
   );

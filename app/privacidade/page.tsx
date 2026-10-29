@@ -92,6 +92,14 @@ export default function Privacidade() {
                 uma proposta comercial. Base legal: execução de procedimentos
                 preliminares a contrato e legítimo interesse.
               </p>
+              <p>
+                Cookies: o site usa só cookies essenciais, para funcionar e lembrar
+                que você já viu o aviso de cookies. Ao entrar, aparece um aviso e,
+                quando você toca em Aceitar, a escolha fica salva no seu navegador.
+                Se um dia passarmos a usar cookies de medição ou de anúncio, eles só
+                serão ativados depois do seu aceite. Para ver o aviso de novo, apague
+                os dados do site nas configurações do navegador.
+              </p>
             </section>
 
             <section>
