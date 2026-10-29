@@ -42,10 +42,10 @@ export default function AvisoCookies() {
       role="dialog"
       aria-live="polite"
       aria-label="Aviso de cookies"
-      className="fixed inset-x-4 bottom-[calc(5.5rem+env(safe-area-inset-bottom))] z-50 mx-auto flex max-w-xl flex-col gap-3 rounded-2xl border border-[var(--linha)] bg-white p-4 shadow-[0_18px_50px_-18px_rgba(11,22,48,0.45)] sm:flex-row sm:items-center lg:bottom-6"
+      className="fixed inset-x-3 bottom-[calc(0.75rem+env(safe-area-inset-bottom))] z-50 mx-auto flex max-w-xl items-center gap-3 rounded-2xl border border-[var(--linha)] bg-white p-3 pl-4 shadow-[0_18px_50px_-18px_rgba(11,22,48,0.45)] lg:bottom-6"
     >
-      <p className="text-[15px] leading-snug text-[var(--tinta-2)]">
-        Usamos cookies para o site funcionar e melhorar sua experiência.{" "}
+      <p className="text-[13px] leading-snug text-[var(--tinta-2)] sm:text-[15px]">
+        Usamos cookies para o site funcionar.{" "}
         <Link href="/privacidade" className="font-semibold text-[var(--azul)] underline underline-offset-2">
           Política de privacidade
         </Link>

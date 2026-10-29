@@ -47,9 +47,10 @@ function Conta({ valor }: { valor: string }) {
     const alvo = Number(valor.replace(",", "."));
     const casas = valor.includes(",") ? valor.split(",")[1].length : 0;
     let q = 0;
-    const ini = performance.now() + 500;
+    // Começa na hora e dura 1 s: com espera, celular lento mostrava "0" parado.
+    const ini = performance.now();
     const passo = (t: number) => {
-      const k = Math.max(0, Math.min(1, (t - ini) / 1400));
+      const k = Math.max(0, Math.min(1, (t - ini) / 1000));
       const v = alvo * (1 - Math.pow(1 - k, 3));
       el.textContent = v.toFixed(casas).replace(".", ",");
       if (k < 1) q = requestAnimationFrame(passo);
