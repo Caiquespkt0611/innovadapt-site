@@ -7,8 +7,8 @@ export default function Footer() {
   const link = "inline-block py-1.5 text-[0.9375rem] text-[#c4d1e8] transition-colors hover:text-white";
   return (
     <footer className="relative overflow-hidden bg-[var(--navy)] text-white">
-      <span aria-hidden className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full bg-[#8B3AE2] opacity-30 blur-[110px]" />
-      <span aria-hidden className="absolute -bottom-48 left-1/4 h-[26rem] w-[26rem] rounded-full bg-[#0365FE] opacity-30 blur-[110px]" />
+      <span aria-hidden className="absolute -right-40 -top-40 h-[30rem] w-[30rem] rounded-full opacity-30" style={{ background: "radial-gradient(closest-side, #8B3AE2, transparent)" }} />
+      <span aria-hidden className="absolute -bottom-48 left-1/4 h-[26rem] w-[26rem] rounded-full opacity-30" style={{ background: "radial-gradient(closest-side, #0365FE, transparent)" }} />
       <div className="wrap relative py-14 md:py-20">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>

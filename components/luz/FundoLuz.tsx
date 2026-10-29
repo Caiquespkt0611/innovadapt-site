@@ -7,9 +7,9 @@ export default function FundoLuz({ intensidade = 1 }: { intensidade?: number }) 
   const o = (v: number) => v * intensidade;
   return (
     <div className="luz-fundo" aria-hidden>
-      <span className="luz-orbe h-[340px] w-[340px] md:h-[620px] md:w-[620px]" style={{ background: "#0365FE", left: "-120px", top: "-160px", opacity: o(0.26) }} />
-      <span className="luz-orbe h-[320px] w-[320px] md:h-[560px] md:w-[560px]" style={{ background: "#8B3AE2", right: "-120px", top: "40px", opacity: o(0.2), animationDelay: "-5s" }} />
-      <span className="luz-orbe h-[300px] w-[300px] md:h-[520px] md:w-[520px]" style={{ background: "#04CDFB", left: "35%", top: "420px", opacity: o(0.22), animationDelay: "-9s" }} />
+      <span className="luz-orbe h-[340px] w-[340px] md:h-[620px] md:w-[620px]" style={{ background: "radial-gradient(closest-side, #0365FE, transparent)", left: "-120px", top: "-160px", opacity: o(0.36) }} />
+      <span className="luz-orbe h-[320px] w-[320px] md:h-[560px] md:w-[560px]" style={{ background: "radial-gradient(closest-side, #8B3AE2, transparent)", right: "-120px", top: "40px", opacity: o(0.3), animationDelay: "-5s" }} />
+      <span className="luz-orbe h-[300px] w-[300px] md:h-[520px] md:w-[520px]" style={{ background: "radial-gradient(closest-side, #04CDFB, transparent)", left: "35%", top: "420px", opacity: o(0.32), animationDelay: "-9s" }} />
       <svg className="luz-linhas" viewBox="0 0 1440 1250" preserveAspectRatio="xMidYMid slice">
         <defs>
           <linearGradient id="luz-traco" x1="0" x2="1">

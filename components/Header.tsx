@@ -32,8 +32,8 @@ export default function Header() {
       <div
         className={`mx-auto flex h-14 max-w-[1320px] items-center justify-between rounded-full border pl-4 pr-2 transition-[background,border-color,box-shadow] duration-300 md:h-16 md:pl-6 ${
           rolou || aberto
-            ? "border-[#e3e9f3] bg-white/90 shadow-[0_12px_30px_-18px_rgba(9,20,38,0.35)] backdrop-blur-xl"
-            : "border-white/60 bg-white/60 backdrop-blur-md"
+            ? "border-[#e3e9f3] bg-white/95 shadow-[0_12px_30px_-18px_rgba(9,20,38,0.35)] lg:backdrop-blur-xl"
+            : "border-white/60 bg-white/85 lg:bg-white/60 lg:backdrop-blur-md"
         }`}
       >
         <Link href="/" className="flex items-center" aria-label="InnovAdapt, início">

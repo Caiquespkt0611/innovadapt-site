@@ -15,8 +15,8 @@
 .luz-orbe {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
   animation: luz-vagar 14s ease-in-out infinite alternate;
+  will-change: transform;
 }
 @keyframes luz-vagar {
   to {
@@ -733,4 +733,22 @@
 /* as palavras do título precisam ser blocos em linha para poder subir */
 .palavra {
   display: inline-block;
+}
+
+/* Celular leve (29/10): o que fica se repetindo para sempre só roda do
+   tablet para cima. No celular os brilhos e as linhas ficam parados, o
+   degradê não anda e o "ao vivo" não pulsa. As entradas continuam. */
+@media (max-width: 767px) {
+  .luz-orbe,
+  .luz-linhas path,
+  .luz-ponto,
+  .degrade-vivo,
+  .pn-vivo i,
+  .ponto-digita {
+    animation: none !important;
+  }
+  .palavra.degrade-vivo {
+    animation: palavra-sobe 0.6s cubic-bezier(0.22, 1, 0.36, 1) both !important;
+    animation-delay: calc(var(--p) * 35ms) !important;
+  }
 }

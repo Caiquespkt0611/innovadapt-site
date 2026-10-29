@@ -1,5 +1,5 @@
 import { contato, linkWhatsapp, MSG_PADRAO } from "@/lib/site";
-import FormularioContato, { ASSUNTOS } from "../FormularioContato";
+import FormularioContato from "../FormularioContato";
 import IconeWhatsapp from "../IconeWhatsapp";
 
 const PASSOS = [
@@ -13,9 +13,9 @@ export default function Contato() {
   return (
     <section id="contato" aria-labelledby="titulo-contato" className="bg-white px-3 py-16 md:px-6 md:py-24">
       <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[32px] bg-[var(--navy)] px-5 py-14 text-white md:px-12 md:py-20">
-        <span aria-hidden className="absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-[#0365FE] opacity-45 blur-[100px]" />
-        <span aria-hidden className="absolute -bottom-40 right-0 h-[30rem] w-[30rem] rounded-full bg-[#8B3AE2] opacity-40 blur-[110px]" />
-        <span aria-hidden className="absolute right-1/3 top-10 h-60 w-60 rounded-full bg-[#04CDFB] opacity-20 blur-[90px]" />
+        <span aria-hidden className="absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full opacity-45" style={{ background: "radial-gradient(closest-side, #0365FE, transparent)" }} />
+        <span aria-hidden className="absolute -bottom-40 right-0 h-[30rem] w-[30rem] rounded-full opacity-40" style={{ background: "radial-gradient(closest-side, #8B3AE2, transparent)" }} />
+        <span aria-hidden className="absolute right-1/3 top-10 h-60 w-60 rounded-full opacity-20" style={{ background: "radial-gradient(closest-side, #04CDFB, transparent)" }} />
 
         <div className="relative grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="revela">
@@ -51,7 +51,8 @@ export default function Contato() {
 
           <div style={{ "--i": 2 } as React.CSSProperties} className="revela rounded-[24px] bg-white p-5 text-[var(--tinta)] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.6)] md:p-8">
             <h3 className="mb-5 text-[1.25rem] font-bold tracking-[-0.02em]">Pedir o diagnóstico</h3>
-            <FormularioContato assuntoInicial={ASSUNTOS[ASSUNTOS.length - 1]} />
+            {/* texto direto: ler a lista ASSUNTOS de um arquivo "use client" aqui no servidor não funciona */}
+            <FormularioContato assuntoInicial="Ainda não sei, quero um diagnóstico" />
           </div>
         </div>
       </div>

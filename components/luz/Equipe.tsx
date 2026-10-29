@@ -7,8 +7,8 @@ export default function Equipe() {
     <section id="engenharia" aria-labelledby="titulo-engenharia" className="bg-white py-20 md:py-32">
       <div className="wrap grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-8">
         <div className="revela relative overflow-hidden rounded-[28px] bg-[var(--navy)] p-7 text-white md:p-10">
-          <span aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#0365FE] opacity-40 blur-[80px]" />
-          <span aria-hidden className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-[#8B3AE2] opacity-35 blur-[80px]" />
+          <span aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-40" style={{ background: "radial-gradient(closest-side, #0365FE, transparent)" }} />
+          <span aria-hidden className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full opacity-35" style={{ background: "radial-gradient(closest-side, #8B3AE2, transparent)" }} />
           <div className="relative">
             <h2 className="text-[clamp(1.875rem,3.2vw,2.75rem)] font-bold leading-[1.05] tracking-[-0.035em]">
               Um dono. Nenhuma camada entre você e quem decide.
